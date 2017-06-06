@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Cliente - <ui:insert name="titulo" /></title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl></p:growl>
+		<p:menubar>
+			<p:submenu label="Cadastrar" icon="ui-icon-folder-open">
+				<p:menuitem value="Cliente" outcome="clientecad_template"></p:menuitem>
+			</p:submenu>
+			
+			<p:submenu label="Listar" icon="ui-icon-document">
+				<p:menuitem value="Cliente" outcome="clientelist_template"></p:menuitem>
+			</p:submenu>
+
+			<f:facet name="opções">
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink"></p:commandButton>
+			</f:facet>
+		</p:menubar>
+		<br />
+	</h:form>
+	<ui:insert name="principal"></ui:insert>
+	<p
+		style="font-family: verdana; color: blue; text-align: right; font-size: 12px">
+		Pesadão Life Style, todos os direitos reservados</p>
+</h:body>
+</html>

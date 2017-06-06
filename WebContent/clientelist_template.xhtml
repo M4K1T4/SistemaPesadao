@@ -1,0 +1,81 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Lista de Clientes</ui:define>
+
+	<ui:define name="principal">
+		<h:form>
+			<p:panel header="Lista de Clientes">
+				<p:dataTable value="#{clienteBean.clientes}" var="cliente"
+					paginator="true" rows="10" id="tbl"
+					emptyMessage="Ainda não existem registros para os parâmetros de busca.">
+
+					<p:column headerText="Nome Cliente" sortBy="#{cliente.nomeCli}"
+						style="text-align:center;" filterBy="#{cliente.nomeCli}">
+						<h:outputText value="#{cliente.nomeCli}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="E-mail Cliente" style="text-align:center;">
+						<h:outputText value="#{cliente.emailCli}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="Telefone Cliente"
+						filterBy="#{cliente.telefoneCli}" style="text-align:center;">
+						<h:outputText value="#{cliente.telefoneCli}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Celular Cliente" style="text-align:center;"
+						filterBy="#{cliente.celularCli}">
+						<h:outputText value="#{cliente.celularCli}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Cidade Cliente" sortBy="#{cliente.cidadeCli}"
+						style="text-align:center;" exportable="false">
+						<h:outputText value="#{cliente.cidadeCli}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Bairro Cliente" style="text-align:center;" width="70" exportable="false">
+						<h:outputText value="#{cliente.bairroCli}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="UF Cliente" sortBy="#{cliente.ufCli.sigla}"
+						style="text-align:center;" width="70" exportable="false">
+						<h:outputText value="#{cliente.ufCli.sigla}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Cpf Cliente" filterStyle="width: 60px;"
+						style="text-align:center;" filterBy="#{cliente.cpfCli}">
+						<h:outputText value="#{cliente.cpfCli}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Active" exportable="false"
+						style="text-align:center;" width="40">
+						<p:selectBooleanCheckbox value="#{cliente.active}"></p:selectBooleanCheckbox>
+					</p:column>
+
+					<p:column width="50" exportable="false" style="text-align:center;">
+						<p:commandButton icon="ui-icon-pencil" title="Editar Cadastro"
+							action="#{clienteBean.editar(cliente)}"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+				<br />
+
+				<h:commandLink>
+					<p:graphicImage name="images/pdf2.png" width="32"></p:graphicImage>
+					<p:dataExporter type="pdf" target="tbl" fileName="Clientes"
+						encoding="iso-8859-1"></p:dataExporter>
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage name="images/excel (1).png" width="32"></p:graphicImage>
+					<p:dataExporter type="csv" target="tbl" fileName="Clientes"></p:dataExporter>
+				</h:commandLink>
+			</p:panel>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
