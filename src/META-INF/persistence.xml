@@ -17,11 +17,37 @@
 		<property name="hibernate.format_sql" value="true" />
 		</properties>
 	</persistence-unit>
- -->
+ 
+  
+	<trigger:itemcompra>
+		BEGIN
+			UPDATE estoque SET estoque.est_qtde = estoque.est_qtde + new.itc_qtde, 
+			estoque.est_valorTotal = estoque.est_valorTotal + (new.valor_unitario * new.itc_qtde)
+			WHERE estoque.est_produto = NEW.produto_pro_id;
+		END
+	</trigger:itemcompra>
+		
+	<trigger:itemvenda>
+		BEGIN
+			UPDATE estoque SET estoque.est_qtde = estoque.est_qtde - new.itv_qtde, 
+			estoque.est_valorTotal = estoque.est_valorTotal - (new.valor_unitario * new.itv_qtde)
+			WHERE estoque.est_produto = NEW.produto_pro_id;
+		END
+	</trigger:itemvenda>
+		
+	</trigger:itemvenda>
+		BEGIN
+			INSERT INTO estoque(estoque.est_produto, estoque.est_descricao)
+			VALUES (NEW.pro_id, NEW.pro_nome);
+		END
+	</trigger:itemvenda>
+  
+  -->
+ 
  	<properties>
 		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/garcia" />
-		<property name="javax.persistence.jdbc.user" value="root" />
+		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.68.0.200:3306/tcc?createDatabaseIfNotExist=true" />
+		<property name="javax.persistence.jdbc.user" value="aluno" />
 		<property name="javax.persistence.jdbc.password" value="123456" />
 		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 		<property name="hibernate.hbm2ddl.auto" value="update" />
