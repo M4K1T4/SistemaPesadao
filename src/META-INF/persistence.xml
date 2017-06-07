@@ -33,6 +33,7 @@
 			estoque.est_valorTotal = estoque.est_valorTotal - (new.valor_unitario * new.itv_qtde)
 			WHERE estoque.est_produto = NEW.produto_pro_id;
 		END
+		
 	</trigger:itemvenda>
 		
 	</trigger:itemvenda>
