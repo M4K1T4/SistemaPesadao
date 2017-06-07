@@ -1,0 +1,130 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Lista de Fornecedores</ui:define>
+
+	<ui:define name="principal">
+
+		<h:form>
+			<p:panel header="Lista de Fronecedores">
+				<p:dataTable value="#{fornecedorBean.fornecedores}" var="fornecedor"
+					paginator="true" rows="10" id="tbl"
+					emptyMessage="Ainda não existem registros para os parâmetros de busca.">
+
+					<p:column headerText="Nome" sortBy="#{fornecedor.nomeForn}"
+						style="text-align:center;" filterBy="#{fornecedor.nomeForn}">
+						<h:outputText value="#{fornecedor.nomeForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Nome fantasia" style="text-align:center;">
+						<h:outputText value="#{fornecedor.fantasiaForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="CNPJ" filterBy="#{fornecedor.cnpjForn}"
+						style="text-align:center;">
+						<h:outputText value="#{fornecedor.cnpjForn}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="Endereço" style="text-align:center;"
+						filterBy="#{fornecedor.enderecoForn}">
+						<h:outputText value="#{fornecedor.enderecoForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Complemento" style="text-align:center;"
+						filterBy="#{fornecedor.complementoForn}">
+						<h:outputText value="#{fornecedor.complementoForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Cidade" sortBy="#{fornecedor.cidadeForn}"
+						style="text-align:center;" exportable="false">
+						<h:outputText value="#{fornecedor.cidadeForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Bairro" style="text-align:center;" width="70"
+						exportable="false">
+						<h:outputText value="#{fornecedor.bairroForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="UF" sortBy="#{fornecedor.ufForn.sigla}"
+						style="text-align:center;" width="70" exportable="false">
+						<h:outputText value="#{fornecedor.ufForn.sigla}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Telefone A" style="text-align:center;"
+						width="70" exportable="false">
+						<h:outputText value="#{fornecedor.foneaForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Telefone B" style="text-align:center;"
+						width="70" exportable="false">
+						<h:outputText value="#{fornecedor.fonebForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Email" style="text-align:center;" width="70"
+						exportable="false">
+						<h:outputText value="#{fornecedor.emailForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="IE" style="text-align:center;" width="70"
+						exportable="false">
+						<h:outputText value="#{fornecedor.ieForn}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="IM" style="text-align:center;" width="70"
+						exportable="false">
+						<h:outputText value="#{fornecedor.imForn}"></h:outputText>
+					</p:column>
+
+
+					<p:column headerText="Active" exportable="false"
+						style="text-align:center;" width="40">
+						<p:selectBooleanCheckbox value="#{fornecedor.active}"></p:selectBooleanCheckbox>
+					</p:column>
+
+					<p:column headerText="Fundação" width="100"
+						style="text-align:center;">
+						<h:outputText value="#{fornecedor.fundacaoForn}">
+							<f:convertDateTime pattern="dd/MM/yy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Data de Cadastro" width="100"
+						style="text-align:center;">
+						<h:outputText value="#{fornecedor.cadForn}">
+							<f:convertDateTime pattern="dd/MM/yy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Update" width="100"
+						style="text-align:center;">
+						<h:outputText value="#{fornecedor.lastUpdate}">
+							<f:convertDateTime pattern="dd/MM/yy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column width="50" exportable="false" style="text-align:center;">
+						<p:commandButton icon="ui-icon-pencil" title="Editar Cadastro"
+							action="#{fornecedorBean.editar(fornecedor)}"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+				<br />
+
+				<h:commandLink>
+					<p:graphicImage name="images/pdf2.png" width="32"></p:graphicImage>
+					<p:dataExporter type="pdf" target="tbl" fileName="Fornecedores"
+						encoding="iso-8859-1"></p:dataExporter>
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage name="images/excel (1).png" width="32"></p:graphicImage>
+					<p:dataExporter type="csv" target="tbl" fileName="Fornecedores"></p:dataExporter>
+				</h:commandLink>
+			</p:panel>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
