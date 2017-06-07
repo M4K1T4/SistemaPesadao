@@ -15,7 +15,7 @@ public class Fornecedor implements Serializable {
 
 	private static final long serialVersionUID = -2128450523234304178L;
 
-	private Long id;
+	private Integer id;
 	private String nomeForn;
 	private String fantasiaForn;
 	private String cnpjForn;
@@ -37,11 +37,11 @@ public class Fornecedor implements Serializable {
 	@GeneratedValue
 	@Id
 	@Column(name = "for_id", length = 50)
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

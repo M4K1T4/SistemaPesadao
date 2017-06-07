@@ -13,17 +13,26 @@
 		<p:growl></p:growl>
 		<p:menubar>
 			<p:submenu label="Cadastrar" icon="ui-icon-plusthick">
-				<p:menuitem value="Cliente" outcome="clientecad_template.xhtml" />
+				<p:menuitem value="Cliente" outcome="clientecad_template" />
 				<p:separator />
-				<p:menuitem value="Fornecedor"
-					outcome="fornecedorcad_template.xhtml" />
+
+				<p:menuitem value="Fornecedor" outcome="fornecedorcad_template" />
+				<p:separator />
+
+				<p:menuitem value="Produto" outcome="produtocad_template" />
+
 			</p:submenu>
 
 			<p:submenu label="Listar" icon="ui-icon-document">
-				<p:menuitem value="Fornecedor"
-					 />
+
+				<p:menuitem value="Fornecedor"/>
 				<p:separator />
-				<p:menuitem value="Cliente" outcome="clientelist_template.xhtml" />
+
+				<p:menuitem value="Cliente" outcome="clientelist_template" />
+				<p:separator />
+				
+				<p:menuitem value="Produto" outcome="produtolist_template" />
+				
 			</p:submenu>
 
 			<f:facet name="options">

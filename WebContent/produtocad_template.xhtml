@@ -1,0 +1,49 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Cadastro de Cliente</ui:define>
+
+	<ui:define name="principal">
+		<h:form>
+			<p:panel header="Cadastro de Produto" id="pnl">
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Nome do produto:" id="nomeProduto" />
+					<p:inputText type="text" title="Produto *" required="true"
+						requiredMessage="O nome do produto deve conter entre 4 e 40 caracteres."
+						validatorMessage="" value="#{produtoBean.produto.nomeProduto}" />
+
+					<p:outputLabel value="Nome do fornecedor:" id="nomeFornecedor" />
+					<p:selectOneMenu 
+					value="#{produtoBean.produto.fornecedorProduto}"
+					required="true" converter="fornecedorConverter"
+					requiredMessage="Informe o Fornecedor do Produto">
+						<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
+						<f:selectItems value="#{produtoBean.fornecedores}" var="fornecedor"
+						itemLabel="#{fornecedor.fantasiaForn}" itemValue="#{fornecedor}"/>
+					</p:selectOneMenu>
+
+					<p:outputLabel value="Data de Cadastro" id="datacadastro" />
+					<p:calendar value="#{produtoBean.produto.cadastroProduto}"
+						pattern="dd/MM/yy" maxdate="#{produtoBean.produto.lastUpdate}"
+						required="true"
+						requiredMessage="Preencha campo 'Data do cadastro:'" />
+
+					<p:outputLabel />
+					<p:commandButton value="Salvar" action="#{produtoBean.salvar}"
+						update="@form" icon="ui-icon-disk" id="saveBtn" />
+
+				</p:panelGrid>
+			</p:panel>
+
+			<p:blockUI block="pnl" trigger="saveBtn">
+				<p:graphicImage value="#{resource['images:pageloader.gif']}" />
+			</p:blockUI>
+
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
