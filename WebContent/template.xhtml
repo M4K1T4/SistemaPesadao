@@ -12,16 +12,23 @@
 	<h:form>
 		<p:growl></p:growl>
 		<p:menubar>
-			<p:submenu label="Cadastrar" icon="ui-icon-folder-open">
-				<p:menuitem value="Cliente" outcome="clientecad_template"></p:menuitem>
-			</p:submenu>
-			
-			<p:submenu label="Listar" icon="ui-icon-document">
-				<p:menuitem value="Cliente" outcome="clientelist_template"></p:menuitem>
+			<p:submenu label="Cadastrar" icon="ui-icon-plusthick">
+				<p:menuitem value="Cliente" outcome="clientecad_template.xhtml" />
+				<p:separator />
+				<p:menuitem value="Fornecedor"
+					outcome="fornecedorcad_template.xhtml" />
 			</p:submenu>
 
-			<f:facet name="opções">
-				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink"></p:commandButton>
+			<p:submenu label="Listar" icon="ui-icon-document">
+				<p:menuitem value="Fornecedor"
+					 />
+				<p:separator />
+				<p:menuitem value="Cliente" outcome="clientelist_template.xhtml" />
+			</p:submenu>
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton icon="ui-icon-search" />
 			</f:facet>
 		</p:menubar>
 		<br />

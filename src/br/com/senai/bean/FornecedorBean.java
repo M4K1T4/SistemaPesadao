@@ -28,18 +28,18 @@ public class FornecedorBean {
 
 	public String salvar() throws InterruptedException {
 		// fornecedores.add(fornecedor);
-		currentThread = Thread.currentThread ();
+		currentThread = Thread.currentThread();
 		Thread.sleep(7000);
 		new FornecedorDAO().salvar(fornecedor);
 		fornecedores = new FornecedorDAO().listarFornecedores();
 		fornecedor = new Fornecedor();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor salvo com sucesso!"));
-		return "fornecedor_list?faces-redirect=true";
+		return "fornecedorlist_template";
 	}
 
 	public String editar(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
-		return "fornecedor_cad?faces-redirect=true";
+		return "fornecedorlist_template";
 
 	}
 
