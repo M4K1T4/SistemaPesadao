@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
 public class ItemCompra implements Serializable {
 
 	private static final long serialVersionUID = -8772208579953977751L;
@@ -46,7 +48,6 @@ public class ItemCompra implements Serializable {
 
 	public void setPedidoCompra(Integer pedidoCompra) {
 		this.pedidoCompra = pedidoCompra;
-
 	}
 
 	@Column(name = "itc_quantidade", length = 50)

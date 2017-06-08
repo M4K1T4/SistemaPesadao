@@ -1,0 +1,35 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Cadastro de Cliente</ui:define>
+	<ui:define name="principal">
+
+		<h:form id="formPiece">
+			<p:panel id="panelSaisie" header="Saisir"
+				style="color: brown;font-size: 15px">
+
+				<p:dataTable var="line" value="#{itemCompraBean.itemcompras}"
+					id="dataTableSaisiePiece">
+
+					<p:outputLabel value="PedidoCompra :" for="pedidoCompra" />
+					<p:inputText type="text" required="true" id="pedidoCompra"
+						requiredMessage="O nome fantasia não foi preenchido corretamente."
+						validatorMessage="O nome fantasia requer entre 5 e 50 caracteres."
+						value="#{itemCompraBean.itemcompra.pedidoCompra}">
+						<f:validateLength minimum="5" maximum="50" />
+					</p:inputText>
+
+				</p:dataTable>
+
+			<p:commandButton actionListener="#{itemCompraBean.newLine}"
+				value="New" update="dataTableSaisiePiece"
+				oncomplete="addRowOnComplete()" ajax="true" />
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
