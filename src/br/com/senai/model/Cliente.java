@@ -17,9 +17,6 @@ import org.hibernate.validator.constraints.br.CPF;
 @Entity
 public class Cliente implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3954610511847217717L;
 
 	private Integer id;

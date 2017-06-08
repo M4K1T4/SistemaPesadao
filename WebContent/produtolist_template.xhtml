@@ -26,10 +26,6 @@
 						</h:outputText>
 					</p:column>
 
-					<p:column headerText="Fornecedor do Produto">
-						<h:outputText value="#{produto.fornecedorProduto}" />
-					</p:column>
-
 					<p:column headerText="Update" width="120"
 						style="text-align:center;">
 						<h:outputText value="#{produto.lastUpdate}">
@@ -38,10 +34,10 @@
 					</p:column>
 
 					<p:column headerText="Active" width="60" style="text-align:center;">
-						<p:selectBooleanCheckbox value="#{produto.active}" disabled="true" />
+						<p:selectBooleanCheckbox value="#{produto.status}" disabled="true" />
 					</p:column>
 
-					<p:column>
+					<p:column width="105">
 						<p:commandButton id="btnEditar" value="Editar"
 							action="#{produtoBean.editar(produto)}" icon="ui-icon-pencil" />
 					</p:column>

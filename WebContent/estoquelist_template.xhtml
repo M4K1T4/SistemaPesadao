@@ -1,0 +1,39 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Lista Estoque</ui:define>
+
+	<ui:define name="principal">
+
+		<h:form>
+			<p:panel header="Lista Estoque">
+				<p:dataTable value="#{estoqueBean.listEstoque}" var="estoque"
+					paginator="true" rows="10" id="tbl" paginatorPosition="bottom"
+					emptyMessage="Ainda não existem registros para os parâmetros de busca.">
+
+					<p:column headerText="Produto">
+						<p:outputLabel value="#{estoque.nomeProdutoEstoque}" />
+					</p:column>
+					
+					<p:column headerText="QTDE" style="text-align: center">
+						<p:outputLabel value="#{estoque.quantidadeEstoque}" />
+					</p:column>
+					
+					<p:column headerText="Total em Estoque" style="text-align: center">
+						<p:outputLabel value="#{estoque.totalEstoque}" />
+					</p:column>
+					
+					<p:column headerText="Ultima atualização" style="text-align: center">
+						<p:outputLabel value="#{estoque.lastUpdate}" />
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
