@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,11 +16,11 @@ public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1362690614821775345L;
 
-	private long id;
+	private Integer id;
 	private Date cadastroProduto = new Date();
 	private String nomeProduto;
 	private String marcaProduto;
-	private String composicaoProduto;
+	private String materiaPrimaProduto;
 	private String corProduto;
 	private Fornecedor fornecedorProduto;
 	private boolean status = true;
@@ -30,11 +28,11 @@ public class Produto implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
-
-	public void setId(long id) {
+	
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -66,13 +64,13 @@ public class Produto implements Serializable {
 		this.marcaProduto = marcaProduto;
 	}
 
-	@Column(name = "pro_composicao", length = 120, nullable = true)
+	@Column(name = "pro_materia_prima", length = 120, nullable = true)
 	public String getMateriaPrimaProduto() {
-		return composicaoProduto;
+		return materiaPrimaProduto;
 	}
 
 	public void setMateriaPrimaProduto(String materiaPrimaProduto) {
-		this.composicaoProduto = materiaPrimaProduto;
+		this.materiaPrimaProduto = materiaPrimaProduto;
 	}
 
 	@Column(name = "pro_cor", length = 120, nullable = false)
@@ -82,16 +80,6 @@ public class Produto implements Serializable {
 
 	public void setCorProduto(String corProduto) {
 		this.corProduto = corProduto;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "pro_fornecedor", nullable = false)
-	public Fornecedor getFornecedorProduto() {
-		return fornecedorProduto;
-	}
-
-	public void setFornecedorProduto(Fornecedor fornecedorProduto) {
-		this.fornecedorProduto = fornecedorProduto;
 	}
 
 	@Column(name = "pro_status", columnDefinition = "BINARY(1)", nullable = false)
@@ -138,7 +126,7 @@ public class Produto implements Serializable {
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", cadastroProduto=" + cadastroProduto + ", nomeProduto=" + nomeProduto
-				+ ", marcaProduto=" + marcaProduto + ", materiaPrimaProduto=" + composicaoProduto + ", corProduto="
+				+ ", marcaProduto=" + marcaProduto + ", materiaPrimaProduto=" + materiaPrimaProduto + ", corProduto="
 				+ corProduto + ", fornecedorProduto=" + fornecedorProduto + ", status=" + status + ", lastUpdate="
 				+ lastUpdate + "]";
 	}
