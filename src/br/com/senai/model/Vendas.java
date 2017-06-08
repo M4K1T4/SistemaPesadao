@@ -1,13 +1,16 @@
 package br.com.senai.model;
 
+import java.util.Date;
+
 public class Vendas {
 
 	private Integer id;
-	private String qtdVendas;
+	private String qtdVenda;
 	private double valorVenda;
-	private int nomeProduto;
-	private int fornecedor;
+	private Produto produtoVenda;
+	private Cliente clienteVenda;
 	private boolean activeVen = true;
+	private Date dataVenda = new Date();
 
 	public Integer getId() {
 		return id;
@@ -17,12 +20,30 @@ public class Vendas {
 		this.id = id;
 	}
 
-	public String getQtdVendas() {
-		return qtdVendas;
+
+	public String getQtdVenda() {
+		return qtdVenda;
 	}
 
-	public void setQtdVendas(String qtdVendas) {
-		this.qtdVendas = qtdVendas;
+	public void setQtdVenda(String qtdVenda) {
+		this.qtdVenda = qtdVenda;
+	}
+
+
+	public Produto getProdutoVenda() {
+		return produtoVenda;
+	}
+
+	public void setProdutoVenda(Produto produtoVenda) {
+		this.produtoVenda = produtoVenda;
+	}
+
+	public Cliente getClienteVenda() {
+		return clienteVenda;
+	}
+
+	public void setClienteVenda(Cliente clienteVenda) {
+		this.clienteVenda = clienteVenda;
 	}
 
 	public double getValorVenda() {
@@ -33,20 +54,22 @@ public class Vendas {
 		this.valorVenda = valorVenda;
 	}
 
-	public int getNomeProduto() {
-		return nomeProduto;
+
+	public boolean isActiveVen() {
+		return activeVen;
 	}
 
-	public void setNomeProduto(int nomeProduto) {
-		this.nomeProduto = nomeProduto;
+	public void setActiveVen(boolean activeVen) {
+		this.activeVen = activeVen;
+	}
+	
+	
+	public Date getDataVenda() {
+		return dataVenda;
 	}
 
-	public int getFornecedor() {
-		return fornecedor;
-	}
-
-	public void setFornecedor(int fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setDataVenda(Date dataVenda) {
+		this.dataVenda = dataVenda;
 	}
 
 	@Override
@@ -76,8 +99,8 @@ public class Vendas {
 
 	@Override
 	public String toString() {
-		return "Vendas [id=" + id + ", qtdVendas=" + qtdVendas + ", valorVenda=" + valorVenda + ", nomeProduto="
-				+ nomeProduto + ", fornecedor=" + fornecedor + ", activeVen=" + activeVen + "]";
+		return "Vendas [id=" + id + ", qtdVenda=" + qtdVenda + ", valorVenda=" + valorVenda + ", produtoVenda="
+				+ produtoVenda + ", clienteVenda=" + clienteVenda + ", activeVen=" + activeVen + ", dataVenda="
+				+ dataVenda + "]";
 	}
-
 }

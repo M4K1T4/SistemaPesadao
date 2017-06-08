@@ -22,7 +22,7 @@ public class Produto implements Serializable {
 	private Date cadastroProduto = new Date();
 	private String nomeProduto;
 	private String marcaProduto;
-	private String materiaPrimaProduto;
+	private String composicaoProduto;
 	private String corProduto;
 	private Fornecedor fornecedorProduto;
 	private boolean status = true;
@@ -66,13 +66,13 @@ public class Produto implements Serializable {
 		this.marcaProduto = marcaProduto;
 	}
 
-	@Column(name = "pro_materia_prima", length = 120, nullable = true)
+	@Column(name = "pro_composicao", length = 120, nullable = true)
 	public String getMateriaPrimaProduto() {
-		return materiaPrimaProduto;
+		return composicaoProduto;
 	}
 
 	public void setMateriaPrimaProduto(String materiaPrimaProduto) {
-		this.materiaPrimaProduto = materiaPrimaProduto;
+		this.composicaoProduto = materiaPrimaProduto;
 	}
 
 	@Column(name = "pro_cor", length = 120, nullable = false)
@@ -138,7 +138,7 @@ public class Produto implements Serializable {
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", cadastroProduto=" + cadastroProduto + ", nomeProduto=" + nomeProduto
-				+ ", marcaProduto=" + marcaProduto + ", materiaPrimaProduto=" + materiaPrimaProduto + ", corProduto="
+				+ ", marcaProduto=" + marcaProduto + ", materiaPrimaProduto=" + composicaoProduto + ", corProduto="
 				+ corProduto + ", fornecedorProduto=" + fornecedorProduto + ", status=" + status + ", lastUpdate="
 				+ lastUpdate + "]";
 	}
