@@ -41,6 +41,11 @@
 			VALUES (NEW.pro_id, NEW.pro_nome);
 		END
 	</trigger:itemvenda>
+	
+	BEGIN
+	INSERT INTO ESTOQUE(estoque.est_descricao, estoque.est_produto)
+	VALUES(NEW.pro_nome, NEW.pro_id);
+	END
   
   -->
  

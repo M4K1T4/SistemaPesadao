@@ -14,7 +14,7 @@ public class EstoqueDAO {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();
 
-		Query query = entityManager.createQuery("from estoque");
+		Query query = entityManager.createQuery("from Estoque");
 
 		return query.getResultList();
 	}

@@ -14,7 +14,7 @@ import br.com.senai.model.Estoque;
 public class EstoqueBean {
 
 	private List<Estoque> listEstoque = new ArrayList<>();
-	
+
 	public EstoqueBean() {
 		listEstoque = new EstoqueDAO().listarEstoque();
 	}
@@ -26,7 +26,5 @@ public class EstoqueBean {
 	public void setListEstoque(List<Estoque> listEstoque) {
 		this.listEstoque = listEstoque;
 	}
-	
-	
-	
+
 }
