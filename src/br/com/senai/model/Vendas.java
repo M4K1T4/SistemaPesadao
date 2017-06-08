@@ -103,4 +103,5 @@ public class Vendas {
 				+ produtoVenda + ", clienteVenda=" + clienteVenda + ", activeVen=" + activeVen + ", dataVenda="
 				+ dataVenda + "]";
 	}
+	
 }
