@@ -1,6 +1,5 @@
 package br.com.senai.bean;
 
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +14,6 @@ import javax.faces.context.FacesContext;
 import br.com.senai.dao.ClienteDao;
 import br.com.senai.model.Cliente;
 import br.com.senai.model.Estado;
-
 
 @ManagedBean
 @SessionScoped
@@ -32,7 +30,7 @@ public class ClienteBean {
 
 	@SuppressWarnings("static-access")
 	public String salvar() throws InterruptedException {
-		Thread.currentThread().sleep(5000);;
+		Thread.currentThread().sleep(5000);
 		new ClienteDao().salvar(cliente);
 		clientes = new ClienteDao().listarClientes();
 		cliente = new Cliente();
@@ -44,18 +42,18 @@ public class ClienteBean {
 		this.cliente = cliente;
 		return "clientecad_template";
 	}
-	
-	public void prepararExclusao(Cliente cliente){
+
+	public void prepararExclusao(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	public void excluir(){
+
+	public void excluir() {
 		new ClienteDao().excluir(cliente);
-		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("cliente deletado com sucesso!"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("cliente deletado com sucesso!"));
 		clientes = new ClienteDao().listarClientes();
 	}
-	
-	public String getDataAtual(){
+
+	public String getDataAtual() {
 		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
 
@@ -82,6 +80,5 @@ public class ClienteBean {
 	public void setEstados(List<Estado> estados) {
 		this.estados = estados;
 	}
-	
-	
+
 }

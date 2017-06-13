@@ -27,7 +27,7 @@ public class Produto implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="pro_id")
+	@Column(name = "pro_id")
 	public Integer getId() {
 		return id;
 	}
@@ -65,12 +65,12 @@ public class Produto implements Serializable {
 	}
 
 	@Column(name = "pro_composicao", length = 120, nullable = true)
-	public String getMateriaPrimaProduto() {
+	public String getComposicaoProduto() {
 		return composicaoProduto;
 	}
 
-	public void setMateriaPrimaProduto(String materiaPrimaProduto) {
-		this.composicaoProduto = materiaPrimaProduto;
+	public void setComposicaoProduto(String composicaoProduto) {
+		this.composicaoProduto = composicaoProduto;
 	}
 
 	@Column(name = "pro_cor", length = 120, nullable = false)
@@ -82,9 +82,7 @@ public class Produto implements Serializable {
 		this.corProduto = corProduto;
 	}
 
-
-
-	@Column(name = "pro_status", columnDefinition = "BINARY(1)", nullable = false)
+	@Column(name = "pro_status", columnDefinition = "BOOLEAN default true", nullable = false)
 	public boolean isStatus() {
 		return status;
 	}
@@ -125,11 +123,11 @@ public class Produto implements Serializable {
 		return true;
 	}
 
-	public String getComposicaoProduto() {
-		return composicaoProduto;
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", cadastroProduto=" + cadastroProduto + ", nomeProduto=" + nomeProduto
+				+ ", marcaProduto=" + marcaProduto + ", materiaPrimaProduto=" + composicaoProduto + ", corProduto="
+				+ corProduto + ", status=" + status + ", lastUpdate=" + lastUpdate + "]";
 	}
 
-	public void setComposicaoProduto(String composicaoProduto) {
-		this.composicaoProduto = composicaoProduto;
-	}
 }

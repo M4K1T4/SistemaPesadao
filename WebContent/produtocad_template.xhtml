@@ -11,10 +11,31 @@
 		<h:form>
 			<p:panel header="Cadastro de Produto" id="pnl">
 				<p:panelGrid columns="2">
-					<p:outputLabel value="Nome do produto:" id="nomeProduto" />
+					<p:outputLabel value="Nome do produto:" for="nomeProduto" />
 					<p:inputText type="text" title="Produto *" required="true"
+						id="nomeProduto"
 						requiredMessage="O nome do produto deve conter entre 4 e 40 caracteres."
 						validatorMessage="" value="#{produtoBean.produto.nomeProduto}" />
+
+					<p:outputLabel value="Marca:" for="marcaProduto" />
+					<p:inputText type="text" title="Marca *" required="true"
+						id="marcaProduto"
+						requiredMessage="A Marca do produto deve conter entre 4 e 40 caracteres."
+						validatorMessage="" value="#{produtoBean.produto.marcaProduto}" />
+
+					<p:outputLabel value="Materia prima:" for="materiaPrimaProduto" />
+					<p:inputText type="text" title="Marca *" required="true"
+						id="materiaPrimaProduto"
+						requiredMessage="A Materia prima do produto deve conter entre 4 e 40 caracteres."
+						validatorMessage=""
+						value="#{produtoBean.produto.composicaoProduto}" />
+
+					<p:outputLabel value="Cor:" for="corProduto" />
+					<p:inputText type="text" title="Marca *" required="true"
+						id="corProduto"
+						requiredMessage="A Cor do produto deve conter entre 4 e 40 caracteres."
+						validatorMessage=""
+						value="#{produtoBean.produto.corProduto}" />
 
 					<p:outputLabel value="Data de Cadastro" id="datacadastro" />
 					<p:calendar value="#{produtoBean.produto.cadastroProduto}"
@@ -35,5 +56,5 @@
 
 		</h:form>
 	</ui:define>
-	
+
 </ui:composition>

@@ -37,4 +37,5 @@ public class ProdutoConverter implements Converter {
 		String nome = produto.getNomeProduto() == null ? "" : produto.getNomeProduto();
 		return id + "#" + nome;
 	}
+
 }
