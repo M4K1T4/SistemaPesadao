@@ -8,9 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.senai.dao.FornecedorDAO;
+
 import br.com.senai.dao.ProdutoDAO;
-import br.com.senai.model.Fornecedor;
+
 import br.com.senai.model.Produto;
 
 @ManagedBean
@@ -19,11 +19,11 @@ public class ProdutoBean {
 
 	private Produto produto = new Produto();
 	private List<Produto> produtos = new ArrayList<Produto>();
-	private List<Fornecedor> fornecedores;
+
 	
 	public ProdutoBean(){
 		produtos = new ProdutoDAO().listarProdutos();
-		fornecedores = new FornecedorDAO().listarFornecedores();
+		
 	}
 	
 	public String salvar(){
@@ -56,12 +56,4 @@ public class ProdutoBean {
 		this.produtos = produtos;
 	}
 
-	public List<Fornecedor> getFornecedores() {
-		return fornecedores;
-	}
-
-	public void setFornecedores(List<Fornecedor> fornecedores) {
-		this.fornecedores = fornecedores;
-	}
-	
 }

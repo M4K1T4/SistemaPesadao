@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,23 +16,23 @@ public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1362690614821775345L;
 
-	private long id;
+	private Integer id;
 	private Date cadastroProduto = new Date();
 	private String nomeProduto;
 	private String marcaProduto;
 	private String composicaoProduto;
 	private String corProduto;
-	private Fornecedor fornecedorProduto;
 	private boolean status = true;
 	private Date lastUpdate = new Date();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long getId() {
+	@Column(name="pro_id")
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -84,15 +82,7 @@ public class Produto implements Serializable {
 		this.corProduto = corProduto;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "pro_fornecedor", nullable = false)
-	public Fornecedor getFornecedorProduto() {
-		return fornecedorProduto;
-	}
 
-	public void setFornecedorProduto(Fornecedor fornecedorProduto) {
-		this.fornecedorProduto = fornecedorProduto;
-	}
 
 	@Column(name = "pro_status", columnDefinition = "BINARY(1)", nullable = false)
 	public boolean isStatus() {
@@ -135,12 +125,11 @@ public class Produto implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Produto [id=" + id + ", cadastroProduto=" + cadastroProduto + ", nomeProduto=" + nomeProduto
-				+ ", marcaProduto=" + marcaProduto + ", materiaPrimaProduto=" + composicaoProduto + ", corProduto="
-				+ corProduto + ", fornecedorProduto=" + fornecedorProduto + ", status=" + status + ", lastUpdate="
-				+ lastUpdate + "]";
+	public String getComposicaoProduto() {
+		return composicaoProduto;
 	}
 
+	public void setComposicaoProduto(String composicaoProduto) {
+		this.composicaoProduto = composicaoProduto;
+	}
 }

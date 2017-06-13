@@ -16,16 +16,6 @@
 						requiredMessage="O nome do produto deve conter entre 4 e 40 caracteres."
 						validatorMessage="" value="#{produtoBean.produto.nomeProduto}" />
 
-					<p:outputLabel value="Nome do fornecedor:" id="nomeFornecedor" />
-					<p:selectOneMenu 
-					value="#{produtoBean.produto.fornecedorProduto}"
-					required="true" converter="fornecedorConverter"
-					requiredMessage="Informe o Fornecedor do Produto">
-						<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
-						<f:selectItems value="#{produtoBean.fornecedores}" var="fornecedor"
-						itemLabel="#{fornecedor.fantasiaForn}" itemValue="#{fornecedor}"/>
-					</p:selectOneMenu>
-
 					<p:outputLabel value="Data de Cadastro" id="datacadastro" />
 					<p:calendar value="#{produtoBean.produto.cadastroProduto}"
 						pattern="dd/MM/yy" maxdate="#{produtoBean.produto.lastUpdate}"
