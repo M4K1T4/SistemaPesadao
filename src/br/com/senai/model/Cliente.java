@@ -1,3 +1,6 @@
+// @Author: Equipe 1;
+// model de Cliente usado para cadastrar e manter dados do mesmo.
+
 package br.com.senai.model;
 
 import java.io.Serializable;
@@ -64,8 +67,8 @@ public class Cliente implements Serializable {
 		this.nomeCli = nomeCli;
 	}
 
-	@Column(name = "cli_cpf")
 	@CPF
+	@Column(name = "cli_cpf")
 	public String getCpfCli() {
 		return cpfCli;
 	}
@@ -155,8 +158,8 @@ public class Cliente implements Serializable {
 		this.celularCli = celularCli;
 	}
 
-	@Column(name = "cli_email")
 	@Email
+	@Column(name = "cli_email")
 	public String getEmailCli() {
 		return emailCli;
 	}

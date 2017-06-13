@@ -1,0 +1,39 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Pedido </ui:define>
+
+	<ui:define name="principal">
+		<h:form>
+			<p:panel header="Efetuar Venda" id="pnl">
+				<h:panelGrid columns="2">
+
+					<p:outputLabel value="Nome do Cliente: " id="cliente" />
+					<p:selectOneMenu
+						value="#{pedidoVendaBean.pedidoVenda.cliente.nomeCli}"
+						required="true" requiredMessage="Favor Selecionar o Cliente "
+						converter="clienteConverter">
+						<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
+						<f:selectItems value="#{pedidoVendaBean.clientes}" var="cliente"
+							itemLabel="#{cliente.nomeCli}" itemValue="#{cliente.id}"></f:selectItems>
+					</p:selectOneMenu>
+					<p:outputLabel value="Data: " id="dataVenda">
+						<p:calendar value="#{pedidoVendaBean.pedidoVenda.dataVenda}"
+							pattern="dd/MM/yyyy">
+						</p:calendar>
+
+					</p:outputLabel>
+					<p:commandButton value="Selecionar"
+						action="#{pedidoVendaBean.salvar}" update="@form"
+						icon="ui-icon-disk" id="saveBtn">
+					</p:commandButton>
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

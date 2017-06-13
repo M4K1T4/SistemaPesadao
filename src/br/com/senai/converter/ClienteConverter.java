@@ -4,38 +4,44 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import br.com.senai.model.Produto;
 
-@FacesConverter("produtoConverter")
-public class ProdutoConverter implements Converter {
+import br.com.senai.model.Cliente;
+
+@FacesConverter("clienteConverter")
+
+public class ClienteConverter implements Converter{
+
 	@Override
-
 	public Object getAsObject(FacesContext context, UIComponent component, String valor) {
 		if (valor.equals("") || !valor.contains("#")) {
 			return null;
 		}
-		Produto produto = new Produto();
+
+		Cliente cliente = new Cliente();
+
 		String[] propriedades = valor.split("#");
+		
 		if (!propriedades[0].isEmpty()) {
-			produto.setId(new Integer(propriedades[0]));
+			cliente.setId(new Integer(propriedades[0]));
 		}
+		
 		if (!propriedades[1].isEmpty()) {
-			produto.setNomeProduto(propriedades[1]);
+			cliente.setNomeCli(propriedades[1]);
 		}
-		return produto;
+		return cliente;
 	}
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object obj) {
-		if (obj == null || !(obj instanceof Produto)) {
+		if(obj == null || !(obj instanceof Cliente)){
 			return "";
 		}
-		Produto produto = (Produto) obj;
-
-		String id = produto.getId() == null ? "" : produto.getId().toString();
-				
-		String nome = produto.getNomeProduto() == null ? "" : produto.getNomeProduto();
+		
+		Cliente cliente = (Cliente) obj;
+		
+		String id = cliente.getId() == null ? "" : cliente.getId().toString();
+		String nome = cliente.getNomeCli() == null ? "" : cliente.getNomeCli();
+		
 		return id + "#" + nome;
 	}
-
 }

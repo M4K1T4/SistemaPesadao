@@ -11,7 +11,7 @@
 		<h:form>
 			<p:growl />
 			<p:panel header="Nome real do fornecedor" id="pnl">
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="4">
 					<p:outputLabel value="Nome real :" for="nomeForn" />
 					<p:inputText type="text" required="true" id="nomeForn"
 						requiredMessage="O nome real não foi preenchido corretamente."
@@ -112,7 +112,10 @@
 						maxdate="#{fornecedorBean.fornecedor.cadForn}" required="true"
 						requiredMessage="Preencha campo 'Data do cadastro:'"
 						value="#{fornecedorBean.fornecedor.cadForn}" />
-
+					<p:outputLabel></p:outputLabel>
+					<p:outputLabel></p:outputLabel>
+					<p:outputLabel></p:outputLabel>
+					
 					<p:commandButton value="salvar" action="#{fornecedorBean.salvar}"
 						update="@form" icon="ui-icon-disk" id="saveBtn" />
 				</h:panelGrid>
