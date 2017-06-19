@@ -6,7 +6,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 import br.com.senai.model.PedidoVenda;
-import br.com.senai.model.PedidoVenda;
+
 @FacesConverter("pedidoVendaConverter")
 public class PedidoVendaConverter implements Converter {
 
