@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 public class PedidoCompra implements Serializable {
 
@@ -25,7 +27,8 @@ public class PedidoCompra implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "pec_for_id", length = 50)
+	@ManyToOne
+	@JoinColumn(name = "pec_for_id")
 	public Fornecedor getFornecedor() {
 		return fornecedorPedido;
 	}
@@ -78,7 +81,6 @@ public class PedidoCompra implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
 
 	@Override
 	public boolean equals(Object obj) {

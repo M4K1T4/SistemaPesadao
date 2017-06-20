@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class PedidoVenda implements Serializable {
@@ -35,7 +37,8 @@ public class PedidoVenda implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "cliente_cli_id")
+	@ManyToOne
+	@JoinColumn(name = "cliente_cli_id")
 	public Cliente getCliente() {
 		return cliente;
 	}

@@ -13,14 +13,14 @@
 				<h:panelGrid columns="2">
 
 					<p:outputLabel value="Nome do Cliente: " id="cliente" />
-					<p:selectOneMenu
-						value="#{pedidoVendaBean.pedidoVenda.cliente.nomeCli}"
-						required="true" requiredMessage="Favor Selecionar o Cliente "
-						converter="clienteConverter">
+					<p:selectOneMenu value="#{pedidoVendaBean.pedidoVenda.cliente}"
+						required="true" converter="clienteConverter"
+						requiredMessage="Favor Selecionar o Cliente ">
 						<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
 						<f:selectItems value="#{pedidoVendaBean.clientes}" var="cliente"
-							itemLabel="#{cliente.nomeCli}" itemValue="#{cliente.id}"></f:selectItems>
+							itemLabel="#{cliente.nomeCli}" itemValue="#{cliente}"></f:selectItems>
 					</p:selectOneMenu>
+
 					<p:outputLabel value="Data: " id="dataVenda">
 						<p:calendar value="#{pedidoVendaBean.pedidoVenda.dataVenda}"
 							pattern="dd/MM/yyyy">

@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ItemVenda implements Serializable {
@@ -36,8 +38,8 @@ public class ItemVenda implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	@Column(name = "pedidoVenda_ven_id", nullable = true)
+	@ManyToOne
+	@JoinColumn(name = "pedidoVenda_ven_id", nullable = true)
 	public PedidoVenda getPedidoVenda() {
 		return pedidoVenda;
 	}

@@ -40,11 +40,18 @@ public class ClienteDao {
 		entityManager.getTransaction().begin();
 
 		cliente = entityManager.merge(cliente);
-		
+
 		entityManager.remove(cliente);
 
 		entityManager.getTransaction().commit();
 
 		entityManager.close();
+	}
+
+	public Cliente porId(Integer id) {
+		
+		EntityManager entityManager = JPAUtil.getEntityManager();
+
+		return entityManager.find(Cliente.class, id);
 	}
 }

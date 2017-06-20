@@ -27,11 +27,10 @@ public class PedidoVendaBean {
 	}
 
 	public String salvar() {
+		
 		new PedidoVendaDAO().salvar(pedidoVenda);
-		// pedidosVendas.add(pedidoVenda);
 		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-		// return "produtolist_template?faces-redirect=true";
 		return "pedido_template";
 	}
 	
