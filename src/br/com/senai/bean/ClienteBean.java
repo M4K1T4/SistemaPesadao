@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import br.com.senai.dao.ClienteDao;
 import br.com.senai.model.Cliente;
 import br.com.senai.model.Estado;
+import br.com.senai.model.SexoCliente;
 
 @ManagedBean
 @SessionScoped
@@ -21,6 +22,7 @@ public class ClienteBean {
 
 	private Cliente cliente = new Cliente();
 	private List<Estado> estados = Arrays.asList(Estado.values());
+	private List<SexoCliente> sexos = Arrays.asList(SexoCliente.values());
 	private List<Cliente> clientes = new ArrayList<Cliente>();
 	public Thread currentThread;
 
@@ -81,4 +83,11 @@ public class ClienteBean {
 		this.estados = estados;
 	}
 
+	public List<SexoCliente> getSexos() {
+		return sexos;
+	}
+
+	public void setSexos(List<SexoCliente> sexos) {
+		this.sexos = sexos;
+	}
 }

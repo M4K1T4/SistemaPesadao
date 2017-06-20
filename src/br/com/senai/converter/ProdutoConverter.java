@@ -18,6 +18,7 @@ public class ProdutoConverter implements Converter {
 		String[] propriedades = valor.split("#");
 		if (!propriedades[0].isEmpty()) {
 			produto.setId(new Integer(propriedades[0]));
+			System.out.println("VALUE DESFUDIDO produto");
 		}
 		if (!propriedades[1].isEmpty()) {
 			produto.setNomeProduto(propriedades[1]);

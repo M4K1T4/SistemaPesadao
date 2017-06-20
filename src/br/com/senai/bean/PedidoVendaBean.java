@@ -8,9 +8,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.FlowEvent;
+
 import br.com.senai.dao.ClienteDao;
+import br.com.senai.dao.ItemVendaDAO;
 import br.com.senai.dao.PedidoVendaDAO;
 import br.com.senai.model.Cliente;
+import br.com.senai.model.ItemVenda;
 import br.com.senai.model.PedidoVenda;
 
 @ManagedBean
@@ -18,12 +22,62 @@ import br.com.senai.model.PedidoVenda;
 public class PedidoVendaBean {
 
 	private PedidoVenda pedidoVenda = new PedidoVenda();
+	private ItemVenda itemVenda = new ItemVenda();
 	private List<PedidoVenda> pedidosVendas = new ArrayList<PedidoVenda>();
+	private List<ItemVenda> itemVendas = new ArrayList<ItemVenda>();
 	private List<Cliente> clientes;
+	private boolean skip;
+
+
+	public void setPedidovenda(PedidoVenda pedidoVenda) {
+		this.pedidoVenda = pedidoVenda;
+	}
+
+	public ItemVenda getItemVenda() {
+		return itemVenda;
+	}
+
+	public void setItemVenda(ItemVenda itemVenda) {
+		this.itemVenda = itemVenda;
+	}
+
+	public void save() {
+		FacesMessage msg = new FacesMessage("Sucesso", "Welcome :" + PedidoVenda.class.getName());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+
+	public boolean isSkip() {
+		return skip;
+	}
+
+	public void setSkip(boolean skip) {
+		this.skip = skip;
+	}
+
+	public String onFlowProcess(FlowEvent event) {
+		if (skip) {
+			skip = false; // reset in case user goes back
+			return "confirm";
+		} else {
+			return event.getNewStep();
+		}
+	}
 
 	public PedidoVendaBean() {
 		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
 		clientes = new ClienteDao().listarClientes();
+	}
+	
+	public String salvarPedidoVenda() {
+		
+		new PedidoVendaDAO().salvar(pedidoVenda);
+		new ItemVendaDAO().salvar(itemVenda);
+		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
+		itemVendas = new ItemVendaDAO().listarItensVenda();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Venda salvo com sucesso!! "));
+		return "pedido_template";
+		
 	}
 
 	public String salvar() {
@@ -31,8 +85,9 @@ public class PedidoVendaBean {
 		new PedidoVendaDAO().salvar(pedidoVenda);
 		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-		return "pedido_template";
-	}
+				return "pedido_template";
+	
+		}
 	
 	public String editar(PedidoVenda pedidoVenda){
 		this.pedidoVenda = pedidoVenda;
@@ -61,5 +116,13 @@ public class PedidoVendaBean {
 
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
+	}
+
+	public List<ItemVenda> getItemVendas() {
+		return itemVendas;
+	}
+
+	public void setItemVendas(List<ItemVenda> itemVendas) {
+		this.itemVendas = itemVendas;
 	}
 }
