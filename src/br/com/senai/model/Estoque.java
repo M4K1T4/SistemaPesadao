@@ -71,7 +71,7 @@ public class Estoque implements Serializable {
 		this.lastUpdate = lastUpdate;
 	}
 	
-	@Column(name = "est_valorTotal", columnDefinition = "BOOLEAN default true")
+	@Column(name = "est_valorTotal", columnDefinition = "DOUBLE default 0")
 	public double getTotalEstoque() {
 		return totalEstoque;
 	}
