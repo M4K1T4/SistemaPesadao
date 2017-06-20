@@ -23,7 +23,7 @@ public class LoginBean {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		if ("Administrador".equals(nomeUsuario) && "123".equals(senha)) {
+		if ("admin".equals(nomeUsuario) && "123".equals(senha)) {
 			
 			usuario.setNome(this.nomeUsuario);
 			usuario.setDataLogin(new Date());
