@@ -12,7 +12,7 @@
 		<h:form>
 			<p:panel header="Lista de Fronecedores">
 				<p:dataTable value="#{fornecedorBean.fornecedores}" var="fornecedor"
-					paginator="true" rows="10" id="tbl"
+					paginator="true" paginatorPosition="bottom" rows="10" id="tbl" scrollable="true" scrollWidth="auto"
 					emptyMessage="Ainda não existem registros para os parâmetros de busca.">
 
 					<p:column headerText="Nome" sortBy="#{fornecedor.nomeForn}"
@@ -20,26 +20,26 @@
 						<h:outputText value="#{fornecedor.nomeForn}"></h:outputText>
 					</p:column>
 
-					<p:column headerText="Nome fantasia" style="text-align:center;">
+					<p:column headerText="Nome fantasia" style="text-align:center;"  width="200">
 						<h:outputText value="#{fornecedor.fantasiaForn}"></h:outputText>
 					</p:column>
 
-					<p:column headerText="CNPJ" filterBy="#{fornecedor.cnpjForn}"
+					<p:column headerText="CNPJ" filterBy="#{fornecedor.cnpjForn}"  width="200"
 						style="text-align:center;">
 						<h:outputText value="#{fornecedor.cnpjForn}"></h:outputText>
 					</p:column>
 					
-					<p:column headerText="Endereço" style="text-align:center;"
+					<p:column headerText="Endereço" style="text-align:center;"  width="200"
 						filterBy="#{fornecedor.enderecoForn}">
 						<h:outputText value="#{fornecedor.enderecoForn}"></h:outputText>
 					</p:column>
 
-					<p:column headerText="Complemento" style="text-align:center;"
+					<p:column headerText="Complemento" style="text-align:center;"  width="200"
 						filterBy="#{fornecedor.complementoForn}">
 						<h:outputText value="#{fornecedor.complementoForn}"></h:outputText>
 					</p:column>
 
-					<p:column headerText="Cidade" sortBy="#{fornecedor.cidadeForn}"
+					<p:column headerText="Cidade" sortBy="#{fornecedor.cidadeForn}"  width="200"
 						style="text-align:center;" exportable="false">
 						<h:outputText value="#{fornecedor.cidadeForn}"></h:outputText>
 					</p:column>
@@ -55,7 +55,7 @@
 					</p:column>
 
 					<p:column headerText="Telefone A" style="text-align:center;"
-						width="70" exportable="false">
+						width="100" exportable="false">
 						<h:outputText value="#{fornecedor.foneaForn}"></h:outputText>
 					</p:column>
 
