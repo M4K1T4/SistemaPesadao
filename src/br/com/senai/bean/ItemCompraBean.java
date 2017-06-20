@@ -11,7 +11,6 @@ import javax.faces.event.ActionEvent;
 
 import br.com.senai.dao.ItemCompraDAO;
 import br.com.senai.model.ItemCompra;
-import br.com.senai.model.PedidoCompra;
 
 @ManagedBean
 @SessionScoped

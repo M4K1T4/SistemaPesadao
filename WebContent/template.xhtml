@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="UTF-8" />
-	<title>Cliente - <ui:insert name="titulo" /></title>
+	<title>PESADÃO - <ui:insert name="titulo" /></title>
 </h:head>
 <h:body>
 	<h:form>
@@ -41,14 +41,13 @@
 
 			<f:facet name="options">
 				<p:inputText style="margin-right:10px" placeholder="Search" />
-				<p:commandButton icon="ui-icon-search" />
+				<p:commandButton icon="ui-icon-search" value="Logout #{loginBean.nomeUsuario}" action="#{loginBean.logout}"/>
 			</f:facet>
 		</p:menubar>
 		<br />
 	</h:form>
 	<ui:insert name="principal"></ui:insert>
-	<p
-		style="font-family: verdana; color: blue; text-align: right; font-size: 12px">
+	<p style="font-family: verdana; color: blue; text-align: right; font-size: 12px">
 		Pesadão Life Style, todos os direitos reservados</p>
 </h:body>
 </html>

@@ -40,7 +40,6 @@ public class FornecedorBean {
 	public String editar(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 		return "fornecedorlist_template";
-
 	}
 
 	public void prepararExclusao(Fornecedor fornecedor) {
