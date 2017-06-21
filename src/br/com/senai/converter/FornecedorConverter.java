@@ -19,11 +19,12 @@ public class FornecedorConverter implements Converter {
 		Fornecedor fornecedor = new Fornecedor();
 
 		String[] propriedades = valor.split("#");
-		
+
 		if (!propriedades[0].isEmpty()) {
 			fornecedor.setId(new Integer(propriedades[0]));
+			System.out.println("VALUE DESFUDIDO fornecedor");
 		}
-		
+
 		if (!propriedades[1].isEmpty()) {
 			fornecedor.setFantasiaForn(propriedades[1]);
 		}
@@ -32,15 +33,15 @@ public class FornecedorConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object obj) {
-		if(obj == null || !(obj instanceof Fornecedor)){
+		if (obj == null || !(obj instanceof Fornecedor)) {
 			return "";
 		}
-		
+
 		Fornecedor fornecedor = (Fornecedor) obj;
-		
+
 		String id = fornecedor.getId() == null ? "" : fornecedor.getId().toString();
 		String nome = fornecedor.getFantasiaForn() == null ? "" : fornecedor.getFantasiaForn();
-		
+
 		return id + "#" + nome;
 	}
 

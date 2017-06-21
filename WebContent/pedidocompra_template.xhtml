@@ -1,0 +1,89 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Pedido </ui:define>
+
+	<ui:define name="principal">
+		<h:form>
+			<p:growl id="growl" sticky="true" showDetail="true" />
+			<p:wizard flowListener="#{pedidoCompraBean.onFlowProcess}">
+
+				<p:tab id="PedidoCompra" title="Fronrecedor ">
+					<p:panel header="Efetuar Compra">
+						<h:panelGrid columns="2">
+							<p:outputLabel value="Fornecedor: ">
+								<p:selectOneMenu
+									value="#{pedidoCompraBean.pedidoCompra.fornecedor}"
+									required="true" converter="fornecedorConverter"
+									requiredMessage="Favor Selecionar o fornecedor">
+									<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
+									<f:selectItems value="#{pedidoCompraBean.fornecedores}"
+										var="fornecedor" itemLabel="#{fornecedor.fantasiaForn}"
+										itemValue="#{fornecedor}"></f:selectItems>
+								</p:selectOneMenu>
+							</p:outputLabel>
+
+							<p:outputLabel value="Data: " id="dataVenda">
+								<p:calendar
+									value="#{pedidoCompraBean.pedidoCompra.cadastroProduto}"
+									pattern="dd/MM/yyyy">
+								</p:calendar>
+
+							</p:outputLabel>
+							<p:commandButton value="Selecionar"
+								action="#{pedidoCompraBean.salvar}" update="@form"
+								icon="ui-icon-disk" id="saveBtn">
+							</p:commandButton>
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="produto" title="item(ns)">
+					<p:panel header="Selecionar Itens">
+						<h:panelGrid columns="2">
+							<p:outputLabel value="Produto: ">
+								<p:selectOneMenu
+									value="#{itemCompraBean.itemcompra.produtoCompra}"
+									required="true" converter="produtoConverter"
+									requiredMessage="Favor Indicar o Produto">
+									<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
+									<f:selectItems
+										value="#{itemCompraBean.itemcompra.produtoCompra}"
+										var="produto" itemLabel="#{produto.nomeProduto}"
+										itemValue="#{produto}"></f:selectItems>
+								</p:selectOneMenu>
+
+							</p:outputLabel>
+							<p:outputLabel value="Valor Unitário: " for="valorUnitCompra">
+								<p:inputText type="text" required="true" id="valorUnitCompra"
+									requiredMessage="O valor unitário não foi preenchido."
+									value="#{itemCompraBean.itemcompra.valorUnitCompra}"></p:inputText>
+							</p:outputLabel>
+							<p:outputLabel value="Quantidade: " for="quantidadeCompra">
+								<p:inputText type="text" required="true" id="quantidadeCompra"
+									requiredMessage="Favor Inserir a quantidade do produto"
+									value="#{itemCompraBean.itemcompra.quantidadeCompra}"></p:inputText>
+							</p:outputLabel>
+
+							<p:outputLabel></p:outputLabel>
+							<p:commandButton value="Selecionar"
+								action="#{itemCompraBean.salvar}" update="@form"
+								icon="ui-icon-disk" id="saveBtn1">
+							</p:commandButton>
+
+						</h:panelGrid>
+
+					</p:panel>
+
+				</p:tab>
+
+			</p:wizard>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

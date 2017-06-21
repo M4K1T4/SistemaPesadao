@@ -38,6 +38,7 @@ public class ItemVenda implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	@ManyToOne
 	@JoinColumn(name = "pedidoVenda_ven_id", nullable = true)
 	public PedidoVenda getPedidoVenda() {
@@ -66,7 +67,8 @@ public class ItemVenda implements Serializable {
 		this.quantidadeVenda = quantidadeVenda;
 	}
 
-	@Column(name = "produto_pro_id")
+	@ManyToOne
+	@JoinColumn(name = "produto_pro_id")
 	public Produto getProduto() {
 		return produto;
 	}
@@ -102,8 +104,7 @@ public class ItemVenda implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ItemVenda [id=" + id +  ", valorUnitVenda=" + valorUnitVenda
-				+ ", pedidoVenda=" + pedidoVenda + ", produto=" + produto + ", quantidadeVenda=" + quantidadeVenda
-				+ "]";
+		return "ItemVenda [id=" + id + ", valorUnitVenda=" + valorUnitVenda + ", pedidoVenda=" + pedidoVenda
+				+ ", produto=" + produto + ", quantidadeVenda=" + quantidadeVenda + "]";
 	}
 }

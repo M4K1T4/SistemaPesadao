@@ -17,12 +17,15 @@
 						requiredMessage="Preencha o campo Nome do Cliente."
 						value="#{clienteBean.cliente.nomeCli}">
 					</p:inputText>
+					<p:outputLabel value="Sexo:"></p:outputLabel>
+					<p:outputLabel for="sexoCli">
+						<p:selectOneRadio id="sexoCli"
+							value="#{clienteBean.cliente.sexoCli}">
+							<f:selectItem itemLabel="Masculino" itemValue="MASCULINO"></f:selectItem>
+							<f:selectItem itemLabel="Feminino" itemValue="FEMININO"></f:selectItem>
+						</p:selectOneRadio>
+					</p:outputLabel>
 
-					<p:outputLabel value="Sexo Cliente" id="sexoCli" />
-					<p:inputText type="text" required="true"
-						value="#{clienteBean.cliente.sexoCli}"
-						requiredMessage="Preencha o Campo Sexo do Cliente">
-					</p:inputText>
 
 					<p:outputLabel value="Idade do cliente : " id="idadeCli" />
 					<p:inputText type="text" title="Cliente*" required="true"
@@ -71,8 +74,8 @@
 					</p:selectOneMenu>
 
 					<p:outputLabel value="Telefone: " id="telefoneCli" />
-					<p:inputMask mask="(99) 9999-9999" title="Telefone*" required="true"
-						requiredMessage="Preencha o Campo Telefone."
+					<p:inputMask mask="(99) 9999-9999" title="Telefone*"
+						required="true" requiredMessage="Preencha o Campo Telefone."
 						value="#{clienteBean.cliente.telefoneCli}">
 					</p:inputMask>
 

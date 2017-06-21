@@ -1,13 +1,16 @@
 package br.com.senai.model;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Entity
 public class PedidoCompra implements Serializable {
 
 	private static final long serialVersionUID = 5423565912715065539L;

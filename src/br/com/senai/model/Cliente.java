@@ -8,6 +8,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +26,7 @@ public class Cliente implements Serializable {
 
 	private Integer id;
 	private String nomeCli;
-	private String sexoCli;
+	private SexoCliente sexoCli;
 	private String idadeCli;
 	private String cpfCli;
 	private String enderecoCli;
@@ -78,11 +80,12 @@ public class Cliente implements Serializable {
 	}
 
 	@Column(name = "cli_sexo")
-	public String getSexoCli() {
+	@Enumerated(EnumType.STRING)
+	public SexoCliente getSexoCli() {
 		return sexoCli;
 	}
 
-	public void setSexoCli(String sexoCli) {
+	public void setSexoCli(SexoCliente sexoCli) {
 		this.sexoCli = sexoCli;
 	}
 
@@ -90,6 +93,7 @@ public class Cliente implements Serializable {
 	public String getIdadeCli() {
 		return idadeCli;
 	}
+
 
 	public void setIdadeCli(String idadeCli) {
 		this.idadeCli = idadeCli;

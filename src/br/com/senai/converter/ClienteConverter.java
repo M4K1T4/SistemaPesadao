@@ -5,7 +5,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import br.com.senai.dao.ClienteDao;
 import br.com.senai.model.Cliente;
 
 @FacesConverter("clienteConverter")
@@ -16,11 +15,14 @@ public class ClienteConverter implements Converter {
 		if (valor.equals("") || !valor.contains("#")) {
 			return null;
 		}
+		
 		Cliente cliente = new Cliente();
+		
 		String[] propriedades = valor.split("#");
+		
 		if (!propriedades[0].isEmpty()) {
 			cliente.setId(new Integer(propriedades[0]));
-			System.out.println("VALUE DESFUDIDO");
+			System.out.println("VALUE DESFUDIDO CLIENTE");
 		}
 		if (!propriedades[1].isEmpty()) {
 			cliente.setNomeCli(propriedades[1]);
@@ -41,28 +43,3 @@ public class ClienteConverter implements Converter {
 		return id + "#" + nome;
 	}
 }
-// private ClienteDao clientes;
-
-// @Override
-// public Object getAsObject(FacesContext context, UIComponent component,
-// String value) {
-// Cliente retorno = null;
-// if (value != null && !"".equals(value)) {
-// System.out.println("VALUE DESFUDIDO");
-// retorno = clientes.porId(new Integer(value));
-
-// }else{
-// System.out.println("VALUE FUDIDO");
-// }
-// System.out.println("VALUE FUDIDO DE FORA");
-// return retorno;
-// }
-
-// @Override
-// public String getAsString(FacesContext context, UIComponent component,
-// Object value) {
-// if (value != null) {
-// return ((Cliente) value).getId().toString();
-// }
-// return null;
-// }

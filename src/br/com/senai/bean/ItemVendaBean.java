@@ -56,11 +56,11 @@ public class ItemVendaBean {
 		this.itensVendas = itensVendas;
 	}
 
-	public List<Produto> getClientes() {
+	public List<Produto> getProdutos() {
 		return produtos;
 	}
 
-	public void setClientes(List<Produto> clientes) {
-		this.produtos = clientes;
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
 }

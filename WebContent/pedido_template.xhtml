@@ -9,31 +9,90 @@
 
 	<ui:define name="principal">
 		<h:form>
-			<p:panel header="Efetuar Venda" id="pnl">
-				<h:panelGrid columns="2">
+			<p:growl id="growl" sticky="true" showDetail="true" />
+			<p:wizard flowListener="#{pedidoVendaBean.onFlowProcess}">
+			
+				<p:tab id="PedidoVenda" title="Cliente ">
+				
+					<p:panel header="Efetuar Venda" >
+					
+						<h:panelGrid columns="2">
+						
+							<p:outputLabel value="Cliente: ">
+							
+								<p:selectOneMenu value="#{pedidoVendaBean.pedidoVenda.cliente}"
+									required="true" converter="clienteConverter"
+									requiredMessage="Favor Selecionar o Cliente ">
+									<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
+									<f:selectItems value="#{pedidoVendaBean.clientes}"
+										var="cliente" itemLabel="#{cliente.nomeCli}"
+										itemValue="#{cliente}"></f:selectItems>
+								</p:selectOneMenu>
+								
+							</p:outputLabel>
 
-					<p:outputLabel value="Nome do Cliente: " id="cliente" />
-					<p:selectOneMenu value="#{pedidoVendaBean.pedidoVenda.cliente}"
-						required="true" converter="clienteConverter"
-						requiredMessage="Favor Selecionar o Cliente ">
-						<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
-						<f:selectItems value="#{pedidoVendaBean.clientes}" var="cliente"
-							itemLabel="#{cliente.nomeCli}" itemValue="#{cliente}"></f:selectItems>
-					</p:selectOneMenu>
+							<p:outputLabel value="Data: " id="dataVenda">
+								<p:calendar value="#{pedidoVendaBean.pedidoVenda.dataVenda}"
+									pattern="dd/MM/yyyy">
+								</p:calendar>
+								
+							</p:outputLabel>
+								<p:commandButton value="Selecionar"
+								action="#{pedidoVendaBean.salvar}" update="@form"
+								icon="ui-icon-disk" id="saveBtn">
+							</p:commandButton>
+						</h:panelGrid>
+						
+					</p:panel>
+					
+				</p:tab>
 
-					<p:outputLabel value="Data: " id="dataVenda">
-						<p:calendar value="#{pedidoVendaBean.pedidoVenda.dataVenda}"
-							pattern="dd/MM/yyyy">
-						</p:calendar>
 
-					</p:outputLabel>
-					<p:commandButton value="Selecionar"
-						action="#{pedidoVendaBean.salvar}" update="@form"
-						icon="ui-icon-disk" id="saveBtn">
-					</p:commandButton>
-				</h:panelGrid>
-			</p:panel>
+				<p:tab id="produto" title="item(ns)">
+					
+					<p:panel header="Selecionar Itens" >
+						
+						<h:panelGrid columns="2">
+							
+							<p:outputLabel value="Produto: " >
+							
+								<p:selectOneMenu value="#{itemVendaBean.itemVenda.produto}"
+									required="true" converter="produtoConverter" converterMessage="Converter efetuado"
+									requiredMessage="Favor Indicar o Produto">
+									<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
+									<f:selectItems value="#{itemVendaBean.produtos}" var="produto"
+										itemLabel="#{produto.nomeProduto}" itemValue="#{produto}"></f:selectItems>
+								</p:selectOneMenu>
+								
+							</p:outputLabel>
+
+							<p:outputLabel value="Valor Unitário: " for="valorUnitVenda">
+								<p:inputText type="text" required="true" id="valorUnitVenda"
+									requiredMessage="O valor unitário não foi preenchido."
+									value="#{itemVendaBean.itemVenda.valorUnitVenda}"></p:inputText>
+							</p:outputLabel>
+
+							<p:outputLabel value="Quantidade: " for="quantidadeVenda">
+								<p:inputText type="text" required="true" id="quantidadeVenda"
+									requiredMessage="Favor Inserir a quantidade do produto"
+									value="#{itemVendaBean.itemVenda.quantidadeVenda}"></p:inputText>
+							</p:outputLabel>
+
+							<p:outputLabel></p:outputLabel>
+							<p:commandButton value="Selecionar"
+								action="#{itemVendaBean.salvar}" update="@form"
+								icon="ui-icon-disk" id="saveBtn1">
+							</p:commandButton>
+						
+						</h:panelGrid>
+					
+					</p:panel>
+				
+				</p:tab>
+			
+			</p:wizard>
+		
 		</h:form>
+	
 	</ui:define>
-
 </ui:composition>
