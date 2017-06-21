@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.senai.model.ItemVenda;
+import br.com.senai.model.PedidoVenda;
 
 public class ItemVendaDAO {
 
@@ -22,11 +23,11 @@ public class ItemVendaDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ItemVenda> listarItensVenda() {
+	public List<ItemVenda> listarItensVenda(ItemVenda itemPedido) {
 		
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		
-		Query query = entityManager.createQuery("from ItemVenda Order By id");
+		Query query = entityManager.createQuery("from ItemVenda where pedidoVenda="+itemPedido.getPedidoVenda()+"  Order By id");
 		
 		return query.getResultList();
 	}

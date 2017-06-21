@@ -8,18 +8,17 @@
 	<ui:define name="titulo"> Pedido </ui:define>
 
 	<ui:define name="principal">
+		<h:outputScript library="js" name="frenchLocale.js" />
+
 		<h:form>
 			<p:growl id="growl" sticky="true" showDetail="true" />
 			<p:wizard flowListener="#{pedidoVendaBean.onFlowProcess}">
-			
 				<p:tab id="PedidoVenda" title="Cliente ">
-				
-					<p:panel header="Efetuar Venda" >
-					
+
+					<p:panel header="Efetuar Venda">
+
 						<h:panelGrid columns="2">
-						
 							<p:outputLabel value="Cliente: ">
-							
 								<p:selectOneMenu value="#{pedidoVendaBean.pedidoVenda.cliente}"
 									required="true" converter="clienteConverter"
 									requiredMessage="Favor Selecionar o Cliente ">
@@ -28,71 +27,59 @@
 										var="cliente" itemLabel="#{cliente.nomeCli}"
 										itemValue="#{cliente}"></f:selectItems>
 								</p:selectOneMenu>
-								
 							</p:outputLabel>
 
 							<p:outputLabel value="Data: " id="dataVenda">
 								<p:calendar value="#{pedidoVendaBean.pedidoVenda.dataVenda}"
 									pattern="dd/MM/yyyy">
 								</p:calendar>
-								
+
 							</p:outputLabel>
-								<p:commandButton value="Selecionar"
+							<p:commandButton value="Selecionar"
 								action="#{pedidoVendaBean.salvar}" update="@form"
 								icon="ui-icon-disk" id="saveBtn">
 							</p:commandButton>
 						</h:panelGrid>
-						
 					</p:panel>
-					
 				</p:tab>
-
 
 				<p:tab id="produto" title="item(ns)">
-					
-					<p:panel header="Selecionar Itens" >
-						
-						<h:panelGrid columns="2">
-							
-							<p:outputLabel value="Produto: " >
-							
-								<p:selectOneMenu value="#{itemVendaBean.itemVenda.produto}"
-									required="true" converter="produtoConverter" converterMessage="Converter efetuado"
-									requiredMessage="Favor Indicar o Produto">
-									<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
-									<f:selectItems value="#{itemVendaBean.produtos}" var="produto"
-										itemLabel="#{produto.nomeProduto}" itemValue="#{produto}"></f:selectItems>
-								</p:selectOneMenu>
-								
-							</p:outputLabel>
+					<p:panel header="Selecionar Itens">
+						<h:form id="formPiece">
+							<br />
+							<p:dataTable var="line" value="#{itemVendaBean.itensVendas}"
+								id="dataTableSaisiePiece">
 
-							<p:outputLabel value="Valor Unitário: " for="valorUnitVenda">
-								<p:inputText type="text" required="true" id="valorUnitVenda"
-									requiredMessage="O valor unitário não foi preenchido."
-									value="#{itemVendaBean.itemVenda.valorUnitVenda}"></p:inputText>
-							</p:outputLabel>
+								<p:column headerText="Quantidade" style="width:150px">
+									<p:inputText value="#{line.quantidadeVenda}" style="width:100%" />
+								</p:column>
 
-							<p:outputLabel value="Quantidade: " for="quantidadeVenda">
-								<p:inputText type="text" required="true" id="quantidadeVenda"
-									requiredMessage="Favor Inserir a quantidade do produto"
-									value="#{itemVendaBean.itemVenda.quantidadeVenda}"></p:inputText>
-							</p:outputLabel>
+								<p:column headerText="Produto" style="width:150px">
+									<p:selectOneMenu value="#{line.produtoVenda}" required="true"
+										converter="produtoConverter"
+										requiredMessage="Favor Selecionar o fornecedor">
+										<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
+										<f:selectItems value="#{itemVendaBean.produtos}" var="produto"
+											itemLabel="#{produto.nomeProduto}" itemValue="#{produto}"></f:selectItems>
+									</p:selectOneMenu>
+								</p:column>
 
-							<p:outputLabel></p:outputLabel>
-							<p:commandButton value="Selecionar"
-								action="#{itemVendaBean.salvar}" update="@form"
-								icon="ui-icon-disk" id="saveBtn1">
-							</p:commandButton>
-						
-						</h:panelGrid>
-					
+								<p:column headerText="Valor Unitário :" style="width:150px">
+									<p:inputText value="#{line.valorUnitVenda}"></p:inputText>
+								</p:column>
+							</p:dataTable>
+
+							<p:commandButton actionListener="#{itemVendaBean.newLine}"
+								value="New" update="formPiece" />
+
+							<p:commandButton actionListener="#{itemVendaBean.deleteLine}"
+								value="Delete" update="formPiece" />
+						</h:form>
 					</p:panel>
-				
+
 				</p:tab>
-			
 			</p:wizard>
-		
 		</h:form>
-	
+
 	</ui:define>
 </ui:composition>

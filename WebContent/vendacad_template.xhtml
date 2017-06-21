@@ -6,30 +6,43 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">Cadastro de Cliente</ui:define>
+
 	<ui:define name="principal">
+		<h:outputScript library="js" name="frenchLocale.js" />
 
 		<h:form id="formPiece">
-			<p:panel id="panelSaisie" header="Saisir"
-				style="color: brown;font-size: 15px">
+			<p:dataTable var="line" value="#{itemCompraBean.itemcompras}"
+				id="dataTableSaisiePiece">
+				<p:column headerText="Quantidade" style="width:150px">
+					<p:inputText value="#{line.qntCompra}" style="width:100%" />
+				</p:column>
 
-				<p:dataTable var="line" value="#{itemCompraBean.itemcompras}"
-					id="dataTableSaisiePiece">
-					
-					<p:outputLabel value="PedidoCompra :" for="pedidoCompra" />
-					<p:inputText type="text" required="true" id="pedidoCompra"
-						requiredMessage="O nome fantasia não foi preenchido corretamente."
-						validatorMessage="O nome fantasia requer entre 5 e 50 caracteres."
-						value="#{itemCompraBean.itemcompra.pedidoCompra}">
-						<f:validateLength minimum="5" maximum="50" />
-					</p:inputText>
+				<p:column headerText="Produto" style="width:150px">
+					<p:selectOneMenu
+						value="#{pedidoCompraBean.pedidoCompra.fornecedor}"
+						required="true" converter="fornecedorConverter"
+						requiredMessage="Favor Selecionar o fornecedor">
+						<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
+						<f:selectItems value="#{pedidoCompraBean.fornecedores}"
+							var="fornecedor" itemLabel="#{fornecedor.fantasiaForn}"
+							itemValue="#{fornecedor}"></f:selectItems>
+					</p:selectOneMenu>
+				</p:column>
 
-				</p:dataTable>
+				<p:column headerText="Valor unidade" style="width:150px">
+					<p:inputText value="#{line.qntCompra}" style="width:100%" />
+				</p:column>
+
+				<p:column headerText="delete Name" style="width:150px">
+					<p:inputText value="#{line.qntCompra}" style="width:100%" />
+				</p:column>
+			</p:dataTable>
 
 			<p:commandButton actionListener="#{itemCompraBean.newLine}"
-				value="New" update="dataTableSaisiePiece"
-				oncomplete="addRowOnComplete()" ajax="true" />
+				value="New" update="formPiece" />
 
-			</p:panel>
+			<p:commandButton actionListener="#{itemCompraBean.deleteLine}"
+				value="Delete" update="formPiece" />
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -7,28 +7,31 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import br.com.senai.dao.ItemVendaDAO;
 import br.com.senai.dao.ProdutoDAO;
 import br.com.senai.model.Produto;
+import br.com.senai.model.ItemCompra;
 import br.com.senai.model.ItemVenda;
 
 @ManagedBean
 @SessionScoped
 public class ItemVendaBean {
-	private ItemVenda itemVenda = new ItemVenda();
+	private ItemVenda itemVenda;
 	private List<ItemVenda> itensVendas = new ArrayList<ItemVenda>();
 	private List<Produto> produtos;
 
 	public ItemVendaBean() {
-		itensVendas = new ItemVendaDAO().listarItensVenda();
+		itensVendas = new ItemVendaDAO().listarItensVenda(itemVenda);
 		produtos = new ProdutoDAO().listarProdutos();
+		itensVendas.add(new ItemVenda());
 	}
 
 	public String salvar() {
 		new ItemVendaDAO().salvar(itemVenda);
 		// pedidosVendas.add(pedidoVenda);
-		itensVendas = new ItemVendaDAO().listarItensVenda();
+		itensVendas = new ItemVendaDAO().listarItensVenda(itemVenda);
 		itemVenda = new ItemVenda();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item salvo com sucesso!! "));
 		// return "produtolist_template?faces-redirect=true";
@@ -63,4 +66,13 @@ public class ItemVendaBean {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
+	
+	public void deleteLine(ActionEvent actionEvent){
+		itensVendas.remove(new ItemCompra());
+	}
+	
+	public void newLine(ActionEvent actionEvent) {
+		itensVendas.add(new ItemVenda());
+	}
+	
 }

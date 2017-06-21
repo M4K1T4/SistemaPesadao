@@ -67,23 +67,12 @@ public class PedidoVendaBean {
 		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
 		clientes = new ClienteDao().listarClientes();
 	}
-	
-	public String salvarPedidoVenda() {
-		
-		new PedidoVendaDAO().salvar(pedidoVenda);
-		new ItemVendaDAO().salvar(itemVenda);
-		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
-		itemVendas = new ItemVendaDAO().listarItensVenda();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Venda salvo com sucesso!! "));
-		return "pedido_template";
-		
-	}
 
 	public String salvar() {
-		
 		new PedidoVendaDAO().salvar(pedidoVenda);
 		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
+		ItemVenda itemVenda = new ItemVenda();
+		itemVenda.setPedidoVenda(pedidoVenda);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
 				return "pedido_template";
 	

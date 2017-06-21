@@ -22,6 +22,7 @@ public class ItemCompraBean {
 
 	public ItemCompraBean() {
 		itemcompras = new ItemCompraDAO().listarItemCompras();
+		itemcompras.add(new ItemCompra());
 	}
 
 	public String salvar() throws InterruptedException {
@@ -67,10 +68,12 @@ public class ItemCompraBean {
 		this.itemcompras = itemcompras;
 	}
 	
-
+	public void deleteLine(ActionEvent actionEvent){
+		itemcompras.remove(new ItemCompra());
+	}
+	
 	public void newLine(ActionEvent actionEvent) {
 		itemcompras.add(new ItemCompra());
 	}
-
 
 }
