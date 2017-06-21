@@ -8,63 +8,120 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.FlowEvent;
+
+import br.com.senai.dao.FornecedorDAO;
+import br.com.senai.dao.ItemCompraDAO;
 import br.com.senai.dao.PedidoCompraDAO;
+import br.com.senai.model.Fornecedor;
+import br.com.senai.model.ItemCompra;
 import br.com.senai.model.PedidoCompra;
+
 
 @ManagedBean
 @SessionScoped
 public class PedidoCompraBean {
 
-	private PedidoCompra pedidocompra = new PedidoCompra();
-	private List<PedidoCompra> pedidocompras = new ArrayList<PedidoCompra>();
-	public Thread currentThread;
+	private PedidoCompra pedidoCompra = new PedidoCompra();
+	private ItemCompra itemCompra = new ItemCompra();
+	private List<PedidoCompra> pedidosCompras = new ArrayList<PedidoCompra>();
+	private List<ItemCompra> itemCompras = new ArrayList<ItemCompra>();
+	private List<Fornecedor> fornecedores;
+	private boolean skip;
+
+
+
+	public void save() {
+		FacesMessage msg = new FacesMessage("Sucesso", "Welcome :" + PedidoCompra.class.getName());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+
+	public String onFlowProcess(FlowEvent event) {
+		if (skip) {
+			skip = false; // reset in case user goes back
+			return "confirm";
+		} else {
+			return event.getNewStep();
+		}
+	}
 
 	public PedidoCompraBean() {
-		pedidocompras = new PedidoCompraDAO().listarPedidoCompras();
+		pedidosCompras = new PedidoCompraDAO().listarPedidoCompras();
+		fornecedores = new FornecedorDAO().listarFornecedores();
+	}
+	
+	public String salvarPedidoVenda() {
+		
+		new PedidoCompraDAO().salvar(pedidoCompra);
+		new ItemCompraDAO().salvar(itemCompra);
+		pedidosCompras = new PedidoCompraDAO().listarPedidoCompras();
+		itemCompras = new ItemCompraDAO().listarItemCompras();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Compra salva com sucesso!! "));
+		return "pedido_template";
 		
 	}
 
-	public String salvar() throws InterruptedException {
-		// fornecedores.add(fornecedor);
-		currentThread = Thread.currentThread();
-		Thread.sleep(7000);
-		new PedidoCompraDAO().salvar(pedidocompra);
-		pedidocompras = new PedidoCompraDAO().listarPedidoCompras();
-		pedidocompra = new PedidoCompra();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor salvo com sucesso!"));
-		return "fornecedorlist_template";
+	public String salvar() {
+		
+		new PedidoCompraDAO().salvar(pedidoCompra);
+		pedidosCompras = new PedidoCompraDAO().listarPedidoCompras();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
+				return "pedido_template";
+	
+		}
+	
+	public String editar(PedidoCompra pedidoCompra){
+		this.pedidoCompra = pedidoCompra;
+		return "null";
 	}
 
-	public String editar(PedidoCompra fornecedor) {
-		this.pedidocompra = fornecedor;
-		return "fornecedorlist_template";
-
+	public PedidoCompra getPedidoCompra() {
+		return pedidoCompra;
 	}
 
-	public void prepararExclusao(PedidoCompra fornecedor) {
-		this.pedidocompra = fornecedor;
+	public void setPedidoCompra(PedidoCompra pedidoCompra) {
+		this.pedidoCompra = pedidoCompra;
 	}
 
-	public void excluir() {
-		new PedidoCompraDAO().excluir(pedidocompra);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor excluido com sucesso!"));
-		// fornecedor = new FornecedorDAO().listarFornecedores();
+	public ItemCompra getItemCompra() {
+		return itemCompra;
 	}
 
-	public PedidoCompra getPedidocompra() {
-		return pedidocompra;
+	public void setItemCompra(ItemCompra itemCompra) {
+		this.itemCompra = itemCompra;
 	}
 
-	public void setPedidocompra(PedidoCompra pedidocompra) {
-		this.pedidocompra = pedidocompra;
+	public List<PedidoCompra> getPedidosCompras() {
+		return pedidosCompras;
 	}
 
-	public List<PedidoCompra> getPedidocompras() {
-		return pedidocompras;
+	public void setPedidosCompras(List<PedidoCompra> pedidosCompras) {
+		this.pedidosCompras = pedidosCompras;
 	}
 
-	public void setPedidocompras(List<PedidoCompra> pedidocompras) {
-		this.pedidocompras = pedidocompras;
+	public List<ItemCompra> getItemCompras() {
+		return itemCompras;
 	}
 
+	public void setItemCompras(List<ItemCompra> itemCompras) {
+		this.itemCompras = itemCompras;
+	}
+
+	public List<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(List<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+
+	public boolean isSkip() {
+		return skip;
+	}
+
+	public void setSkip(boolean skip) {
+		this.skip = skip;
+	}
+	
 }

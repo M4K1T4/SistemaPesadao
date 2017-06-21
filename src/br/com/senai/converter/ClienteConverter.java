@@ -5,7 +5,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import br.com.senai.dao.ClienteDao;
 import br.com.senai.model.Cliente;
 
 @FacesConverter("clienteConverter")
@@ -16,8 +15,11 @@ public class ClienteConverter implements Converter {
 		if (valor.equals("") || !valor.contains("#")) {
 			return null;
 		}
+		
 		Cliente cliente = new Cliente();
+		
 		String[] propriedades = valor.split("#");
+		
 		if (!propriedades[0].isEmpty()) {
 			cliente.setId(new Integer(propriedades[0]));
 			System.out.println("VALUE DESFUDIDO CLIENTE");

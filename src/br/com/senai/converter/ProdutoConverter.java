@@ -4,18 +4,22 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+
 import br.com.senai.model.Produto;
 
 @FacesConverter("produtoConverter")
 public class ProdutoConverter implements Converter {
+	
 	@Override
-
 	public Object getAsObject(FacesContext context, UIComponent component, String valor) {
 		if (valor.equals("") || !valor.contains("#")) {
 			return null;
 		}
+		
 		Produto produto = new Produto();
+		
 		String[] propriedades = valor.split("#");
+		
 		if (!propriedades[0].isEmpty()) {
 			produto.setId(new Integer(propriedades[0]));
 			System.out.println("VALUE DESFUDIDO produto");

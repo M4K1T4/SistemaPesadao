@@ -57,7 +57,7 @@
 							<p:outputLabel value="Produto: " >
 							
 								<p:selectOneMenu value="#{itemVendaBean.itemVenda.produto}"
-									required="true" converter="produtoConverter"
+									required="true" converter="produtoConverter" converterMessage="Converter efetuado"
 									requiredMessage="Favor Indicar o Produto">
 									<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
 									<f:selectItems value="#{itemVendaBean.produtos}" var="produto"
