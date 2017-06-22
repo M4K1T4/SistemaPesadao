@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.FlowEvent;
 
 import br.com.senai.dao.ClienteDao;
-import br.com.senai.dao.ItemVendaDAO;
 import br.com.senai.dao.PedidoVendaDAO;
 import br.com.senai.model.Cliente;
 import br.com.senai.model.ItemVenda;
@@ -26,8 +25,8 @@ public class PedidoVendaBean {
 	private List<PedidoVenda> pedidosVendas = new ArrayList<PedidoVenda>();
 	private List<ItemVenda> itemVendas = new ArrayList<ItemVenda>();
 	private List<Cliente> clientes;
+	private Integer ultimoRegistro;
 	private boolean skip;
-
 
 	public void setPedidovenda(PedidoVenda pedidoVenda) {
 		this.pedidoVenda = pedidoVenda;
@@ -69,16 +68,19 @@ public class PedidoVendaBean {
 	}
 
 	public String salvar() {
+
 		new PedidoVendaDAO().salvar(pedidoVenda);
 		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
-		ItemVenda itemVenda = new ItemVenda();
-		itemVenda.setPedidoVenda(pedidoVenda);
+		
+		setUltimoRegistro( pedidosVendas.size());
+		System.out.println("Ultimo Valor do pedido                    " + ultimoRegistro);
+		
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-				return "pedido_template";
-	
-		}
-	
-	public String editar(PedidoVenda pedidoVenda){
+		return "pedido_template";
+
+	}
+
+	public String editar(PedidoVenda pedidoVenda) {
 		this.pedidoVenda = pedidoVenda;
 		return "null";
 	}
@@ -113,5 +115,13 @@ public class PedidoVendaBean {
 
 	public void setItemVendas(List<ItemVenda> itemVendas) {
 		this.itemVendas = itemVendas;
+	}
+
+	public Integer getUltimoRegistro() {
+		return ultimoRegistro;
+	}
+
+	public void setUltimoRegistro(Integer ultimoRegistro) {
+		this.ultimoRegistro = ultimoRegistro;
 	}
 }

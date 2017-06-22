@@ -1,5 +1,6 @@
 package br.com.senai.bean;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,17 +18,16 @@ import br.com.senai.model.ItemVenda;
 
 @ManagedBean
 @SessionScoped
-public class ItemVendaBean {
-	private ItemVenda itemVenda;
+public class ItemVendaBean{
+	private ItemVenda itemVenda = new ItemVenda();
 	private List<ItemVenda> itensVendas = new ArrayList<ItemVenda>();
 	private List<Produto> produtos;
 
 	public ItemVendaBean() {
-		itensVendas = new ItemVendaDAO().listarItensVenda(itemVenda);
 		produtos = new ProdutoDAO().listarProdutos();
 		itensVendas.add(new ItemVenda());
 	}
-
+	
 	public String salvar() {
 		new ItemVendaDAO().salvar(itemVenda);
 		// pedidosVendas.add(pedidoVenda);
@@ -40,8 +40,8 @@ public class ItemVendaBean {
 
 	public void editar(ItemVenda itemVenda) {
 		this.itemVenda = itemVenda;
-		;
 	}
+
 
 	public ItemVenda getItemVenda() {
 		return itemVenda;

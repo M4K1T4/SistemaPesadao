@@ -49,7 +49,7 @@ public class ItemVenda implements Serializable {
 		this.pedidoVenda = pedidoVenda;
 	}
 
-	@Column(name = "itv_valorUnitario")
+	@Column(name = "itv_valorUnitario", nullable = true)
 	public double getValorUnitVenda() {
 		return valorUnitVenda;
 	}
@@ -66,9 +66,10 @@ public class ItemVenda implements Serializable {
 	public void setQuantidadeVenda(int quantidadeVenda) {
 		this.quantidadeVenda = quantidadeVenda;
 	}
+	
 
 	@ManyToOne
-	@JoinColumn(name = "produto_pro_id")
+	@JoinColumn(name = "produto_pro_id", nullable = true)
 	public Produto getProdutoVenda() {
 		return produtoVenda;
 	}

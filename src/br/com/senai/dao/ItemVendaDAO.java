@@ -26,8 +26,8 @@ public class ItemVendaDAO {
 	public List<ItemVenda> listarItensVenda(ItemVenda itemPedido) {
 		
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		
-		Query query = entityManager.createQuery("from ItemVenda where pedidoVenda="+itemPedido.getPedidoVenda()+"  Order By id");
+		System.out.println("Chegou na ItemVendaDao! E o valor de do pedido é: "+itemPedido.getPedidoVenda().getId());
+		Query query = entityManager.createQuery("from PedidoVenda where id="+itemPedido.getPedidoVenda().getId()+"  Order By id");
 		
 		return query.getResultList();
 	}

@@ -44,11 +44,16 @@
 				</p:tab>
 
 				<p:tab id="produto" title="item(ns)">
-					<p:panel header="Selecionar Itens">
+					<p:panel id="panel" header="Selecionar Itens">
 						<h:form id="formPiece">
 							<br />
 							<p:dataTable var="line" value="#{itemVendaBean.itensVendas}"
 								id="dataTableSaisiePiece">
+
+								<p:column headerText="Id" style="width:150px">
+									<p:inputText value="#{pedidoVendaBean.ultimoRegistro}"
+										style="width:100%" disabled="true" />
+								</p:column>
 
 								<p:column headerText="Quantidade" style="width:150px">
 									<p:inputText value="#{line.quantidadeVenda}" style="width:100%" />
@@ -68,12 +73,12 @@
 									<p:inputText value="#{line.valorUnitVenda}"></p:inputText>
 								</p:column>
 							</p:dataTable>
-
 							<p:commandButton actionListener="#{itemVendaBean.newLine}"
 								value="New" update="formPiece" />
 
 							<p:commandButton actionListener="#{itemVendaBean.deleteLine}"
 								value="Delete" update="formPiece" />
+
 						</h:form>
 					</p:panel>
 
