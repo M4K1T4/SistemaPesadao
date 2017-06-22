@@ -24,6 +24,18 @@ public class Produto implements Serializable {
 	private String corProduto;
 	private boolean status = true;
 	private Date lastUpdate = new Date();
+	
+	public Produto() {
+		super();
+	}
+
+	public Produto(String nomeProduto, String marcaProduto, String composicaoProduto, String corProduto) {
+		super();
+		this.nomeProduto = nomeProduto;
+		this.marcaProduto = marcaProduto;
+		this.composicaoProduto = composicaoProduto;
+		this.corProduto = corProduto;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

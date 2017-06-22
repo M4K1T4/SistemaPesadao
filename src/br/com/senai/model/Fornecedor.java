@@ -33,6 +33,31 @@ public class Fornecedor implements Serializable {
 	private String emailForn;
 	private boolean active = true;
 	private Date lastUpdate = new Date();
+	
+	public Fornecedor() {
+		super();
+	}
+	
+	public Fornecedor(String nomeForn, String fantasiaForn, String cnpjForn, Date cadForn, String enderecoForn,
+			String bairroForn, String cidadeForn, String complementoForn, String foneaForn, String fonebForn,
+			String ieForn, String imForn, Date fundacaoForn, Estado ufForn, String emailForn) {
+		super();
+		this.nomeForn = nomeForn;
+		this.fantasiaForn = fantasiaForn;
+		this.cnpjForn = cnpjForn;
+		this.cadForn = cadForn;
+		this.enderecoForn = enderecoForn;
+		this.bairroForn = bairroForn;
+		this.cidadeForn = cidadeForn;
+		this.complementoForn = complementoForn;
+		this.foneaForn = foneaForn;
+		this.fonebForn = fonebForn;
+		this.ieForn = ieForn;
+		this.imForn = imForn;
+		this.fundacaoForn = fundacaoForn;
+		this.ufForn = ufForn;
+		this.emailForn = emailForn;
+	}
 
 	@GeneratedValue
 	@Id

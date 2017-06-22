@@ -44,9 +44,23 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public Cliente(String nomeCli) {
+	public Cliente(String nomeCli, SexoCliente sexoCli, String idadeCli, String cpfCli, String enderecoCli,
+			String numeroResidencialCli, String bairroCli, String cidadeCli, Estado ufCli, String telefoneCli,
+			String celularCli, String emailCli, Date dataCadCli) {
 		super();
 		this.nomeCli = nomeCli;
+		this.sexoCli = sexoCli;
+		this.idadeCli = idadeCli;
+		this.cpfCli = cpfCli;
+		this.enderecoCli = enderecoCli;
+		this.numeroResidencialCli = numeroResidencialCli;
+		this.bairroCli = bairroCli;
+		this.cidadeCli = cidadeCli;
+		this.ufCli = ufCli;
+		this.telefoneCli = telefoneCli;
+		this.celularCli = celularCli;
+		this.emailCli = emailCli;
+		this.dataCadCli = dataCadCli;
 	}
 
 	@Id

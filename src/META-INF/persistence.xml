@@ -6,6 +6,38 @@
 	version="2.0">
 	<persistence-unit name="senai">
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+	
+	<!-- 	
+-  
+-	<trigger:itemcompra>
+-		BEGIN
+-			UPDATE estoque SET estoque.est_qtde = estoque.est_qtde + new.itc_qtde, 
+-			estoque.est_valorTotal = estoque.est_valorTotal + (new.valor_unitario * new.itc_qtde)
+-			WHERE estoque.est_produto = NEW.produto_pro_id;
+-		END
+-	</trigger:itemcompra>
+-		
+-	<trigger:itemvenda>
+-		BEGIN
+-			UPDATE estoque SET estoque.est_qtde = estoque.est_qtde - new.itv_qtde, 
+-			estoque.est_valorTotal = estoque.est_valorTotal - (new.valor_unitario * new.itv_qtde)
+-			WHERE estoque.est_produto = NEW.produto_pro_id;
+-		END
+-	</trigger:itemvenda>
+-		
+-	</trigger:itemvenda>
+-		BEGIN
+-			INSERT INTO estoque(estoque.est_produto, estoque.est_descricao)
+-			VALUES (NEW.pro_id, NEW.pro_nome);
+-		END
+-	</trigger:itemvenda>
+-	
+-	BEGIN
+-	INSERT INTO ESTOQUE(estoque.est_descricao, estoque.est_produto)
+-	VALUES(NEW.pro_nome, NEW.pro_id);
+-	END
+-  
+-  -->
  
  	<properties>
 		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
