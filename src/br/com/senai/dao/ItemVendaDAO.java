@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.senai.model.ItemVenda;
-import br.com.senai.model.PedidoVenda;
 
 public class ItemVendaDAO {
 
