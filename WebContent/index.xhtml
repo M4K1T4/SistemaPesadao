@@ -1,0 +1,34 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Home</ui:define>
+
+	<ui:define name="principal">
+
+		<h:form>
+			<p:carousel numVisible="1" effect="easeInStrong" headerText="Novidades"
+				style="margin-bottom:0">
+				<p:tab title="Grande Promoção">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage name="images/grandePromocao.png"/>
+						<p:graphicImage name="images/pessoasAmigas.png"/>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Funcionarios do mês">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage name="images/trofeu.png" />
+						<p:outputLabel style="font-size: 50px; font-famyli: helvetica; 
+						letter-spacing: 1px; font-style: italic"  
+						value="Seja você o próximo funcionário do mês!!" />
+					</h:panelGrid>
+				</p:tab>
+			</p:carousel>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

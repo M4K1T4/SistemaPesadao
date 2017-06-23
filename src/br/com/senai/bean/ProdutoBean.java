@@ -32,7 +32,7 @@ public class ProdutoBean {
 		produtos = new ProdutoDAO().listarProdutos();
 		produto = new Produto();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Produto salvo com sucesso!"));
-		return "produtolist_template?faces-redirect=true";
+		return "produtolist_template";
 	}
 	
 	public String editar(Produto produto){

@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.senai.model.NivelDeAcesso;
 import br.com.senai.model.Usuario;
 
 @ManagedBean
@@ -18,20 +19,18 @@ public class LoginBean {
 	private String nomeUsuario;
 	private String senha;
 	private boolean loggedIn;
+	private NivelDeAcesso nivelDeAcesso;
 	
 	public String logar() {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		if ("admin".equals(nomeUsuario) && "123".equals(senha)) {
-			
-			usuario.setNome(this.nomeUsuario);
-			usuario.setDataLogin(new Date());
-			
-			this.loggedIn = true;
-
-			return "fornecedorlist_template?faces-redirect=true";
-			
+			this.nivelDeAcesso = NivelDeAcesso.GERENTE;
+			return prepararAcesso();
+		} else if ("vendedor".equals(nomeUsuario) && "456".equals(senha)) {
+			this.nivelDeAcesso = NivelDeAcesso.VENDEDOR;
+			return prepararAcesso();
 		} else {
 			FacesMessage menssagem = new FacesMessage("Usuário ou senha inválidos!");
 			menssagem.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -45,6 +44,13 @@ public class LoginBean {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "/login?faces-redirect=true";
 	}
+	
+	public String prepararAcesso() {
+		this.usuario.setNome(this.nomeUsuario);
+		this.usuario.setDataLogin(new Date());
+		this.loggedIn = true;
+		return "index?faces-redirect=true";
+	}
 
 	public boolean isLoggedIn() {
 		return loggedIn;
@@ -52,6 +58,14 @@ public class LoginBean {
 
 	public void setLoggedIn(boolean loggedIn) {	
 		this.loggedIn = loggedIn;
+	}
+	
+	public NivelDeAcesso getNivelDeAcesso() {
+		return nivelDeAcesso;
+	}
+
+	public void setNivelDeAcesso(NivelDeAcesso nivelDeAcesso) {
+		this.nivelDeAcesso = nivelDeAcesso;
 	}
 
 	public Usuario getUsuario() {

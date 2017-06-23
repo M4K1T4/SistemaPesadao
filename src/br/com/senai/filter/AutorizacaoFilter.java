@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.senai.bean.LoginBean;
+import br.com.senai.model.NivelDeAcesso;
 
 public class AutorizacaoFilter implements Filter {
 
@@ -20,14 +21,18 @@ public class AutorizacaoFilter implements Filter {
 
 		LoginBean loginBean = (LoginBean) ((HttpServletRequest) request).getSession().getAttribute("loginBean");
 		String contextPath = ((HttpServletRequest) request).getContextPath();
-		
+
 		HttpServletRequest req = (HttpServletRequest) request;
-		
-		if(req.getRequestURI().endsWith("/login.xhtml")){
+
+		if (req.getRequestURI().endsWith("/login.xhtml")) {
 		} else if (loginBean == null || !loginBean.isLoggedIn()) {
 			((HttpServletResponse) response).sendRedirect(contextPath + "/login.xhtml");
+		} else if (loginBean.getNivelDeAcesso() == NivelDeAcesso.VENDEDOR
+				&& (req.getRequestURI().endsWith("/pedidocompra_template.xhtml") 
+				|| req.getRequestURI().endsWith("/fornecedorcad_template.xhtml"))) {
+			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
 		}
-
+		
 		chain.doFilter(request, response);
 
 	}
