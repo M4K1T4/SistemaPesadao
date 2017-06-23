@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FlowEvent;
@@ -24,9 +25,8 @@ public class PedidoVendaBean {
 	private ItemVenda itemVenda = new ItemVenda();
 	private List<PedidoVenda> pedidosVendas = new ArrayList<PedidoVenda>();
 	private List<ItemVenda> itemVendas = new ArrayList<ItemVenda>();
-	private List<Cliente> clientes;
-	private Integer ultimoRegistro;
-	private boolean skip;
+	private List<Cliente> clientes = new ArrayList<Cliente>();
+	private Integer ultimoRegistro = 0;
 
 	public void setPedidovenda(PedidoVenda pedidoVenda) {
 		this.pedidoVenda = pedidoVenda;
@@ -45,23 +45,6 @@ public class PedidoVendaBean {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-	public boolean isSkip() {
-		return skip;
-	}
-
-	public void setSkip(boolean skip) {
-		this.skip = skip;
-	}
-
-	public String onFlowProcess(FlowEvent event) {
-		if (skip) {
-			skip = false; // reset in case user goes back
-			return "confirm";
-		} else {
-			return event.getNewStep();
-		}
-	}
-
 	public PedidoVendaBean() {
 		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
 		clientes = new ClienteDao().listarClientes();
@@ -71,10 +54,9 @@ public class PedidoVendaBean {
 
 		new PedidoVendaDAO().salvar(pedidoVenda);
 		pedidosVendas = new PedidoVendaDAO().listarPedidosVendas();
-		
-		setUltimoRegistro( pedidosVendas.size());
+		resgataIdPedido();
+		itemVenda.setId(ultimoRegistro);
 		System.out.println("Ultimo Valor do pedido                    " + ultimoRegistro);
-		
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
 		return "pedido_template";
 
@@ -83,6 +65,15 @@ public class PedidoVendaBean {
 	public String editar(PedidoVenda pedidoVenda) {
 		this.pedidoVenda = pedidoVenda;
 		return "null";
+	}
+	
+	public Integer resgataIdPedido(){
+		Integer ultimoId = 0;
+		for(PedidoVenda ped : pedidosVendas){
+			ultimoId = ped.getId();
+		}
+		setUltimoRegistro(ultimoId);
+		return ultimoId;
 	}
 
 	public PedidoVenda getPedidoVenda() {
@@ -116,12 +107,13 @@ public class PedidoVendaBean {
 	public void setItemVendas(List<ItemVenda> itemVendas) {
 		this.itemVendas = itemVendas;
 	}
-
+	
 	public Integer getUltimoRegistro() {
 		return ultimoRegistro;
 	}
-
+	
 	public void setUltimoRegistro(Integer ultimoRegistro) {
 		this.ultimoRegistro = ultimoRegistro;
 	}
+	
 }

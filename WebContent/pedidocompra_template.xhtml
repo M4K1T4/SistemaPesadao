@@ -24,6 +24,8 @@
 									<f:selectItems value="#{pedidoCompraBean.fornecedores}"
 										var="fornecedor" itemLabel="#{fornecedor.fantasiaForn}"
 										itemValue="#{fornecedor}"></f:selectItems>
+										<f:ajax event="change" execute="@this" 
+								listener="#{pedidoCompraBean.salvar}" render="panelItenCompra"></f:ajax>
 								</p:selectOneMenu>
 							</p:outputLabel>
 
@@ -61,12 +63,12 @@
 							<p:outputLabel value="Valor Unitário: " for="valorUnitCompra">
 								<p:inputText type="text" required="true" id="valorUnitCompra"
 									requiredMessage="O valor unitário não foi preenchido."
-									value="#{itemCompraBean.itemcompra.valorUnitCompra}"></p:inputText>
+									value="#{itemCompraBean.itemcompra.valorCompra}"></p:inputText>
 							</p:outputLabel>
 							<p:outputLabel value="Quantidade: " for="quantidadeCompra">
 								<p:inputText type="text" required="true" id="quantidadeCompra"
 									requiredMessage="Favor Inserir a quantidade do produto"
-									value="#{itemCompraBean.itemcompra.quantidadeCompra}"></p:inputText>
+									value="#{itemCompraBean.itemcompra.qntCompra}"></p:inputText>
 							</p:outputLabel>
 
 							<p:outputLabel></p:outputLabel>

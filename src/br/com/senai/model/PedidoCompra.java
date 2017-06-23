@@ -6,6 +6,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,7 +15,12 @@ import javax.persistence.ManyToOne;
 @Entity
 public class PedidoCompra implements Serializable {
 
-	private static final long serialVersionUID = 5423565912715065539L;
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6464869667975444980L;
 	private Integer id;
 	private Fornecedor fornecedorPedido;
 	private String parcelaPedido;
@@ -22,6 +29,7 @@ public class PedidoCompra implements Serializable {
 
 	@Id
 	@Column(name = "pec_id", length = 50)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return id;
 	}

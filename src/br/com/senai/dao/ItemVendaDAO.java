@@ -22,12 +22,17 @@ public class ItemVendaDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ItemVenda> listarItensVenda(ItemVenda itemPedido) {
-		
+	public List<ItemVenda> listarItensVenda() {
+		// ItemVenda itemPedido
+		// System.out.println("Chegou na ItemVendaDao! E o valor de do pedido é:
+		// "+itemPedido.getPedidoVenda().getId());
+		// Query query = entityManager.createQuery("from PedidoVenda where
+		// id="+itemPedido.getPedidoVenda().getId()+" Order By id");
+
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		System.out.println("Chegou na ItemVendaDao! E o valor de do pedido é: "+itemPedido.getPedidoVenda().getId());
-		Query query = entityManager.createQuery("from PedidoVenda where id="+itemPedido.getPedidoVenda().getId()+"  Order By id");
-		
+
+		Query query = entityManager.createQuery("from ItemVenda  Order By id");
+
 		return query.getResultList();
 	}
 
