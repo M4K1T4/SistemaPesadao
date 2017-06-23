@@ -9,24 +9,38 @@
 
 	<ui:define name="principal">
 		<h:form>
-			<p:growl />
 			<p:panel header="Cadastro de Produto">
 				<p:dataTable value="#{produtoBean.produtos}" var="produto"
+					paginator="true" paginatorPosition="bottom" rows="10" id="tbl"
+					scrollable="true" scrollWidth="auto"
 					emptyMessage="Ainda não temos registros para os critérios de busca">
 
 					<p:column headerText="Nome do Produto"
-						sortBy="#{produto.nomeProduto}">
+						filterBy="#{produto.nomeProduto}" sortBy="#{produto.nomeProduto}">
 						<h:outputText value="#{produto.nomeProduto}" />
 					</p:column>
 
-					<p:column headerText="Data de Cadastro" width="120"
+					<p:column headerText="Marca" filterBy="#{produto.marcaProduto}">
+						<h:outputText value="#{produto.marcaProduto}" />
+					</p:column>
+
+					<p:column headerText="Composição"
+						filterBy="#{produto.composicaoProduto}">
+						<h:outputText value="#{produto.composicaoProduto}" />
+					</p:column>
+
+					<p:column headerText="Cor" filterBy="#{produto.corProduto}">
+						<h:outputText value="#{produto.corProduto}" />
+					</p:column>
+
+					<p:column headerText="Data de Cadastro" width="120" sortBy="#{produto.cadastroProduto}"
 						style="text-align:center;">
 						<h:outputText value="#{produto.cadastroProduto}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
 
-					<p:column headerText="Update" width="120"
+					<p:column headerText="Update" width="120" sortBy="#{produto.lastUpdate}"
 						style="text-align:center;">
 						<h:outputText value="#{produto.lastUpdate}">
 							<f:convertDateTime pattern="dd/MM/yy" />

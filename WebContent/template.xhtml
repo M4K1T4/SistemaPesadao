@@ -43,13 +43,13 @@
 
 			<f:facet name="options">
 				<p:inputText style="margin-right:10px" placeholder="Search" />
-				<p:commandButton icon="ui-icon-search" value="Logout #{loginBean.nomeUsuario}" action="#{loginBean.logout}"/>
+				<p:commandButton icon="ui-icon-extlink" value="Logout #{loginBean.nomeUsuario}" action="#{loginBean.logout}"/>
 			</f:facet>
 		</p:menubar>
 		<br />
 	</h:form>
 	<ui:insert name="principal"></ui:insert>
-	<p style="font-family: verdana; color: blue; text-align: right; font-size: 12px">
+	<p style="font-family: verdana; color: blue; text-align: right; font-size: 12px; bottom: 0px; position: absolute;">
 		Pesadão Life Style, todos os direitos reservados</p>
 </h:body>
 </html>

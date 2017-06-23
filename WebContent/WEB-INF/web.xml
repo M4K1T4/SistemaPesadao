@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>senai_sala</display-name>
 	<welcome-file-list>
-		<welcome-file>clientecad_template.xhtml</welcome-file>
+		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<servlet>
