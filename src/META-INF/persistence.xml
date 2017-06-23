@@ -7,37 +7,38 @@
 	<persistence-unit name="senai">
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 	
-	<!-- 	
--  
--	<trigger:itemcompra>
--		BEGIN
--			UPDATE estoque SET estoque.est_qtde = estoque.est_qtde + new.itc_qtde, 
--			estoque.est_valorTotal = estoque.est_valorTotal + (new.valor_unitario * new.itc_qtde)
--			WHERE estoque.est_produto = NEW.produto_pro_id;
--		END
--	</trigger:itemcompra>
--		
--	<trigger:itemvenda>
--		BEGIN
--			UPDATE estoque SET estoque.est_qtde = estoque.est_qtde - new.itv_qtde, 
--			estoque.est_valorTotal = estoque.est_valorTotal - (new.valor_unitario * new.itv_qtde)
--			WHERE estoque.est_produto = NEW.produto_pro_id;
--		END
--	</trigger:itemvenda>
--		
--	</trigger:itemvenda>
--		BEGIN
--			INSERT INTO estoque(estoque.est_produto, estoque.est_descricao)
--			VALUES (NEW.pro_id, NEW.pro_nome);
--		END
--	</trigger:itemvenda>
--	
--	BEGIN
--	INSERT INTO ESTOQUE(estoque.est_descricao, estoque.est_produto)
--	VALUES(NEW.pro_nome, NEW.pro_id);
--	END
--  
--  -->
+<!-- 	
+  
+  <trigger:itemcompra_atualiza_estoque>
+  	BEGIN
+  		UPDATE estoque SET estoque.est_qtde = estoque.est_qtde + new.itc_quantidade, 
+  		estoque.est_valorTotal = estoque.est_valorTotal + (new.itc_valorCompra * new.itc_quantidade)
+  		WHERE estoque.est_produto = NEW.itc_pro_id;
+  	END
+  </trigger:itemcompra_atualiza_estoque>
+  	
+  <trigger:pedidovenda_contas_receber>
+  	BEGIN
+  		UPDATE contasreceber SET contasreceber.valorPedido =+ (NEW.itv_qtde * NEW.itv_valorUnitario)
+  		WHERE NEW.pedidoVenda_ven_id = contasreceber.pedidoVendaConta_ven_id;
+  	END
+  </trigger:pedidovenda_conta_receber>
+  
+  <trigger:pedidovenda_contasreceber>
+  	BEGIN
+  		INSERT INTO contasreceber(contasreceber.pedidoVendaConta_ven_id)
+  		VALUES (NEW.ven_id);
+  	END
+  </trigger>
+  
+  <trigger:produto_insere_estoque>
+  	BEGIN
+  		INSERT INTO ESTOQUE(estoque.est_descricao, estoque.est_produto)
+  		VALUES(NEW.pro_nome, NEW.pro_id);
+  	END
+  </trigger:produto_insere_estoque>
+   
+-->
  
  	<properties>
 		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
