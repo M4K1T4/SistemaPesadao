@@ -24,7 +24,7 @@ public class ItemVenda implements Serializable {
 
 	private Integer id;
 	private double valorUnitVenda;
-	private PedidoVenda pedidoVenda;
+	private int pedidoVenda;
 	private Produto produtoVenda;
 	private int quantidadeVenda;
 
@@ -39,19 +39,20 @@ public class ItemVenda implements Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "pedidoVenda_ven_id", nullable = true)
-	public PedidoVenda getPedidoVenda() {
-		return pedidoVenda;
-	}
-
-	public void setPedidoVenda(PedidoVenda pedidoVenda) {
-		this.pedidoVenda = pedidoVenda;
-	}
-
 	@Column(name = "itv_valorUnitario", nullable = true)
 	public double getValorUnitVenda() {
 		return valorUnitVenda;
+	}
+
+	// @ManyToOne
+	// @JoinColumn(name = "pedidoVenda_ven_id")
+	@Column(name = "pedidoVenda_ven_id")
+	public int getPedidoVenda() {
+		return pedidoVenda;
+	}
+
+	public void setPedidoVenda(int pedidoVenda) {
+		this.pedidoVenda = pedidoVenda;
 	}
 
 	public void setValorUnitVenda(double valorUnitVenda) {
@@ -66,7 +67,6 @@ public class ItemVenda implements Serializable {
 	public void setQuantidadeVenda(int quantidadeVenda) {
 		this.quantidadeVenda = quantidadeVenda;
 	}
-	
 
 	@ManyToOne
 	@JoinColumn(name = "produto_pro_id", nullable = true)
@@ -78,6 +78,11 @@ public class ItemVenda implements Serializable {
 		this.produtoVenda = produtoVenda;
 	}
 
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,6 +91,9 @@ public class ItemVenda implements Serializable {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

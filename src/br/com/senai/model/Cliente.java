@@ -1,4 +1,4 @@
-// @Author: Equipe 1;
+
 // model de Cliente usado para cadastrar e manter dados do mesmo.
 
 package br.com.senai.model;
@@ -20,6 +20,11 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
+/**
+ * 
+ * @author Equipe 1
+ *
+ */
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = -3954610511847217717L;
@@ -63,6 +68,10 @@ public class Cliente implements Serializable {
 		this.dataCadCli = dataCadCli;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@Id
 	@Column(name = "cli_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

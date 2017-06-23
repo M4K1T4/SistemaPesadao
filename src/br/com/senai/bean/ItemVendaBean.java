@@ -10,11 +10,14 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import br.com.senai.dao.FornecedorDAO;
 import br.com.senai.dao.ItemVendaDAO;
 import br.com.senai.dao.ProdutoDAO;
 import br.com.senai.model.Produto;
+import br.com.senai.model.Fornecedor;
 import br.com.senai.model.ItemCompra;
 import br.com.senai.model.ItemVenda;
+import br.com.senai.model.PedidoVenda;
 
 @ManagedBean
 @SessionScoped
@@ -23,24 +26,39 @@ public class ItemVendaBean{
 	private List<ItemVenda> itensVendas = new ArrayList<ItemVenda>();
 	private List<Produto> produtos;
 
+	//private PedidoVenda pedidoVenda;
+	private PedidoVendaBean pedidoVendaBean;
+	//private int idPedido = pedidoVendaBean.getUltimoRegistro();
+
 	public ItemVendaBean() {
 		produtos = new ProdutoDAO().listarProdutos();
 		itensVendas.add(new ItemVenda());
 	}
 	
 	public String salvar() {
+		//itemVenda.setPedidoVenda(pedidoVenda);
+		
+		//System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+pedidoVenda.getId());
+		//this.itemVenda.setPedidoVenda(pedidoVenda.setId(pedidoVendaBean.getUltimoRegistro()));
+		//itemVenda.setPedidoVenda(getIdPedido());
 		new ItemVendaDAO().salvar(itemVenda);
-		// pedidosVendas.add(pedidoVenda);
-		itensVendas = new ItemVendaDAO().listarItensVenda(itemVenda);
+		itensVendas = new ItemVendaDAO().listarItensVenda();
 		itemVenda = new ItemVenda();
+		pedidoVendaBean.setUltimoRegistro(0);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item salvo com sucesso!! "));
-		// return "produtolist_template?faces-redirect=true";
-		return "null";
+		
+				return "pedido_template";
 	}
-
+	
 	public void editar(ItemVenda itemVenda) {
 		this.itemVenda = itemVenda;
 	}
+	
+	public void prepararSalvar(ItemVenda itemVenda) {
+		this.itemVenda = itemVenda;
+	}
+
+	
 
 
 	public ItemVenda getItemVenda() {
@@ -73,6 +91,14 @@ public class ItemVendaBean{
 	
 	public void newLine(ActionEvent actionEvent) {
 		itensVendas.add(new ItemVenda());
+	}
+
+	public PedidoVendaBean getPedidoVendaBean() {
+		return pedidoVendaBean;
+	}
+
+	public void setPedidoVendaBean(PedidoVendaBean pedidoVendaBean) {
+		this.pedidoVendaBean = pedidoVendaBean;
 	}
 	
 }

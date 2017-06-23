@@ -5,6 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import br.com.senai.bean.PedidoVendaBean;
 import br.com.senai.model.PedidoVenda;
 
 @FacesConverter("pedidoVendaConverter")
@@ -16,12 +17,12 @@ public class PedidoVendaConverter implements Converter {
 			return null;
 		}
 
-		PedidoVenda pedidoVenda = new PedidoVenda();
+		PedidoVendaBean pedidoVenda = new PedidoVendaBean();
 
 		String[] propriedades = valor.split("#");
 		
 		if (!propriedades[0].isEmpty()) {
-			pedidoVenda.setId(new Integer(propriedades[0]));
+			pedidoVenda.setUltimoRegistro(new Integer(propriedades[0]));
 		}
 		
 		return pedidoVenda;

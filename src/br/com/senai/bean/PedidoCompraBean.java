@@ -17,7 +17,6 @@ import br.com.senai.model.Fornecedor;
 import br.com.senai.model.ItemCompra;
 import br.com.senai.model.PedidoCompra;
 
-
 @ManagedBean
 @SessionScoped
 public class PedidoCompraBean {
@@ -27,51 +26,40 @@ public class PedidoCompraBean {
 	private List<PedidoCompra> pedidosCompras = new ArrayList<PedidoCompra>();
 	private List<ItemCompra> itemCompras = new ArrayList<ItemCompra>();
 	private List<Fornecedor> fornecedores;
-	private boolean skip;
-
-
+	private Integer ultimoRegistroVenda = 0;
 
 	public void save() {
 		FacesMessage msg = new FacesMessage("Sucesso", "Welcome :" + PedidoCompra.class.getName());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-	public String onFlowProcess(FlowEvent event) {
-		if (skip) {
-			skip = false; // reset in case user goes back
-			return "confirm";
-		} else {
-			return event.getNewStep();
-		}
-	}
-
 	public PedidoCompraBean() {
 		pedidosCompras = new PedidoCompraDAO().listarPedidoCompras();
 		fornecedores = new FornecedorDAO().listarFornecedores();
 	}
-	
-	public String salvarPedidoVenda() {
-		
+
+	public String salvarPedidoCompra() {
+
 		new PedidoCompraDAO().salvar(pedidoCompra);
-		new ItemCompraDAO().salvar(itemCompra);
+
 		pedidosCompras = new PedidoCompraDAO().listarPedidoCompras();
-		itemCompras = new ItemCompraDAO().listarItemCompras();
+		itemCompra.setId(ultimoRegistroVenda);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Compra salva com sucesso!! "));
+
 		return "pedido_template";
-		
+
 	}
 
 	public String salvar() {
-		
+
 		new PedidoCompraDAO().salvar(pedidoCompra);
 		pedidosCompras = new PedidoCompraDAO().listarPedidoCompras();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-				return "pedido_template";
-	
-		}
-	
-	public String editar(PedidoCompra pedidoCompra){
+		return "pedido_template";
+
+	}
+
+	public String editar(PedidoCompra pedidoCompra) {
 		this.pedidoCompra = pedidoCompra;
 		return "null";
 	}
@@ -116,12 +104,12 @@ public class PedidoCompraBean {
 		this.fornecedores = fornecedores;
 	}
 
-	public boolean isSkip() {
-		return skip;
+	public Integer getUltimoRegistroVenda() {
+		return ultimoRegistroVenda;
 	}
 
-	public void setSkip(boolean skip) {
-		this.skip = skip;
+	public void setUltimoRegistroVenda(Integer ultimoRegistroVenda) {
+		this.ultimoRegistroVenda = ultimoRegistroVenda;
 	}
-	
+
 }
