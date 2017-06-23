@@ -14,6 +14,7 @@ public class GeradorEmail {
 				false, "noreply.pesadao@gmail.com", "oitocaracteres");
 
 		// and go!
+		
 		new EmailMessage().from("noreply.pesadao@gmail.com").to(yourAddress)
 				.withSubject("Nota Fiscal - Sistema Pesadão")
 				.withAttachment("file_name")
