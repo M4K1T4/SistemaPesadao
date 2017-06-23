@@ -10,7 +10,7 @@
 	<ui:define name="principal">
 		<h:outputScript library="js" name="frenchLocale.js" />
 
-		<h:form>
+		<h:form id="formPiece">
 			<p:growl id="growl" sticky="true" showDetail="true" />
 			<p:wizard flowListener="#{pedidoVendaBean.onFlowProcess}">
 				<p:tab id="PedidoVenda" title="Cliente ">
@@ -45,13 +45,12 @@
 
 				<p:tab id="produto" title="item(ns)">
 					<p:panel id="panel" header="Selecionar Itens">
-						<h:form id="formPiece">
 							<br />
-							<p:dataTable var="line" value="#{itemVendaBean.itensVendas}"
+							<p:dataTable var="line" value="#{itemVendaBean.itemVenda}"
 								id="dataTableSaisiePiece">
 
 								<p:column headerText="Id" style="width:150px">
-									<p:inputText value="#{pedidoVendaBean.ultimoRegistro}"
+									<p:inputText value="#{pedidoVendaBean.pedidoVenda}"
 										style="width:100%" disabled="true" />
 								</p:column>
 
@@ -79,8 +78,8 @@
 							<p:commandButton actionListener="#{itemVendaBean.deleteLine}"
 								value="Delete" update="formPiece" />
 
-						</h:form>
 					</p:panel>
+					<p:commandButton style="align-center" value="salvar" action="#{itemVendaBean.salvar}" update="panel"></p:commandButton>
 
 				</p:tab>
 			</p:wizard>
