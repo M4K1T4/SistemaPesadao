@@ -20,17 +20,31 @@ public class LoginBean {
 	private String senha;
 	private boolean loggedIn;
 	private NivelDeAcesso nivelDeAcesso;
-	
+
 	public String logar() {
-		
+
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		if ("admin".equals(nomeUsuario) && "123".equals(senha)) {
+		if ("gerente".equals(nomeUsuario) && "123".equals(senha)) {
 			this.nivelDeAcesso = NivelDeAcesso.GERENTE;
 			return prepararAcesso();
-		} else if ("vendedor".equals(nomeUsuario) && "456".equals(senha)) {
-			this.nivelDeAcesso = NivelDeAcesso.VENDEDOR;
+
+		} else if ("coordenadorCompra".equals(nomeUsuario) && "123".equals(senha)) {
+			this.nivelDeAcesso = NivelDeAcesso.COORDENADORDECOMPRA;
 			return prepararAcesso();
+
+		} else if ("coordenadorFinanceiro".equals(nomeUsuario) && "123".equals(senha)) {
+			this.nivelDeAcesso = NivelDeAcesso.COORDENADORFINANCEIRO;
+			return prepararAcesso();
+
+		} else if ("cadastrante".equals(nomeUsuario) && "123".equals(senha)) {
+			this.nivelDeAcesso = NivelDeAcesso.CADASTRANTE;
+			return prepararAcesso();
+
+		} else if ("atendente".equals(nomeUsuario) && "123".equals(senha)) {
+			this.nivelDeAcesso = NivelDeAcesso.ATENDENTE;
+			return prepararAcesso();
+
 		} else {
 			FacesMessage menssagem = new FacesMessage("Usuário ou senha inválidos!");
 			menssagem.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -44,7 +58,7 @@ public class LoginBean {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "/login?faces-redirect=true";
 	}
-	
+
 	public String prepararAcesso() {
 		this.usuario.setNome(this.nomeUsuario);
 		this.usuario.setDataLogin(new Date());
@@ -56,10 +70,10 @@ public class LoginBean {
 		return loggedIn;
 	}
 
-	public void setLoggedIn(boolean loggedIn) {	
+	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
-	
+
 	public NivelDeAcesso getNivelDeAcesso() {
 		return nivelDeAcesso;
 	}
