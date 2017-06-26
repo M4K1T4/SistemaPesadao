@@ -27,7 +27,6 @@ public class FornecedorBean {
 	}
 
 	public String salvar() throws InterruptedException {
-		// fornecedores.add(fornecedor);
 		currentThread = Thread.currentThread();
 		Thread.sleep(7000);
 		new FornecedorDAO().salvar(fornecedor);
@@ -40,16 +39,6 @@ public class FornecedorBean {
 	public String editar(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 		return "fornecedorlist_template";
-	}
-
-	public void prepararExclusao(Fornecedor fornecedor) {
-		this.fornecedor = fornecedor;
-	}
-
-	public void excluir() {
-		new FornecedorDAO().excluir(fornecedor);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor excluido com sucesso!"));
-		// fornecedor = new FornecedorDAO().listarFornecedores();
 	}
 
 	public Fornecedor getFornecedor() {

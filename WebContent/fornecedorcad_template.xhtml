@@ -16,7 +16,7 @@
 					<p:inputText type="text" required="true" id="nomeForn"
 						requiredMessage="O nome real não foi preenchido corretamente."
 						validatorMessage="O nome real requer entre 5 e 50 caracteres."
-						value="#{fornecedorBean.fornecedor.nomeForn}">
+						value="#{fornecedorBean.fornecedor.nomeFornecedor}">
 						<f:validateLength minimum="5" maximum="50" />
 					</p:inputText>
 
@@ -24,40 +24,40 @@
 					<p:inputText type="text" required="true" id="fantasiaForn"
 						requiredMessage="O nome fantasia não foi preenchido corretamente."
 						validatorMessage="O nome fantasia requer entre 5 e 50 caracteres."
-						value="#{fornecedorBean.fornecedor.fantasiaForn}">
+						value="#{fornecedorBean.fornecedor.fantasiaFornecedor}">
 						<f:validateLength minimum="5" maximum="50" />
 					</p:inputText>
 
-					<p:outputLabel value="CNPJ :" for="cnpjForn" />
-					<p:inputMask mask="99.999.999/9999-99" id="cnpjForn"
+					<p:outputLabel value="CNPJ :" for="cnpjFornecedor" />
+					<p:inputMask mask="99.999.999/9999-99" id="cnpjFornecedor"
 						required="true"
 						requiredMessage="Preencha o telefone A corretamente"
-						value="#{fornecedorBean.fornecedor.cnpjForn}" />
+						value="#{fornecedorBean.fornecedor.cnpjFornecedor}" />
 
-					<p:outputLabel value="Endereço:" for="enderecoForn" />
-					<p:inputText type="text" id="enderecoForn" required="true"
+					<p:outputLabel value="Endereço:" for="enderecoFornecedor" />
+					<p:inputText type="text" id="enderecoFornecedor" required="true"
 						requiredMessage="O endereço não foi preenchido corretamente"
 						validatorMessage="O endereço requer entre 5 e 50 caracteres."
-						value="#{fornecedorBean.fornecedor.enderecoForn}">
+						value="#{fornecedorBean.fornecedor.enderecoFornecedor}">
 						<f:validateLength minimum="5" maximum="120" />
 					</p:inputText>
 
-					<p:outputLabel value="Bairro:" for="bairroForn" />
-					<p:inputText type="text" id="bairroForn"
+					<p:outputLabel value="Bairro:" for="bairroFornecedor" />
+					<p:inputText type="text" id="bairroFornecedor"
 						validatorMessage="O bairro requer entre 5 e 50 caracteres."
-						value="#{fornecedorBean.fornecedor.bairroForn}">
+						value="#{fornecedorBean.fornecedor.bairroFornecedor}">
 						<f:validateLength minimum="5" maximum="50" />
 					</p:inputText>
 
-					<p:outputLabel value="Complemento:" for="complementoForn" />
-					<p:inputText type="text" id="complementoForn"
+					<p:outputLabel value="Complemento:" for="complementoFornecedor" />
+					<p:inputText type="text" id="complementoFornecedor"
 						validatorMessage="O complemento requer entre 5 e 50 caracteres."
-						value="#{fornecedorBean.fornecedor.complementoForn}">
+						value="#{fornecedorBean.fornecedor.complementoFornecedor}">
 						<f:validateLength minimum="5" maximum="50" />
 					</p:inputText>
 
-					<p:outputLabel value="Estado: " id="ufForn" />
-					<p:selectOneMenu value="#{fornecedorBean.fornecedor.ufForn}"
+					<p:outputLabel value="Estado: " id="ufFornecedor" />
+					<p:selectOneMenu value="#{fornecedorBean.fornecedor.ufFornecedor}"
 						required="true"
 						requiredMessage="Preencha o campo 'UF da Cidade: '">
 						<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
@@ -65,53 +65,53 @@
 							itemLabel="#{estado.label}" itemValue="#{estado}" />
 					</p:selectOneMenu>
 
-					<p:outputLabel value="Cidade:" for="cidadeForn" />
-					<p:inputText type="text" id="cidadeForn" required="true"
+					<p:outputLabel value="Cidade:" for="cidadeFornecedor" />
+					<p:inputText type="text" id="cidadeFornecedor" required="true"
 						requiredMessage="A cidade não foi preenchido corretamente"
 						validatorMessage="a cidade requer entre 5 e 50 caracteres."
-						value="#{fornecedorBean.fornecedor.cidadeForn}">
+						value="#{fornecedorBean.fornecedor.cidadeFornecedor}">
 						<f:validateLength minimum="5" maximum="50" />
 					</p:inputText>
 
-					<p:outputLabel value="Inscrição Estadual" for="ieForn" />
-					<p:inputMask mask="99999999-99" id="ieForn" required="true"
+					<p:outputLabel value="Inscrição Estadual" for="ieFornecedor" />
+					<p:inputMask mask="99999999-99" id="ieFornecedor" required="true"
 						requiredMessage="Preencha a Inscrição Estadual corretamente"
-						value="#{fornecedorBean.fornecedor.ieForn}" />
+						value="#{fornecedorBean.fornecedor.ieFornecedor}" />
 
-					<p:outputLabel value="Inscrição Municipal:" for="imForn" />
-					<p:inputMask mask="99999" id="imForn" required="true"
+					<p:outputLabel value="Inscrição Municipal:" for="imFornecedor" />
+					<p:inputMask mask="99999" id="imFornecedor" required="true"
 						requiredMessage="Preencha o telefone A corretamente"
-						value="#{fornecedorBean.fornecedor.imForn}" />
+						value="#{fornecedorBean.fornecedor.imFornecedor}" />
 
-					<p:outputLabel value="Email:" for="emailForn" />
-					<p:inputText type="text" required="true" id="emailForn"
+					<p:outputLabel value="Email:" for="emailFornecedor" />
+					<p:inputText type="text" required="true" id="emailFornecedor"
 						requured="true"
 						requiredMessage="O email não foi preenchido corretamente"
 						validatorMessage="O email requer entre 5 e 50 caracteres."
-						value="#{fornecedorBean.fornecedor.emailForn}">
+						value="#{fornecedorBean.fornecedor.emailFornecedor}">
 						<f:validateLength minimum="5" maximum="120" />
 					</p:inputText>
 
-					<p:outputLabel value="Fone A:" for="foneaForn" />
-					<p:inputMask mask="(99) 9 9999-9999" id="foneaForn" required="true"
+					<p:outputLabel value="Fone A:" for="foneaFornecedor" />
+					<p:inputMask mask="(99) 9 9999-9999" id="foneaFornecedor" required="true"
 						requiredMessage="Preencha o telefone A corretamente"
-						value="#{fornecedorBean.fornecedor.foneaForn}" />
+						value="#{fornecedorBean.fornecedor.foneaFornecedor}" />
 
-					<p:outputLabel value="Fone B:" for="fonebForn" />
-					<p:inputMask mask="(99) 9 9999-9999" id="fonebForn"
-						value="#{fornecedorBean.fornecedor.fonebForn}" />
+					<p:outputLabel value="Fone B:" for="fonebFornecedor" />
+					<p:inputMask mask="(99) 9 9999-9999" id="fonebFornecedor"
+						value="#{fornecedorBean.fornecedor.fonebFornecedor}" />
 
-					<p:outputLabel value="Data de Fundação" for="fundacaoForn" />
-					<p:calendar pattern="dd/MM/yy" id="fundacaoForn"
-						maxdate="#{fornecedorBean.fornecedor.cadForn}" required="true"
+					<p:outputLabel value="Data de Fundação" for="fundacaoFornecedor" />
+					<p:calendar pattern="dd/MM/yy" id="fundacaoFornecedor"
+						maxdate="#{fornecedorBean.fornecedor.cadFornecedor}" required="true"
 						requiredMessage="Preencha campo 'Data do cadastro:'"
-						value="#{fornecedorBean.fornecedor.fundacaoForn}" />
+						value="#{fornecedorBean.fornecedor.fundacaoFornecedor}" />
 
-					<p:outputLabel value="Data de cadastro" for="cadForn" />
-					<p:calendar pattern="dd/MM/yy" id="cadForn"
-						maxdate="#{fornecedorBean.fornecedor.cadForn}" required="true"
+					<p:outputLabel value="Data de cadastro" for="cadFornecedor" />
+					<p:calendar pattern="dd/MM/yy" id="cadFornecedor"
+						maxdate="#{fornecedorBean.fornecedor.cadFornecedor}" required="true"
 						requiredMessage="Preencha campo 'Data do cadastro:'"
-						value="#{fornecedorBean.fornecedor.cadForn}" />
+						value="#{fornecedorBean.fornecedor.cadFornecedor}" />
 					<p:outputLabel></p:outputLabel>
 					<p:outputLabel></p:outputLabel>
 					<p:outputLabel></p:outputLabel>
@@ -122,7 +122,7 @@
 			</p:panel>
 
 			<p:blockUI block="pnl" trigger="saveBtn">
-				<p:graphicImage value="#{resources['images:teste.gif']}" />
+				<p:graphicImage value="#{resources['images:loading.gif']}" />
 			</p:blockUI>
 
 		</h:form>

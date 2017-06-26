@@ -42,7 +42,7 @@ public class ClienteBean {
 	 *             Método para salvar todas as informações de cliente.
 	 *             Retornando mensagem de sucesso.
 	 */
-	@SuppressWarnings("static-access")
+	
 	public String salvar() throws InterruptedException {
 		new ClienteDao().salvar(cliente);
 		clientes = new ClienteDao().listarClientes();
@@ -62,30 +62,14 @@ public class ClienteBean {
 	}
 
 	/**
-	 * 
-	 * @param cliente
-	 *            Método prepararExclusao, responsável por colocar cliente
-	 *            selecionado na model.
-	 */
-	public void prepararExclusao(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	// Método
-	public void excluir() {
-		new ClienteDao().excluir(cliente);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("cliente deletado com sucesso!"));
-		clientes = new ClienteDao().listarClientes();
-	}
-
-	/**
 	 * Método para apanhar data atual do servidor.
 	 * 
 	 */
 	public String getDataAtual() {
 		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
-
+	
+	
 	public Cliente getCliente() {
 		return cliente;
 	}

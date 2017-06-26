@@ -22,11 +22,11 @@ public class FornecedorConverter implements Converter {
 
 		if (!propriedades[0].isEmpty()) {
 			fornecedor.setId(new Integer(propriedades[0]));
-			System.out.println("VALUE DESFUDIDO fornecedor");
+			System.out.println("ID do Fornecedor chegou no converter");
 		}
 
 		if (!propriedades[1].isEmpty()) {
-			fornecedor.setFantasiaForn(propriedades[1]);
+			fornecedor.setFantasiaFornecedor(propriedades[1]);
 		}
 		return fornecedor;
 	}
@@ -41,7 +41,7 @@ public class FornecedorConverter implements Converter {
 
 		String id = fornecedor.getId() == null ? "" : fornecedor.getId().toString();
 		
-		String nome = fornecedor.getFantasiaForn() == null ? "" : fornecedor.getFantasiaForn();
+		String nome = fornecedor.getFantasiaFornecedor() == null ? "" : fornecedor.getFantasiaFornecedor();
 		return id + "#" + nome;
 	}
 }

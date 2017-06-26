@@ -26,7 +26,7 @@ public class FornecedorDAO {
 		
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		
-		Query query = entityManager.createQuery("from Fornecedor Order By nomeForn");
+		Query query = entityManager.createQuery("from Fornecedor Order By nomeFornecedor");
 		
 		return query.getResultList();
 	}

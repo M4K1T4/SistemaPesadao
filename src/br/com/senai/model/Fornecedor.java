@@ -19,21 +19,21 @@ public class Fornecedor implements Serializable {
 	private static final long serialVersionUID = -2128450523234304178L;
 
 	private Integer id;
-	private String nomeForn;
-	private String fantasiaForn;
-	private String cnpjForn;
-	private Date cadForn = new Date();
-	private String enderecoForn;
-	private String bairroForn;
-	private String cidadeForn;
-	private String complementoForn;
-	private String foneaForn;
-	private String fonebForn;
-	private String ieForn;
-	private String imForn;
-	private Date fundacaoForn;
-	private Estado ufForn;
-	private String emailForn;
+	private String nomeFornecedor;
+	private String fantasiaFornecedor;
+	private String cnpjFornecedor;
+	private Date cadFornecedor = new Date();
+	private String enderecoFornecedor;
+	private String bairroFornecedor;
+	private String cidadeFornecedor;
+	private String complementoFornecedor;
+	private String foneaFornecedor;
+	private String fonebFornecedor;
+	private String ieFornecedor;
+	private String imFornecedor;
+	private Date fundacaoFornecedor;
+	private Estado ufFornecedor;
+	private String emailFornecedor;
 	private boolean active = true;
 	private Date lastUpdate = new Date();
 
@@ -41,25 +41,25 @@ public class Fornecedor implements Serializable {
 		super();
 	}
 
-	public Fornecedor(String nomeForn, String fantasiaForn, String cnpjForn, Date cadForn, String enderecoForn,
-			String bairroForn, String cidadeForn, String complementoForn, String foneaForn, String fonebForn,
-			String ieForn, String imForn, Date fundacaoForn, Estado ufForn, String emailForn) {
+	public Fornecedor(String nomeFornecedor, String fantasiaFornecedor, String cnpjFornecedor, Date cadFornecedor, String enderecoFornecedor,
+			String bairroFornecedor, String cidadeFornecedor, String complementoFornecedor, String foneaFornecedor, String fonebFornecedor,
+			String ieFornecedor, String imFornecedor, Date fundacaoFornecedor, Estado ufFornecedor, String emailFornecedor) {
 		super();
-		this.nomeForn = nomeForn;
-		this.fantasiaForn = fantasiaForn;
-		this.cnpjForn = cnpjForn;
-		this.cadForn = cadForn;
-		this.enderecoForn = enderecoForn;
-		this.bairroForn = bairroForn;
-		this.cidadeForn = cidadeForn;
-		this.complementoForn = complementoForn;
-		this.foneaForn = foneaForn;
-		this.fonebForn = fonebForn;
-		this.ieForn = ieForn;
-		this.imForn = imForn;
-		this.fundacaoForn = fundacaoForn;
-		this.ufForn = ufForn;
-		this.emailForn = emailForn;
+		this.nomeFornecedor = nomeFornecedor;
+		this.fantasiaFornecedor = fantasiaFornecedor;
+		this.cnpjFornecedor = cnpjFornecedor;
+		this.cadFornecedor = cadFornecedor;
+		this.enderecoFornecedor = enderecoFornecedor;
+		this.bairroFornecedor = bairroFornecedor;
+		this.cidadeFornecedor = cidadeFornecedor;
+		this.complementoFornecedor = complementoFornecedor;
+		this.foneaFornecedor = foneaFornecedor;
+		this.fonebFornecedor = fonebFornecedor;
+		this.ieFornecedor = ieFornecedor;
+		this.imFornecedor = imFornecedor;
+		this.fundacaoFornecedor = fundacaoFornecedor;
+		this.ufFornecedor = ufFornecedor;
+		this.emailFornecedor = emailFornecedor;
 	}
 
 	@GeneratedValue
@@ -74,141 +74,141 @@ public class Fornecedor implements Serializable {
 	}
 
 	@Column(name = "for_razaoSocial", length = 50)
-	public String getNomeForn() {
-		return nomeForn;
+	public String getNomeFornecedor() {
+		return nomeFornecedor;
 	}
 
-	public void setNomeForn(String nomeForn) {
-		this.nomeForn = nomeForn;
+	public void setNomeFornecedor(String nomeFornecedor) {
+		this.nomeFornecedor = nomeFornecedor;
 	}
 
 	@Column(name = "for_nomeFantasia", length = 50)
-	public String getFantasiaForn() {
-		return fantasiaForn;
+	public String getFantasiaFornecedor() {
+		return fantasiaFornecedor;
 	}
 
-	public void setFantasiaForn(String fantasiaForn) {
-		this.fantasiaForn = fantasiaForn;
+	public void setFantasiaFornecedor(String fantasiaFornecedor) {
+		this.fantasiaFornecedor = fantasiaFornecedor;
 	}
 
 	@CNPJ
 	@Column(name = "for_cnpj", length = 50)
-	public String getCnpjForn() {
-		return cnpjForn;
+	public String getCnpjFornecedor() {
+		return cnpjFornecedor;
 	}
 
-	public void setCnpjForn(String cnpjForn) {
-		this.cnpjForn = cnpjForn;
+	public void setCnpjFornecedor(String cnpjFornecedor) {
+		this.cnpjFornecedor = cnpjFornecedor;
 	}
 
 	@Column(name = "for_dataCadastro", length = 50)
-	public Date getCadForn() {
-		return cadForn;
+	public Date getCadFornecedor() {
+		return cadFornecedor;
 	}
 
-	public void setCadForn(Date cadForn) {
-		this.cadForn = cadForn;
+	public void setCadFornecedor(Date cadFornecedor) {
+		this.cadFornecedor = cadFornecedor;
 	}
 
 	@Column(name = "for_endereco", length = 120)
-	public String getEnderecoForn() {
-		return enderecoForn;
+	public String getEnderecoFornecedor() {
+		return enderecoFornecedor;
 	}
 
-	public void setEnderecoForn(String enderecoForn) {
-		this.enderecoForn = enderecoForn;
+	public void setEnderecoFornecedor(String enderecoFornecedor) {
+		this.enderecoFornecedor = enderecoFornecedor;
 	}
 
 	@Column(name = "for_bairro", length = 50)
-	public String getBairroForn() {
-		return bairroForn;
+	public String getBairroFornecedor() {
+		return bairroFornecedor;
 	}
 
-	public void setBairroForn(String bairroForn) {
-		this.bairroForn = bairroForn;
+	public void setBairroFornecedor(String bairroFornecedor) {
+		this.bairroFornecedor = bairroFornecedor;
 	}
 
 	@Column(name = "for_cidade", length = 50)
-	public String getCidadeForn() {
-		return cidadeForn;
+	public String getCidadeFornecedor() {
+		return cidadeFornecedor;
 	}
 
-	public void setCidadeForn(String cidadeForn) {
-		this.cidadeForn = cidadeForn;
+	public void setCidadeFornecedor(String cidadeFornecedor) {
+		this.cidadeFornecedor = cidadeFornecedor;
 	}
 
 	@Column(name = "for_complemento", length = 50)
-	public String getComplementoForn() {
-		return complementoForn;
+	public String getComplementoFornecedor() {
+		return complementoFornecedor;
 	}
 
-	public void setComplementoForn(String complementoForn) {
-		this.complementoForn = complementoForn;
+	public void setComplementoFornecedor(String complementoFornecedor) {
+		this.complementoFornecedor = complementoFornecedor;
 	}
 
 	@Column(name = "for_foneA", length = 50)
-	public String getFoneaForn() {
-		return foneaForn;
+	public String getFoneaFornecedor() {
+		return foneaFornecedor;
 	}
 
-	public void setFoneaForn(String foneaForn) {
-		this.foneaForn = foneaForn;
+	public void setFoneaFornecedor(String foneaFornecedor) {
+		this.foneaFornecedor = foneaFornecedor;
 	}
 
 	@Column(name = "for_foneB", length = 50)
-	public String getFonebForn() {
-		return fonebForn;
+	public String getFonebFornecedor() {
+		return fonebFornecedor;
 	}
 
-	public void setFonebForn(String fonebForn) {
-		this.fonebForn = fonebForn;
+	public void setFonebFornecedor(String fonebFornecedor) {
+		this.fonebFornecedor = fonebFornecedor;
 	}
 
 	@Column(name = "for_ie", length = 50)
-	public String getIeForn() {
-		return ieForn;
+	public String getIeFornecedor() {
+		return ieFornecedor;
 	}
 
-	public void setIeForn(String ieForn) {
-		this.ieForn = ieForn;
+	public void setIeFornecedor(String ieFornecedor) {
+		this.ieFornecedor = ieFornecedor;
 	}
 
 	@Column(name = "for_im", length = 50)
-	public String getImForn() {
-		return imForn;
+	public String getImFornecedor() {
+		return imFornecedor;
 	}
 
-	public void setImForn(String imForn) {
-		this.imForn = imForn;
+	public void setImFornecedor(String imFornecedor) {
+		this.imFornecedor = imFornecedor;
 	}
 
 	@Column(name = "for_dataFundacao", length = 50)
 	@Temporal(TemporalType.DATE)
-	public Date getFundacaoForn() {
-		return fundacaoForn;
+	public Date getFundacaoFornecedor() {
+		return fundacaoFornecedor;
 	}
 
-	public void setFundacaoForn(Date fundacaoForn) {
-		this.fundacaoForn = fundacaoForn;
+	public void setFundacaoFornecedor(Date fundacaoFornecedor) {
+		this.fundacaoFornecedor = fundacaoFornecedor;
 	}
 
 	@Column(name = "for_uf", length = 50)
-	public Estado getUfForn() {
-		return ufForn;
+	public Estado getUfFornecedor() {
+		return ufFornecedor;
 	}
 
-	public void setUfForn(Estado ufForn) {
-		this.ufForn = ufForn;
+	public void setUfFornecedor(Estado ufFornecedor) {
+		this.ufFornecedor = ufFornecedor;
 	}
 
 	@Email
 	@Column(name = "for_email", length = 120)
-	public String getEmailForn() {
-		return emailForn;
+	public String getEmailFornecedor() {
+		return emailFornecedor;
 	}
 
-	public void setEmailForn(String emailForn) {
-		this.emailForn = emailForn;
+	public void setEmailFornecedor(String emailFornecedor) {
+		this.emailFornecedor = emailFornecedor;
 	}
 
 	@Column(name = "for_active", length = 50)
@@ -257,11 +257,11 @@ public class Fornecedor implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Fornecedor [id=" + id + ", nomeForn=" + nomeForn + ", fantasiaForn=" + fantasiaForn + ", cnpjForn="
-				+ cnpjForn + ", cadForn=" + cadForn + ", enderecoForn=" + enderecoForn + ", bairroForn=" + bairroForn
-				+ ", cidadeForn=" + cidadeForn + ", complementoForn=" + complementoForn + ", foneaForn=" + foneaForn
-				+ ", fonebForn=" + fonebForn + ", ieForn=" + ieForn + ", imForn=" + imForn + ", fundacaoForn="
-				+ fundacaoForn + ", ufForn=" + ufForn + ", emailForn=" + emailForn + ", active=" + active
+		return "Fornecedor [id=" + id + ", nomeForn=" + nomeFornecedor + ", fantasiaForn=" + fantasiaFornecedor + ", cnpjForn="
+				+ cnpjFornecedor + ", cadForn=" + cadFornecedor + ", enderecoForn=" + enderecoFornecedor + ", bairroForn=" + bairroFornecedor
+				+ ", cidadeForn=" + cidadeFornecedor + ", complementoForn=" + complementoFornecedor + ", foneaForn=" + foneaFornecedor
+				+ ", fonebForn=" + fonebFornecedor + ", ieForn=" + ieFornecedor + ", imForn=" + imFornecedor + ", fundacaoForn="
+				+ fundacaoFornecedor + ", ufForn=" + ufFornecedor + ", emailForn=" + emailFornecedor + ", active=" + active
 				+ ", lastUpdate=" + lastUpdate + "]";
 	}
 

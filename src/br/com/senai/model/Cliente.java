@@ -22,20 +22,20 @@ import org.hibernate.validator.constraints.br.CPF;
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = -3954610511847217717L;
 	private Integer id;
-	private String nomeCli;
-	private SexoCliente sexoCli;
-	private String idadeCli;
-	private String cpfCli;
-	private String enderecoCli;
-	private String numeroResidencialCli;
-	private String bairroCli;
-	private String cidadeCli;
-	private Estado ufCli;
-	private String telefoneCli;
-	private String celularCli;
-	private String emailCli;
-	private Date dataCadCli = new Date();
-	private Date lastUpdateCli = new Date();
+	private String nomeCliente;
+	private SexoCliente sexoCliente;
+	private String idadeCliente;
+	private String cpfCliente;
+	private String enderecoCliente;
+	private String numeroResidencialCliente;
+	private String bairroCliente;
+	private String cidadeCliente;
+	private Estado ufCliente;
+	private String telefoneCliente;
+	private String celularCliente;
+	private String emailCliente;
+	private Date dataCadCliente = new Date();
+	private Date lastUpdateCliente = new Date();
 	private boolean active = true;
 
 	/**
@@ -65,19 +65,19 @@ public class Cliente implements Serializable {
 			String numeroResidencialCli, String bairroCli, String cidadeCli, Estado ufCli, String telefoneCli,
 			String celularCli, String emailCli, Date dataCadCli) {
 		super();
-		this.nomeCli = nomeCli;
-		this.sexoCli = sexoCli;
-		this.idadeCli = idadeCli;
-		this.cpfCli = cpfCli;
-		this.enderecoCli = enderecoCli;
-		this.numeroResidencialCli = numeroResidencialCli;
-		this.bairroCli = bairroCli;
-		this.cidadeCli = cidadeCli;
-		this.ufCli = ufCli;
-		this.telefoneCli = telefoneCli;
-		this.celularCli = celularCli;
-		this.emailCli = emailCli;
-		this.dataCadCli = dataCadCli;
+		this.nomeCliente = nomeCli;
+		this.sexoCliente = sexoCli;
+		this.idadeCliente = idadeCli;
+		this.cpfCliente = cpfCli;
+		this.enderecoCliente = enderecoCli;
+		this.numeroResidencialCliente = numeroResidencialCli;
+		this.bairroCliente = bairroCli;
+		this.cidadeCliente = cidadeCli;
+		this.ufCliente = ufCli;
+		this.telefoneCliente = telefoneCli;
+		this.celularCliente = celularCli;
+		this.emailCliente = emailCli;
+		this.dataCadCliente = dataCadCli;
 	}
 
 	@Id
@@ -92,134 +92,134 @@ public class Cliente implements Serializable {
 	}
 
 	@Column(name = "cli_nome")
-	public String getNomeCli() {
-		return nomeCli;
+	public String getNomeCliente() {
+		return nomeCliente;
 	}
 
-	public void setNomeCli(String nomeCli) {
-		this.nomeCli = nomeCli;
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
 	}
 
 	@CPF
 	@Column(name = "cli_cpf")
-	public String getCpfCli() {
-		return cpfCli;
+	public String getCpfCliente() {
+		return cpfCliente;
 	}
 
-	public void setCpfCli(String cpfCli) {
-		this.cpfCli = cpfCli;
+	public void setCpfCliente(String cpfCliente) {
+		this.cpfCliente = cpfCliente;
 	}
 
 	@Column(name = "cli_sexo")
 	@Enumerated(EnumType.STRING)
-	public SexoCliente getSexoCli() {
-		return sexoCli;
+	public SexoCliente getSexoCliente() {
+		return sexoCliente;
 	}
 
-	public void setSexoCli(SexoCliente sexoCli) {
-		this.sexoCli = sexoCli;
+	public void setSexoCliente(SexoCliente sexoCliente) {
+		this.sexoCliente = sexoCliente;
 	}
 
 	@Column(name = "cli_idade")
-	public String getIdadeCli() {
-		return idadeCli;
+	public String getIdadeCliente() {
+		return idadeCliente;
 	}
 
-	public void setIdadeCli(String idadeCli) {
-		this.idadeCli = idadeCli;
+	public void setIdadeCliente(String idadeCliente) {
+		this.idadeCliente = idadeCliente;
 	}
 
 	@Column(name = "cli_endereco")
-	public String getEnderecoCli() {
-		return enderecoCli;
+	public String getEnderecoCliente() {
+		return enderecoCliente;
 	}
 
-	public void setEnderecoCli(String enderecoCli) {
-		this.enderecoCli = enderecoCli;
+	public void setEnderecoCliente(String enderecoCliente) {
+		this.enderecoCliente = enderecoCliente;
 	}
 
 	@Column(name = "cli_numeroResidencial")
-	public String getNumeroResidencialCli() {
-		return numeroResidencialCli;
+	public String getNumeroResidencialCliente() {
+		return numeroResidencialCliente;
 	}
 
-	public void setNumeroResidencialCli(String numeroResidencialCli) {
-		this.numeroResidencialCli = numeroResidencialCli;
+	public void setNumeroResidencialCliente(String numeroResidencialCliente) {
+		this.numeroResidencialCliente = numeroResidencialCliente;
 	}
 
 	@Column(name = "cli_bairro")
-	public String getBairroCli() {
-		return bairroCli;
+	public String getBairroCliente() {
+		return bairroCliente;
 	}
 
-	public void setBairroCli(String bairroCli) {
-		this.bairroCli = bairroCli;
+	public void setBairroCliente(String bairroCliente) {
+		this.bairroCliente = bairroCliente;
 	}
 
 	@Column(name = "cli_cidade")
-	public String getCidadeCli() {
-		return cidadeCli;
+	public String getCidadeCliente() {
+		return cidadeCliente;
 	}
 
-	public void setCidadeCli(String cidadeCli) {
-		this.cidadeCli = cidadeCli;
+	public void setCidadeCliente(String cidadeCliente) {
+		this.cidadeCliente = cidadeCliente;
 	}
 
 	@Column(name = "cli_uf")
-	public Estado getUfCli() {
-		return ufCli;
+	public Estado getUfCliente() {
+		return ufCliente;
 	}
 
-	public void setUfCli(Estado ufCli) {
-		this.ufCli = ufCli;
+	public void setUfCliente(Estado ufCliente) {
+		this.ufCliente = ufCliente;
 	}
 
 	@Column(name = "cli_telefone")
-	public String getTelefoneCli() {
-		return telefoneCli;
+	public String getTelefoneCliente() {
+		return telefoneCliente;
 	}
 
-	public void setTelefoneCli(String telefoneCli) {
-		this.telefoneCli = telefoneCli;
+	public void setTelefoneCliente(String telefoneCliente) {
+		this.telefoneCliente = telefoneCliente;
 	}
 
 	@Column(name = "cli_celular")
-	public String getCelularCli() {
-		return celularCli;
+	public String getCelularCliente() {
+		return celularCliente;
 	}
 
-	public void setCelularCli(String celularCli) {
-		this.celularCli = celularCli;
+	public void setCelularCliente(String celularCliente) {
+		this.celularCliente = celularCliente;
 	}
 
 	@Email
 	@Column(name = "cli_email")
-	public String getEmailCli() {
-		return emailCli;
+	public String getEmailCliente() {
+		return emailCliente;
 	}
 
-	public void setEmailCli(String emailCli) {
-		this.emailCli = emailCli;
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
 	}
 
 	@Column(name = "cli_lastUpdate")
 	@Temporal(TemporalType.DATE)
-	public Date getLastUpdateCli() {
-		return lastUpdateCli;
+	public Date getLastUpdateCliente() {
+		return lastUpdateCliente;
 	}
 
-	public void setLastUpdateCli(Date lastUpdateCli) {
-		this.lastUpdateCli = lastUpdateCli;
+	public void setLastUpdateCliente(Date lastUpdateCliente) {
+		this.lastUpdateCliente = lastUpdateCliente;
 	}
 
 	@Column(name = "cli_data_cadastro")
 	@Temporal(TemporalType.DATE)
-	public Date getDataCadCli() {
-		return dataCadCli;
+	public Date getDataCadCliente() {
+		return dataCadCliente;
 	}
 
-	public void setDataCadCli(Date dataCadCli) {
-		this.dataCadCli = dataCadCli;
+	public void setDataCadCliente(Date dataCadCliente) {
+		this.dataCadCliente = dataCadCliente;
 	}
 
 	@Column(name = "cli_status")
@@ -258,7 +258,7 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", nomeCli=" + nomeCli + ", cpfCli=" + cpfCli + ", dataCadCli=" + dataCadCli
+		return "Cliente [id=" + id + ", nomeCli=" + nomeCliente + ", cpfCli=" + cpfCliente + ", dataCadCli=" + dataCadCliente
 				+ ", active=" + active + "]";
 	}
 }

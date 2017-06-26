@@ -24,10 +24,9 @@ public class ClienteConverter implements Converter {
 		String[] propriedades = valor.split("#");
 		if (!propriedades[0].isEmpty()) {
 			cliente.setId(new Integer(propriedades[0]));
-			System.out.println("VALUE DESFUDIDO CLIENTE");
 		}
 		if (!propriedades[1].isEmpty()) {
-			cliente.setNomeCli(propriedades[1]);
+			cliente.setNomeCliente(propriedades[1]);
 		}
 		return cliente;
 	}
@@ -42,7 +41,7 @@ public class ClienteConverter implements Converter {
 		}
 		Cliente cliente = (Cliente) obj;
 		String id = cliente.getId() == null ? "" : cliente.getId().toString();
-		String nome = cliente.getNomeCli() == null ? "" : cliente.getNomeCli();
+		String nome = cliente.getNomeCliente() == null ? "" : cliente.getNomeCliente();
 		return id + "#" + nome;
 	}
 }

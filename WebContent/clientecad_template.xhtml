@@ -12,87 +12,87 @@
 			<p:panel header="Cadastro de Cliente" id="pnl">
 				<h:panelGrid columns="4">
 
-					<p:outputLabel value="Nome do Cliente: " id="nomeCli" />
+					<p:outputLabel value="Nome do Cliente: " id="nomeCliente" />
 					<p:inputText type="text" title="Cliente*" required="true"
 						requiredMessage="Preencha o campo Nome do Cliente."
-						value="#{clienteBean.cliente.nomeCli}">
+						value="#{clienteBean.cliente.nomeCliente}">
 					</p:inputText>
 					<p:outputLabel value="Sexo:"></p:outputLabel>
-					<p:outputLabel for="sexoCli">
-						<p:selectOneRadio id="sexoCli"
-							value="#{clienteBean.cliente.sexoCli}">
+					<p:outputLabel for="sexoCliente">
+						<p:selectOneRadio id="sexoCliente"
+							value="#{clienteBean.cliente.sexoCliente}">
 							<f:selectItem itemLabel="Masculino" itemValue="MASCULINO"></f:selectItem>
 							<f:selectItem itemLabel="Feminino" itemValue="FEMININO"></f:selectItem>
 						</p:selectOneRadio>
 					</p:outputLabel>
 
 
-					<p:outputLabel value="Idade do cliente : " id="idadeCli" />
+					<p:outputLabel value="Idade do cliente : " id="idadeCliente" />
 					<p:inputText type="text" title="Cliente*" required="true"
 						requiredMessage="Preencha o campo idade do Cliente."
-						value="#{clienteBean.cliente.idadeCli}">
+						value="#{clienteBean.cliente.idadeCliente}">
 					</p:inputText>
 
-					<p:outputLabel value="CPF do Cliente: " id="cpfCli" />
+					<p:outputLabel value="CPF do Cliente: " id="cpfCliente" />
 					<p:inputMask mask="999.999.999-99" title="Cliente*" required="true"
 						requiredMessage="Preencha o campo Cpf do Cliente."
-						value="#{clienteBean.cliente.cpfCli}">
+						value="#{clienteBean.cliente.cpfCliente}">
 					</p:inputMask>
 
-					<p:outputLabel value="Endereço : " id="enderecoCli" />
+					<p:outputLabel value="Endereço : " id="enderecoCliente" />
 					<p:inputText type="text" title="Endereço*" required="true"
 						requiredMessage="Preencha o campo endereco do Cliente."
-						value="#{clienteBean.cliente.enderecoCli}">
+						value="#{clienteBean.cliente.enderecoCliente}">
 					</p:inputText>
 
 					<p:outputLabel value="Número Residencial do Cliente: "
-						id="numeroResidencialCli" />
+						id="numeroResidencialCliente" />
 					<p:inputText type="text" title="Número Residencial*"
 						required="true"
 						requiredMessage="Preencha o campo Número Residencial do Cliente."
-						value="#{clienteBean.cliente.numeroResidencialCli}">
+						value="#{clienteBean.cliente.numeroResidencialCliente}">
 					</p:inputText>
 
-					<p:outputLabel value="Bairro do Cliente: " id="bairroCli" />
+					<p:outputLabel value="Bairro do Cliente: " id="bairroCliente" />
 					<p:inputText type="text" title="Bairro*" required="true"
 						requiredMessage="Preencha o campo Bairro do Cliente."
-						value="#{clienteBean.cliente.bairroCli}">
+						value="#{clienteBean.cliente.bairroCliente}">
 					</p:inputText>
 
-					<p:outputLabel value="Cidade do Cliente: " id="cidadeCli" />
+					<p:outputLabel value="Cidade do Cliente: " id="cidadeCliente" />
 					<p:inputText type="text" title="Cidade*" required="true"
 						requiredMessage="Preencha o campo Cidade do Cliente."
-						value="#{clienteBean.cliente.cidadeCli}">
+						value="#{clienteBean.cliente.cidadeCliente}">
 					</p:inputText>
 
 					<p:outputLabel value="Estado: " id="estado"></p:outputLabel>
-					<p:selectOneMenu value="#{clienteBean.cliente.ufCli}"
+					<p:selectOneMenu value="#{clienteBean.cliente.ufCliente}"
 						required="true" requiredMessage="Informe o Estado: ">
 						<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
 						<f:selectItems value="#{clienteBean.estados}" var="estado"
 							itemLabel="#{estado.label}" itemValue="#{estado}" />
 					</p:selectOneMenu>
 
-					<p:outputLabel value="Telefone: " id="telefoneCli" />
+					<p:outputLabel value="Telefone: " id="telefoneCliente" />
 					<p:inputMask mask="(99) 9999-9999" title="Telefone*"
 						required="true" requiredMessage="Preencha o Campo Telefone."
-						value="#{clienteBean.cliente.telefoneCli}">
+						value="#{clienteBean.cliente.telefoneCliente}">
 					</p:inputMask>
 
-					<p:outputLabel value="Celular: " id="celularCli" />
+					<p:outputLabel value="Celular: " id="celularCliente" />
 					<p:inputMask mask="(99) 9 9999-9999" title="Celular*"
 						required="true" requiredMessage="Preencha o Campo Celular."
-						value="#{clienteBean.cliente.celularCli}">
+						value="#{clienteBean.cliente.celularCliente}">
 					</p:inputMask>
 
-					<p:outputLabel value="E-mail: " id="emailCli" />
+					<p:outputLabel value="E-mail: " id="emailCliente" />
 					<p:inputText type="text" title="Email*" required="true"
 						requiredMessage="Preencha o campo E-mail do Cliente."
-						value="#{clienteBean.cliente.emailCli}">
+						value="#{clienteBean.cliente.emailCliente}">
 					</p:inputText>
 
-					<p:outputLabel value="Data de Cadastro: " id="dataCadCli"></p:outputLabel>
-					<p:calendar value="#{clienteBean.cliente.dataCadCli}"
+					<p:outputLabel value="Data de Cadastro: " id="dataCadCliente"></p:outputLabel>
+					<p:calendar value="#{clienteBean.cliente.dataCadCliente}"
 						pattern="dd/MM/yyyy" maxdate="#{clienteBean.dataAtual}"
 						required="true"></p:calendar>
 					<p:outputLabel></p:outputLabel>
