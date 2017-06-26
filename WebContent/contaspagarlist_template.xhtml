@@ -1,0 +1,40 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Lista de Contas a pagar</ui:define>
+
+	<ui:define name="principal">
+
+		<h:form>
+			<p:panel header="Lista de Contas a pagar">
+				<p:dataTable value="#{contasPagarBean.listContasPagar}" var="conta"
+					scrollable="true" paginator="true" rows="10" id="tbl"
+					paginatorPosition="bottom" scrollWidth="auto"
+					emptyMessage="Ainda não existem registros para os parâmetros de busca.">
+
+					<p:column headerText="Total a pagar" style="text-align: center;">
+						<p:outputLabel value="#{conta.valTotalPag}" />
+					</p:column>
+
+					<p:column headerText="Valor da parcela" style="text-align: center;">
+						<p:outputLabel value="#{conta.valParcelaPag}" />
+					</p:column>
+
+					<p:column headerText="Comentários" style="text-align: center;">
+						<p:outputLabel value="#{conta.comentarioPag}" />
+					</p:column>
+
+					<p:column style="text-align: center;" width="120">
+						<p:commandButton value="Excluir" icon="ui-icon-close"
+							action="#{contasPagarBean.excluir(conta)}" />
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
