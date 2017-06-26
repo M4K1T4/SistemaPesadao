@@ -1,0 +1,38 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Cadastrar contas a Pagar</ui:define>
+
+	<ui:define name="principal">
+		<h:form>
+			<p:growl />
+			<p:panel header="Cadastrar contas a Pagar" id="pnl">
+				<h:panelGrid columns="2">
+
+					<p:outputLabel value="Valor total: " for="valorTotal" />
+					<p:inputNumber type="text" id="valorTotal" required="true"
+						requiredMessage="Preencha o campo valor total."
+						value="#{contasPagarBean.contasPagar.valTotalPag}" />
+
+					<p:outputLabel value="Valor parcela: " for="valorParcela" />
+					<p:inputNumber type="text" id="valorParcela" required="true"
+						requiredMessage="Preencha o campo valor parcela."
+						value="#{contasPagarBean.contasPagar.valParcelaPag}" />
+
+					<p:outputLabel value="Descrição da conta: " for="descricaoConta" />
+					<p:inputTextarea type="text" id="descricaoConta" required="true"
+						requiredMessage="Preencha o campo valor total."
+						value="#{contasPagarBean.contasPagar.comentarioPag}" />
+
+					<p:outputLabel/>
+					<p:commandButton value="Salvar" action="#{contasPagarBean.salvar}" icon="ui-icon-disk" />
+
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

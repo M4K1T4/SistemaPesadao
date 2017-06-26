@@ -1,5 +1,6 @@
 package br.com.senai.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,14 +12,17 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class ContasPagar {
+public class ContasPagar implements Serializable {
+
+	private static final long serialVersionUID = 2945904131833194731L;
 
 	private Integer id;
-	private Integer pedidoCompPag;
+	private PedidoCompra pedidoCompPag;
 	private double valTotalPag;
 	private double valParcelaPag;
 	private Date dataInicialPag = new Date();
 	private Date dataFinalPag = new Date();
+	private String comentarioPag;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,11 +36,11 @@ public class ContasPagar {
 
 	
 	@Column(name = "pag_pedidoCompra")
-	public Integer getPedidoCompPag() {
+	public PedidoCompra getPedidoCompPag() {
 		return pedidoCompPag;
 	}
 
-	public void setPedidoCompPag(Integer pedidoCompPag) {
+	public void setPedidoCompPag(PedidoCompra pedidoCompPag) {
 		this.pedidoCompPag = pedidoCompPag;
 	}
 
@@ -76,6 +80,15 @@ public class ContasPagar {
 
 	public void setDataFinalPag(Date dataFinalPag) {
 		this.dataFinalPag = dataFinalPag;
+	}
+	
+	@Column(name = "pag_descricao")
+	public String getComentarioPag() {
+		return comentarioPag;
+	}
+
+	public void setComentarioPag(String comentarioPag) {
+		this.comentarioPag = comentarioPag;
 	}
 
 	@Override

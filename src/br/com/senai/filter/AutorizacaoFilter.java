@@ -23,16 +23,32 @@ public class AutorizacaoFilter implements Filter {
 		String contextPath = ((HttpServletRequest) request).getContextPath();
 
 		HttpServletRequest req = (HttpServletRequest) request;
+		String endereco = req.getRequestURI();
 
 		if (req.getRequestURI().endsWith("/login.xhtml")) {
+			
 		} else if (loginBean == null || !loginBean.isLoggedIn()) {
 			((HttpServletResponse) response).sendRedirect(contextPath + "/login.xhtml");
-		} else if (loginBean.getNivelDeAcesso() == NivelDeAcesso.VENDEDOR
-				&& (req.getRequestURI().endsWith("/pedidocompra_template.xhtml") 
-				|| req.getRequestURI().endsWith("/fornecedorcad_template.xhtml"))) {
+
+		} else if (loginBean.getNivelDeAcesso() == NivelDeAcesso.ATENDENTE && !(endereco.contains("venda")
+				|| endereco.contains("index") || endereco.contains("restrito") || endereco.contains("list")
+				|| endereco.contains("pedido_template")) || endereco.contains("forn")) {
 			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
+
+		} else if (loginBean.getNivelDeAcesso() == NivelDeAcesso.CADASTRANTE
+				&& !(endereco.contains("cad") || endereco.contains("index") || endereco.contains("restrito"))) {
+			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
+
+		} else if (loginBean.getNivelDeAcesso() == NivelDeAcesso.COORDENADORDECOMPRA
+				&& !(endereco.contains("compra") || endereco.contains("index") || endereco.contains("restrito"))) {
+			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
+
+		} else if (loginBean.getNivelDeAcesso() == NivelDeAcesso.COORDENADORFINANCEIRO
+				&& !(endereco.contains("conta") || endereco.contains("index") || endereco.contains("restrito"))) {
+			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
+
 		}
-		
+
 		chain.doFilter(request, response);
 
 	}

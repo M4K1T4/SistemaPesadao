@@ -2,7 +2,10 @@ package br.com.senai.model;
 
 public enum NivelDeAcesso {
 	
-	GERENTE(),
-	VENDEDOR()
+	ATENDENTE(),
+	CADASTRANTE(),
+	COORDENADORDECOMPRA(),
+	COORDENADORFINANCEIRO(),
+	GERENTE()
 
 }
