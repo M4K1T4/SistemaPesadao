@@ -80,7 +80,7 @@ public class ReportFactory{
 	private Connection getConexao(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tcc", "root", "123456");
+			con = DriverManager.getConnection("jdbc:mysql://192.68.0.200:3306/tcc", "aluno", "123456");
 			return con;
 			
 		} catch (SQLException e) {

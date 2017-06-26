@@ -41,30 +41,31 @@
 
 		</h:form>
 
-		<h:form id="panelItemCompra" rendered="#{pedidoCompraBean.ultimoRegistroVenda ne 0}">
-			
-			<p:panel header="Selecionar Itens">
-			<br/>
-				<p:dataTable var="pv" value="#{itemCompraBean.itemcompra}" id="dataTableSaisiePiece" emptyMessage="Q" >
+		<h:form id="panelItemCompra"
+			rendered="#{pedidoCompraBean.ultimoRegistroVenda ne 0}">
 
-					<p:column headerText="Produto" style="width:150px">
-						<p:selectOneMenu
-							value="#{pv.produtoCompra}"
-							required="true" converter="produtoConverter"
-							requiredMessage="Favor Selecionar o Produto">
+			<p:panel header="Selecionar Itens">
+				<br />
+				<p:dataTable var="pv" value="#{itemCompraBean.itemcompra}"
+					id="dataTableSaisiePiece" emptyMessage="Q">
+
+					<p:column headerText="Produto" style="width:80px">
+						<p:selectOneMenu  value="#{pv.produtoCompra}" required="true"
+							converter="produtoConverter"
+							requiredMessage="Favor Selecionar o Produto" >
 							<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
 							<f:selectItems value="#{itemVendaBean.produtos}" var="produto"
 								itemLabel="#{produto.nomeProduto}" itemValue="#{produto}"></f:selectItems>
 						</p:selectOneMenu>
 					</p:column>
 
-
-					<p:column headerText="Valor unitário :" style="width:150px">
-						<p:inputText value="#{pv.valorCompra}"></p:inputText>
+					<p:column headerText="Quantidade :" style="width:150px">
+						<p:inputText  value="#{pv.qntCompra}"></p:inputText>
 					</p:column>
 
-					<p:column headerText="Quantidade :" style="width:150px">
-						<p:inputText value="#{pv.qntCompra}"></p:inputText>
+
+					<p:column headerText="Valor unitário :" style="width:150px">
+						<p:inputText  value="#{pv.valorCompra}"></p:inputText>
 					</p:column>
 
 				</p:dataTable>

@@ -1,11 +1,7 @@
-
-// model de Cliente usado para cadastrar e manter dados do mesmo.
-
 package br.com.senai.model;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,20 +11,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 
-@Entity
 /**
- * 
- * @author Equipe 1
- *
+ * @author Equipe 1 (Leonardo André, Luan Magalhães, Matheus Garcia, Vinicius
+ *         Andrade)
  */
+@Entity
 public class Cliente implements Serializable {
-
 	private static final long serialVersionUID = -3954610511847217717L;
-
 	private Integer id;
 	private String nomeCli;
 	private SexoCliente sexoCli;
@@ -46,9 +38,29 @@ public class Cliente implements Serializable {
 	private Date lastUpdateCli = new Date();
 	private boolean active = true;
 
+	/**
+	 * Método construtor obrigatório
+	 */
 	public Cliente() {
 	}
 
+	/**
+	 * 
+	 * @param nomeCli
+	 * @param sexoCli
+	 * @param idadeCli
+	 * @param cpfCli
+	 * @param enderecoCli
+	 * @param numeroResidencialCli
+	 * @param bairroCli
+	 * @param cidadeCli
+	 * @param ufCli
+	 * @param telefoneCli
+	 * @param celularCli
+	 * @param emailCli
+	 * @param dataCadCli
+	 *            Método construtor com todas as variáveis necessárias.
+	 */
 	public Cliente(String nomeCli, SexoCliente sexoCli, String idadeCli, String cpfCli, String enderecoCli,
 			String numeroResidencialCli, String bairroCli, String cidadeCli, Estado ufCli, String telefoneCli,
 			String celularCli, String emailCli, Date dataCadCli) {
@@ -68,10 +80,6 @@ public class Cliente implements Serializable {
 		this.dataCadCli = dataCadCli;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
 	@Id
 	@Column(name = "cli_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -116,7 +124,6 @@ public class Cliente implements Serializable {
 	public String getIdadeCli() {
 		return idadeCli;
 	}
-
 
 	public void setIdadeCli(String idadeCli) {
 		this.idadeCli = idadeCli;
@@ -254,5 +261,4 @@ public class Cliente implements Serializable {
 		return "Cliente [id=" + id + ", nomeCli=" + nomeCli + ", cpfCli=" + cpfCli + ", dataCadCli=" + dataCadCli
 				+ ", active=" + active + "]";
 	}
-
 }
