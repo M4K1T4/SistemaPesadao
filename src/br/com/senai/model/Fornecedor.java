@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.br.CNPJ;
+
 @Entity
 public class Fornecedor implements Serializable {
 
@@ -33,11 +36,11 @@ public class Fornecedor implements Serializable {
 	private String emailForn;
 	private boolean active = true;
 	private Date lastUpdate = new Date();
-	
+
 	public Fornecedor() {
 		super();
 	}
-	
+
 	public Fornecedor(String nomeForn, String fantasiaForn, String cnpjForn, Date cadForn, String enderecoForn,
 			String bairroForn, String cidadeForn, String complementoForn, String foneaForn, String fonebForn,
 			String ieForn, String imForn, Date fundacaoForn, Estado ufForn, String emailForn) {
@@ -88,6 +91,7 @@ public class Fornecedor implements Serializable {
 		this.fantasiaForn = fantasiaForn;
 	}
 
+	@CNPJ
 	@Column(name = "for_cnpj", length = 50)
 	public String getCnpjForn() {
 		return cnpjForn;
@@ -197,6 +201,7 @@ public class Fornecedor implements Serializable {
 		this.ufForn = ufForn;
 	}
 
+	@Email
 	@Column(name = "for_email", length = 120)
 	public String getEmailForn() {
 		return emailForn;

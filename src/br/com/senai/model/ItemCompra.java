@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,7 +19,7 @@ public class ItemCompra implements Serializable {
 	private static final long serialVersionUID = -8772208579953977751L;
 
 	private Integer id;
-	private Integer produtoCompra;
+	private Produto produtoCompra;
 	private Integer pedidoCompra;
 	private String qntCompra;
 	private double valorCompra;
@@ -35,12 +37,13 @@ public class ItemCompra implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "itc_pro_id", length = 50)
-	public Integer getProdutoCompra() {
+	@ManyToOne
+	@JoinColumn(name = "itc_pro_id")
+	public Produto getProdutoCompra() {
 		return produtoCompra;
 	}
 
-	public void setProdutoCompra(Integer produtoCompra) {
+	public void setProdutoCompra(Produto produtoCompra) {
 		this.produtoCompra = produtoCompra;
 	}
 
@@ -98,7 +101,6 @@ public class ItemCompra implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
 
 	@Override
 	public boolean equals(Object obj) {

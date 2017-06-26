@@ -39,25 +39,26 @@
 		</h:form>
 
 		
-		<h:form  rendered="#{pedidoVendaBean.ultimoRegistro ne 0}">
+		<h:form  rendered="#{pedidoVendaBean.ultimoRegistro ne 0}" id="panelItenVenda">
 		
-			<p:panel header="Selecionar Itens" id="panelItenVenda">
+			<p:panel header="Selecionar Itens" >
 				<br />
 				<p:dataTable var="line" value="#{itemVendaBean.itemVenda}"
 					id="dataTableSaisiePiece">
-
-					<p:column headerText="Quantidade" style="width:150px">
-						<p:inputText value="#{line.quantidadeVenda}" style="width:100%" />
-					</p:column>
-
+					
+					
 					<p:column headerText="Produto" style="width:150px">
 						<p:selectOneMenu value="#{line.produtoVenda}" required="true"
 							converter="produtoConverter"
-							requiredMessage="Favor Selecionar o fornecedor">
+							requiredMessage="Favor Selecionar o produtor">
 							<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
 							<f:selectItems value="#{itemVendaBean.produtos}" var="produto"
 								itemLabel="#{produto.nomeProduto}" itemValue="#{produto}"></f:selectItems>
 						</p:selectOneMenu>
+					</p:column>
+
+					<p:column headerText="Quantidade" style="width:150px">
+						<p:inputText value="#{line.quantidadeVenda}" style="width:100%" />
 					</p:column>
 
 					<p:column headerText="Valor Unitário :" style="width:150px">

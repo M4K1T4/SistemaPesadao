@@ -11,6 +11,7 @@ import javax.faces.event.ActionEvent;
 
 import br.com.senai.dao.ItemCompraDAO;
 import br.com.senai.model.ItemCompra;
+import br.com.senai.model.Produto;
 
 @ManagedBean
 @SessionScoped
@@ -18,6 +19,10 @@ public class ItemCompraBean {
 
 	private ItemCompra itemcompra = new ItemCompra();
 	private List<ItemCompra> itemcompras = new ArrayList<ItemCompra>();
+	private List<Produto> produtos;
+
+	private PedidoCompraBean pedidoCompraBean;
+
 	public Thread currentThread;
 
 	public ItemCompraBean() {
@@ -25,15 +30,14 @@ public class ItemCompraBean {
 		itemcompras.add(new ItemCompra());
 	}
 
-	public String salvar() throws InterruptedException {
-		// fornecedores.add(fornecedor);
-		currentThread = Thread.currentThread();
-		Thread.sleep(7000);
+	public String salvar()  {
+		
 		new ItemCompraDAO().salvar(itemcompra);
 		itemcompras = new ItemCompraDAO().listarItemCompras();
 		itemcompra = new ItemCompra();
+		pedidoCompraBean.setUltimoRegistroVenda(0);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor salvo com sucesso!"));
-		return "fornecedorlist_template";
+		return "pedidocompra_template";
 	}
 
 	public String editar(ItemCompra itemcompra) {
@@ -52,28 +56,66 @@ public class ItemCompraBean {
 		// fornecedor = new FornecedorDAO().listarFornecedores();
 	}
 
+	/**
+	 * 
+	 * @return itemcompra
+	 */
 	public ItemCompra getItemcompra() {
 		return itemcompra;
 	}
 
+	/**
+	 * 
+	 * @param itemcompra
+	 */
 	public void setItemcompra(ItemCompra itemcompra) {
 		this.itemcompra = itemcompra;
 	}
 
+	/**
+	 * 
+	 * @return Itemcompras
+	 */
 	public List<ItemCompra> getItemcompras() {
 		return itemcompras;
 	}
 
+	/**
+	 * 
+	 * @param itemcompras
+	 */
 	public void setItemcompras(List<ItemCompra> itemcompras) {
 		this.itemcompras = itemcompras;
 	}
-	
-	public void deleteLine(ActionEvent actionEvent){
-		itemcompras.remove(new ItemCompra());
+
+	/**
+	 * @return the produtos
+	 */
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
-	
-	public void newLine(ActionEvent actionEvent) {
-		itemcompras.add(new ItemCompra());
+
+	/**
+	 * @param produtos
+	 *            the produtos to set
+	 */
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	/**
+	 * @return the pedidoCompraBean
+	 */
+	public PedidoCompraBean getPedidoCompraBean() {
+		return pedidoCompraBean;
+	}
+
+	/**
+	 * @param pedidoCompraBean
+	 *            the pedidoCompraBean to set
+	 */
+	public void setPedidoCompraBean(PedidoCompraBean pedidoCompraBean) {
+		this.pedidoCompraBean = pedidoCompraBean;
 	}
 
 }

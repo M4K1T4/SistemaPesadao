@@ -1,6 +1,5 @@
 package br.com.senai.bean;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +21,7 @@ import br.com.senai.model.PedidoVenda;
 @ManagedBean
 @SessionScoped
 public class ItemVendaBean{
+	
 	private ItemVenda itemVenda = new ItemVenda();
 	private List<ItemVenda> itensVendas = new ArrayList<ItemVenda>();
 	private List<Produto> produtos;
@@ -59,8 +59,6 @@ public class ItemVendaBean{
 	}
 
 	
-
-
 	public ItemVenda getItemVenda() {
 		return itemVenda;
 	}

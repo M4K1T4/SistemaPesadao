@@ -5,60 +5,51 @@
     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
 	<persistence-unit name="senai">
-	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-	
-<!-- 	
-    
-  <trigger:itemcompra_atualiza_estoque>  
-  	BEGIN
-	  	UPDATE contaspagar SET contaspagar.pag_valorTotal = contaspagar.pag_valorTotal + (NEW.itc_quantidade * NEW.itc_valorCompra)
-	  	WHERE contaspagar.pag_pedidoCompra = NEW.itc_ped_id;
-	  
-	  	UPDATE estoque SET estoque.est_qtde = estoque.est_qtde + new.itc_quantidade, 
-	  	estoque.est_valorTotal = estoque.est_valorTotal + (new.itc_valorCompra * new.itc_quantidade)
-	  	WHERE estoque.est_produto = NEW.itc_pro_id;
-  	END
-  </trigger:itemcompra>
-  
-  <trigger:itemvenda_contasreceber>
-	BEGIN
-		UPDATE contasreceber SET contasreceber.valorPedido =+ (NEW.itv_qtde * NEW.itv_valorUnitario)
-		WHERE NEW.pedidoVenda_ven_id = contasreceber.pedidoVendaConta_ven_id;
-	END
-	  </trigger:itemvenda>
-  
-  <trigger:pedidocompra_contaspagar>
-	BEGIN
-		INSERT INTO contaspagar(contaspagar.pag_pedidoCompra, contaspagar.pag_parcela)
-		VALUES (NEW.pec_id, NEW.pec_parcelaPedido);
-	END
-  </trigger:pedidocompra>
-  
-  <trigger:pedidovenda_contasreceber>
-	  BEGIN
-	  	INSERT INTO contasreceber(contasreceber.pedidoVendaConta_ven_id)
-	  	VALUES (NEW.ven_id);
-	  END
-  </trigger:pedidovenda>
-  
-  <trigger:produto_insere_estoque>
-	  BEGIN
-	  	INSERT INTO ESTOQUE(estoque.est_descricao, estoque.est_produto)
-	  	VALUES(NEW.pro_nome, NEW.pro_id);
-	  END
-  </trigger:produto_insere_estoque>
-     
--->
- 
- 	<properties>
-		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.68.0.200:3306/tcc?createDatabaseIfNotExist=true" />
-		<property name="javax.persistence.jdbc.user" value="aluno" />
-		<property name="javax.persistence.jdbc.password" value="123456" />
-		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-		<property name="hibernate.hbm2ddl.auto" value="update" />
-		<property name="hibernate.show_sql" value="true" />
-		<property name="hibernate.format_sql" value="true" />
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<!-- <trigger:itemcompra_atualiza_estoque> BEGIN UPDATE contaspagar SET 
+			contaspagar.pag_valorTotal = contaspagar.pag_valorTotal + (NEW.itc_quantidade 
+			* NEW.itc_valorCompra) WHERE contaspagar.pag_pedidoCompra = NEW.itc_ped_id; 
+			UPDATE estoque SET estoque.est_qtde = estoque.est_qtde + new.itc_quantidade, 
+			estoque.est_valorTotal = estoque.est_valorTotal + (new.itc_valorCompra * 
+			new.itc_quantidade) WHERE estoque.est_produto = NEW.itc_pro_id; END 
+			</trigger:itemcompra> 
+			<trigger:itemvenda_contasreceber> BEGIN UPDATE contasreceber SET contasreceber.valorPedido 
+			=+ (NEW.itv_qtde * NEW.itv_valorUnitario) WHERE NEW.pedidoVenda_ven_id = 
+			contasreceber.pedidoVendaConta_ven_id; END
+			 </trigger:itemvenda> <trigger:pedidocompra_contaspagar> 
+			BEGIN INSERT INTO contaspagar(contaspagar.pag_pedidoCompra, contaspagar.pag_parcela) 
+			VALUES (NEW.pec_id, NEW.pec_parcelaPedido); END 
+			</trigger:pedidocompra> 
+			
+			<trigger:pedidovenda_contasreceber> 
+			BEGIN INSERT INTO contasreceber(contasreceber.pedidoVendaConta_ven_id) VALUES 
+			(NEW.ven_id); END 
+			</trigger:pedidovenda> <trigger:produto_insere_estoque> 
+			BEGIN INSERT INTO ESTOQUE(estoque.est_descricao, estoque.est_produto) VALUES(NEW.pro_nome, 
+			NEW.pro_id); END 
+			</trigger:produto_insere_estoque> 
+			
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost/tcc?createDatabaseIfNotExist=true" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="123456" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
 		</properties>
 	</persistence-unit>
- </persistence>
+	</persistence> -->
+
+	 <properties> <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" 
+		/> <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.68.0.200:3306/tcc?createDatabaseIfNotExist=true" 
+		/> <property name="javax.persistence.jdbc.user" value="aluno" /> <property 
+		name="javax.persistence.jdbc.password" value="123456" /> <property name="hibernate.dialect" 
+		value="org.hibernate.dialect.MySQL5InnoDBDialect" /> <property name="hibernate.hbm2ddl.auto" 
+		value="update" /> <property name="hibernate.show_sql" value="true" /> <property 
+		name="hibernate.format_sql" value="true" /> </properties> </persistence-unit> 
+		</persistence> 
+		 

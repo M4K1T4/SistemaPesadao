@@ -40,9 +40,8 @@ public class FornecedorConverter implements Converter {
 		Fornecedor fornecedor = (Fornecedor) obj;
 
 		String id = fornecedor.getId() == null ? "" : fornecedor.getId().toString();
+		
 		String nome = fornecedor.getFantasiaForn() == null ? "" : fornecedor.getFantasiaForn();
-
 		return id + "#" + nome;
 	}
-
 }

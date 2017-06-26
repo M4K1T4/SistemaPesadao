@@ -24,7 +24,7 @@ public class PedidoCompra implements Serializable {
 	private Integer id;
 	private Fornecedor fornecedorPedido;
 	private String parcelaPedido;
-	private Date cadastroProduto;
+	private Date cadastroProduto = new Date();
 	private boolean activePedido = true;
 
 	@Id
@@ -66,15 +66,7 @@ public class PedidoCompra implements Serializable {
 	public void setCadastroProduto(Date cadastroProduto) {
 		this.cadastroProduto = cadastroProduto;
 	}
-
-	public Fornecedor getFornecedorPedido() {
-		return fornecedorPedido;
-	}
-
-	public void setFornecedorPedido(Fornecedor fornecedorPedido) {
-		this.fornecedorPedido = fornecedorPedido;
-
-	}
+	
 
 	public boolean isActivePedido() {
 		return activePedido;
