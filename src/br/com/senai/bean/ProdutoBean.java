@@ -20,10 +20,8 @@ public class ProdutoBean {
 	private Produto produto = new Produto();
 	private List<Produto> produtos = new ArrayList<Produto>();
 
-	
 	public ProdutoBean(){
 		produtos = new ProdutoDAO().listarProdutos();
-		
 	}
 	
 	public String salvar(){
