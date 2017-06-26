@@ -1,0 +1,33 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Template Padrão</ui:define>
+
+	<ui:define name="principal">
+		<h:form>
+			<p:panel header="Lista de Contas a Receber">
+				<p:dataTable value="#{contasReceberBean.contasAReceber}"
+					var="contasReceber" paginator="true" paginatorPosition="bottom"
+					rows="10" id="tbl" scrollable="true" scrollWidth="auto"
+					emptyMessage="Ainda não temos registros para os critérios de busca">
+
+					<p:column headerText="Data de Registro da Conta">
+						<h:outputText
+							value="#{contasReceber.dataRegistro}">
+							<f:convertDateTime pattern="dd/MM/yy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Preço ">
+						<h:outputText
+							value="#{contasReceber.valorPedido}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -23,6 +23,7 @@ public class PedidoVenda implements Serializable {
 
 	private Integer id;
 	private Cliente cliente;
+	// private boolean activeContaR = true;
 	private Date dataVenda = new Date();
 	private int formapagamento = 1;
 
@@ -65,6 +66,14 @@ public class PedidoVenda implements Serializable {
 		this.formapagamento = formapagamento;
 	}
 
+	// @Column(name = "active_conta_receber")
+	// public boolean isActiveContaR() {
+	// return activeContaR;
+	// }
+
+	// public void setActiveContaR(boolean activeContaR) {
+	// this.activeContaR = activeContaR;
+	// }
 
 	@Override
 	public int hashCode() {
@@ -73,7 +82,6 @@ public class PedidoVenda implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {

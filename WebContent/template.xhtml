@@ -21,37 +21,45 @@
 
 				<p:menuitem value="Produto" outcome="produtocad_template" />
 				<p:separator />
-				
+
 				<p:menuitem value="Pedido Venda" outcome="pedido_template" />
-				<p:separator></p:separator>
+				<p:separator />
 				<p:menuitem value="Pedido Compra" outcome="pedidocompra_template" />
+				<p:separator></p:separator>
+				<p:menuitem value="Contas a Receber"
+					outcome="contasreceber_template">
+				</p:menuitem>
 			</p:submenu>
 
 			<p:submenu label="Listar" icon="ui-icon-document">
 
-				<p:menuitem value="Fornecedor" outcome="fornecedorlist_template"/>
+				<p:menuitem value="Fornecedor" outcome="fornecedorlist_template" />
 				<p:separator />
 
 				<p:menuitem value="Cliente" outcome="clientelist_template" />
 				<p:separator />
-				
+
 				<p:menuitem value="Produto" outcome="produtolist_template" />
-				<p:separator/>
+				<p:separator />
+
+				<p:menuitem value="Estoque" outcome="estoquelist_template" />
+				<p:separator></p:separator>
 				
-				<p:menuitem value="Estoque" outcome="estoquelist_template"/>
-				
+				<p:menuitem value="Contas a Receber" outcome="contasreceberlist_template"></p:menuitem>
 			</p:submenu>
 
 			<f:facet name="options">
-				<p:inputText style="margin-right:10px" placeholder="Search" />
-				<p:commandButton icon="ui-icon-extlink" value="Logout #{loginBean.nomeUsuario}" action="#{loginBean.logout}"/>
+				<p:commandButton icon="ui-icon-extlink"
+					value="Logout #{loginBean.nomeUsuario}"
+					action="#{loginBean.logout}" />
 			</f:facet>
 		</p:menubar>
 		<br />
-		
+
 	</h:form>
 	<ui:insert name="principal"></ui:insert>
-	<p style="font-family: verdana; color: blue; text-align: right; font-size: 12px; bottom: 0px; position: absolute;">
+	<p
+		style="font-family: verdana; color: blue; text-align: right; font-size: 12px; bottom: 0px; position: absolute;">
 		Pesadão Life Style, todos os direitos reservados</p>
 </h:body>
 </html>

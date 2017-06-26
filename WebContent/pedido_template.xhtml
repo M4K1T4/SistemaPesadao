@@ -16,17 +16,19 @@
 			<p:panel header="Efetuar Venda" id="pnl">
 
 				<h:panelGrid columns="2">
-					<p:outputLabel value="Cliente: ">
-						<p:selectOneMenu value="#{pedidoVendaBean.pedidoVenda.cliente}"
-							required="true" converter="clienteConverter"
-							requiredMessage="Favor Selecionar o Cliente ">
-							<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
-							<f:selectItems value="#{pedidoVendaBean.clientes}" var="cliente"
-								itemLabel="#{cliente.nomeCli}" itemValue="#{cliente}"></f:selectItems>
-							<f:ajax event="change" execute="@this" 
-								listener="#{pedidoVendaBean.salvar}" render="panelItenVenda"></f:ajax>
-						</p:selectOneMenu>
-					</p:outputLabel>
+					<p:column>
+						<p:outputLabel value="Cliente: "  >
+							<p:selectOneMenu value="#{pedidoVendaBean.pedidoVenda.cliente}"
+								required="true" converter="clienteConverter"  style="vertical-align:middle;"
+								requiredMessage="Favor Selecionar o Cliente "  >
+								<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
+								<f:selectItems value="#{pedidoVendaBean.clientes}" var="cliente"
+									itemLabel="#{cliente.nomeCli}" itemValue="#{cliente}"></f:selectItems>
+								<f:ajax event="change" execute="@this"
+									listener="#{pedidoVendaBean.salvar}" render="panelItenVenda"></f:ajax>
+							</p:selectOneMenu>
+						</p:outputLabel>
+					</p:column>
 
 					<p:outputLabel value="Data: " id="dataVenda">
 						<p:calendar value="#{pedidoVendaBean.pedidoVenda.dataVenda}"
@@ -38,18 +40,19 @@
 			</p:panel>
 		</h:form>
 
-		
-		<h:form  rendered="#{pedidoVendaBean.ultimoRegistro ne 0}" id="panelItenVenda">
-		
-			<p:panel header="Selecionar Itens" >
+
+		<h:form rendered="#{pedidoVendaBean.ultimoRegistro ne 0}"
+			id="panelItenVenda">
+
+			<p:panel header="Selecionar Itens">
 				<br />
 				<p:dataTable var="line" value="#{itemVendaBean.itemVenda}"
 					id="dataTableSaisiePiece">
-					
-					
+
+
 					<p:column headerText="Produto" style="width:150px">
 						<p:selectOneMenu value="#{line.produtoVenda}" required="true"
-							converter="produtoConverter"
+							converter="produtoConverter" style="width:90%"
 							requiredMessage="Favor Selecionar o produtor">
 							<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
 							<f:selectItems value="#{itemVendaBean.produtos}" var="produto"
@@ -58,21 +61,22 @@
 					</p:column>
 
 					<p:column headerText="Quantidade" style="width:150px">
-						<p:inputText value="#{line.quantidadeVenda}" style="width:100%" />
+						<p:inputText value="#{line.quantidadeVenda}" style="width:95%" />
 					</p:column>
 
 					<p:column headerText="Valor Unitário :" style="width:150px">
-						<p:inputText value="#{line.valorUnitVenda}"></p:inputText>
+						<p:inputText value="#{line.valorUnitVenda}"
+							style="width:95%;align:center"></p:inputText>
 					</p:column>
 
 				</p:dataTable>
-				
+
 			</p:panel>
 			<p:commandButton style="align-center" value="salvar"
 				action="#{itemVendaBean.salvar}" update="panelItenVenda">
 				<f:setPropertyActionListener
-				target="#{itemVendaBean.itemVenda.pedidoVenda}"
-				value="#{pedidoVendaBean.ultimoRegistro}" />
+					target="#{itemVendaBean.itemVenda.pedidoVenda}"
+					value="#{pedidoVendaBean.ultimoRegistro}" />
 			</p:commandButton>
 		</h:form>
 	</ui:define>
