@@ -18,20 +18,25 @@
 					<p:column headerText="Produto">
 						<p:outputLabel value="#{estoque.nomeProdutoEstoque}" />
 					</p:column>
-					
+
 					<p:column headerText="QTDE" style="text-align: center">
 						<p:outputLabel value="#{estoque.quantidadeEstoque}" />
 					</p:column>
-					
+
 					<p:column headerText="Total em Estoque" style="text-align: center">
 						<p:outputLabel value="#{estoque.totalEstoque}" />
 					</p:column>
-					
-					<p:column headerText="Ultima atualização" style="text-align: center">
+
+					<p:column headerText="Ultima atualização"
+						style="text-align: center">
 						<p:outputLabel value="#{estoque.lastUpdate}" />
 					</p:column>
 
 				</p:dataTable>
+				<p:commandButton value="Gerar Relatório"
+					action="#{estoqueBean.getRelatorio()}" ajax="false"
+					onclick="this.form.target='_blank'" />
+
 			</p:panel>
 		</h:form>
 
