@@ -1,0 +1,43 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Template Padrão</ui:define>
+
+	<ui:define name="principal">
+		<h:form>
+			<p:panel header="Cadastro de Conta a receber">
+				<p:panelGrid columns="2">
+					<p:outputLabel>
+						<p:outputLabel value="Valor da conta:" for="valorPedido" />
+						<p:inputText type="text" title="Valor Conta *" required="true"
+							id="valorPedido"
+							requiredMessage="favor preencher o valor da conta"
+							validatorMessage=""
+							value="#{contasReceberBean.contasReceber.valorPedido}" />
+
+					</p:outputLabel>
+					<p:outputLabel value="Data De Registro da conta" for="dataRegistro">
+						<p:calendar
+							value="#{contasReceberBean.contasReceber.dataRegistro}"
+							pattern="dd/MM/yy" required="true" id="dataRegistro"
+							requiredMessage="Preencha campo 'Data do cadastro:'" />
+					</p:outputLabel>
+
+
+					<p:commandButton value="Salvar"
+						action="#{contasReceberBean.salvar}" update="@form"
+						icon="ui-icon-disk" id="saveBtn" />
+
+				</p:panelGrid>
+
+			</p:panel>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
