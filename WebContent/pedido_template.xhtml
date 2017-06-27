@@ -23,7 +23,7 @@
 								requiredMessage="Favor Selecionar o Cliente "  >
 								<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
 								<f:selectItems value="#{pedidoVendaBean.clientes}" var="cliente"
-									itemLabel="#{cliente.nomeCli}" itemValue="#{cliente}"></f:selectItems>
+									itemLabel="#{cliente.nomeCliente}" itemValue="#{cliente}"></f:selectItems>
 								<f:ajax event="change" execute="@this"
 									listener="#{pedidoVendaBean.salvar}" render="panelItenVenda"></f:ajax>
 							</p:selectOneMenu>
