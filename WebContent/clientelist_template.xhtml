@@ -14,42 +14,42 @@
 					paginator="true" rows="10" id="tbl"
 					emptyMessage="Ainda não existem registros para os parâmetros de busca.">
 
-					<p:column headerText="Nome Cliente" sortBy="#{cliente.nomeCli}"
-						style="text-align:center;" filterBy="#{cliente.nomeCli}">
-						<h:outputText value="#{cliente.nomeCli}"></h:outputText>
+					<p:column headerText="Nome Cliente" sortBy="#{cliente.nomeCliente}"
+						style="text-align:center;" filterBy="#{cliente.nomeCliente}">
+						<h:outputText value="#{cliente.nomeCliente}"></h:outputText>
 					</p:column>
 
 					<p:column headerText="E-mail Cliente" style="text-align:center;">
-						<h:outputText value="#{cliente.emailCli}"></h:outputText>
+						<h:outputText value="#{cliente.emailCliente}"></h:outputText>
 					</p:column>
 					
 					<p:column headerText="Telefone Cliente"
-						filterBy="#{cliente.telefoneCli}" style="text-align:center;">
-						<h:outputText value="#{cliente.telefoneCli}"></h:outputText>
+						filterBy="#{cliente.telefoneCliente}" style="text-align:center;">
+						<h:outputText value="#{cliente.telefoneCliente}"></h:outputText>
 					</p:column>
 
 					<p:column headerText="Celular Cliente" style="text-align:center;"
-						filterBy="#{cliente.celularCli}">
-						<h:outputText value="#{cliente.celularCli}"></h:outputText>
+						filterBy="#{cliente.celularCliente}">
+						<h:outputText value="#{cliente.celularCliente}"></h:outputText>
 					</p:column>
 
-					<p:column headerText="Cidade Cliente" sortBy="#{cliente.cidadeCli}"
+					<p:column headerText="Cidade Cliente" sortBy="#{cliente.cidadeCliente}"
 						style="text-align:center;" exportable="false">
-						<h:outputText value="#{cliente.cidadeCli}"></h:outputText>
+						<h:outputText value="#{cliente.cidadeCliente}"></h:outputText>
 					</p:column>
 
 					<p:column headerText="Bairro Cliente" style="text-align:center;" width="70" exportable="false">
-						<h:outputText value="#{cliente.bairroCli}"></h:outputText>
+						<h:outputText value="#{cliente.bairroCliente}"></h:outputText>
 					</p:column>
 
-					<p:column headerText="UF Cliente" sortBy="#{cliente.ufCli.sigla}"
+					<p:column headerText="UF Cliente" sortBy="#{cliente.ufCliente.sigla}"
 						style="text-align:center;" width="70" exportable="false">
-						<h:outputText value="#{cliente.ufCli.sigla}"></h:outputText>
+						<h:outputText value="#{cliente.ufCliente.sigla}"></h:outputText>
 					</p:column>
 
 					<p:column headerText="Cpf Cliente" filterStyle="width: 60px;"
-						style="text-align:center;" filterBy="#{cliente.cpfCli}">
-						<h:outputText value="#{cliente.cpfCli}"></h:outputText>
+						style="text-align:center;" filterBy="#{cliente.cpfCliente}">
+						<h:outputText value="#{cliente.cpfCliente}"></h:outputText>
 					</p:column>
 
 					<p:column headerText="Active" exportable="false"
