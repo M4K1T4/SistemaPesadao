@@ -207,6 +207,7 @@ public class Fornecedor implements Serializable {
 		return emailFornecedor;
 	}
 
+
 	public void setEmailFornecedor(String emailFornecedor) {
 		this.emailFornecedor = emailFornecedor;
 	}
@@ -230,6 +231,9 @@ public class Fornecedor implements Serializable {
 		this.lastUpdate = lastUpdate;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -238,6 +242,9 @@ public class Fornecedor implements Serializable {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -255,14 +262,21 @@ public class Fornecedor implements Serializable {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Fornecedor [id=" + id + ", nomeForn=" + nomeFornecedor + ", fantasiaForn=" + fantasiaFornecedor + ", cnpjForn="
-				+ cnpjFornecedor + ", cadForn=" + cadFornecedor + ", enderecoForn=" + enderecoFornecedor + ", bairroForn=" + bairroFornecedor
-				+ ", cidadeForn=" + cidadeFornecedor + ", complementoForn=" + complementoFornecedor + ", foneaForn=" + foneaFornecedor
-				+ ", fonebForn=" + fonebFornecedor + ", ieForn=" + ieFornecedor + ", imForn=" + imFornecedor + ", fundacaoForn="
-				+ fundacaoFornecedor + ", ufForn=" + ufFornecedor + ", emailForn=" + emailFornecedor + ", active=" + active
+		return "Fornecedor [id=" + id + ", nomeFornecedor=" + nomeFornecedor + ", fantasiaFornecedor="
+				+ fantasiaFornecedor + ", cnpjFornecedor=" + cnpjFornecedor + ", cadFornecedor=" + cadFornecedor
+				+ ", enderecoFornecedor=" + enderecoFornecedor + ", bairroFornecedor=" + bairroFornecedor
+				+ ", cidadeFornecedor=" + cidadeFornecedor + ", complementoFornecedor=" + complementoFornecedor
+				+ ", foneaFornecedor=" + foneaFornecedor + ", fonebFornecedor=" + fonebFornecedor + ", ieFornecedor="
+				+ ieFornecedor + ", imFornecedor=" + imFornecedor + ", fundacaoFornecedor=" + fundacaoFornecedor
+				+ ", ufFornecedor=" + ufFornecedor + ", emailFornecedor=" + emailFornecedor + ", active=" + active
 				+ ", lastUpdate=" + lastUpdate + "]";
 	}
+
+	
 
 }

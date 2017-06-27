@@ -50,7 +50,7 @@ public class FornecedorBean {
 	 */
 	public String editar(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
-		return "fornecedorcad_template";
+		return "fornecedorcad_template?faces-redirect=true";
 	}
 
 	public Fornecedor getFornecedor() {
