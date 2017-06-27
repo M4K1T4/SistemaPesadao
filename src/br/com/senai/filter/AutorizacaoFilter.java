@@ -30,9 +30,9 @@ public class AutorizacaoFilter implements Filter {
 		} else if (loginBean == null || !loginBean.isLoggedIn()) {
 			((HttpServletResponse) response).sendRedirect(contextPath + "/login.xhtml");
 
-		} else if (loginBean.getNivelDeAcesso() == NivelDeAcesso.ATENDENTE && !(endereco.contains("venda")
+		} else if (loginBean.getNivelDeAcesso() == NivelDeAcesso.ATENDENTE && (!(endereco.contains("venda")
 				|| endereco.contains("index") || endereco.contains("restrito") || endereco.contains("list")
-				|| endereco.contains("pedido_template")) || endereco.contains("forn")) {
+				|| endereco.contains("pedido_template")) || endereco.contains("forn"))) {
 			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
 
 		} else if (loginBean.getNivelDeAcesso() == NivelDeAcesso.CADASTRANTE
@@ -47,7 +47,7 @@ public class AutorizacaoFilter implements Filter {
 				&& !(endereco.contains("conta") || endereco.contains("index") || endereco.contains("restrito"))) {
 			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
 
-		}
+		} 
 
 		chain.doFilter(request, response);
 
