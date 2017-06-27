@@ -27,7 +27,7 @@ public class ContasPagarBean {
 		listContasPagar = new ContasPagarDAO().listarContas();
 		contasPagar = new ContasPagar();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Conta a pagar salva!"));
-		return "contaspagarlist_template";
+		return "contaspagarlist_template?faces-redirect=true";
 	}
 	
 	public void excluir(ContasPagar contasPagar) {

@@ -9,7 +9,7 @@
 
 	<ui:define name="principal">
 
-		<h:form>
+		<h:form id="form">
 			<p:panel header="Lista de Contas a pagar">
 				<p:dataTable value="#{contasPagarBean.listContasPagar}" var="conta"
 					scrollable="true" paginator="true" rows="10" id="tbl"
@@ -30,7 +30,7 @@
 
 					<p:column style="text-align: center;" width="120">
 						<p:commandButton value="Excluir" icon="ui-icon-close"
-							action="#{contasPagarBean.excluir(conta)}" />
+							action="#{contasPagarBean.excluir(conta)}" update="@form" />
 					</p:column>
 
 				</p:dataTable>
