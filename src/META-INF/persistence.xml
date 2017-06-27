@@ -52,8 +52,8 @@
  
  	<properties>
 		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tcc?createDatabaseIfNotExist=true" />
-		<property name="javax.persistence.jdbc.user" value="root" />
+		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.68.0.200:3306/tcc?createDatabaseIfNotExist=true" />
+		<property name="javax.persistence.jdbc.user" value="aluno" />
 		<property name="javax.persistence.jdbc.password" value="123456" />
 		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 		<property name="hibernate.hbm2ddl.auto" value="update" />

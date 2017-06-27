@@ -26,6 +26,13 @@ public class FornecedorBean {
 		fornecedores = new FornecedorDAO().listarFornecedores();
 	}
 
+	/**
+	 * @return fornecedorlist_template
+	 * @throws InterruptedException
+	 * 
+	 *             Método para salvar todas as informações de fornecedor.
+	 *             Retornando mensagem de sucesso.
+	 */
 	public String salvar() throws InterruptedException {
 		currentThread = Thread.currentThread();
 		Thread.sleep(7000);
@@ -36,9 +43,14 @@ public class FornecedorBean {
 		return "fornecedorlist_template";
 	}
 
+	/**
+	 * @param fornecedor
+	 * @return fornecedorcad_template Método para editar, altera informações já
+	 *         cadastradas.
+	 */
 	public String editar(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
-		return "fornecedorlist_template";
+		return "fornecedorcad_template?faces-redirect=true";
 	}
 
 	public Fornecedor getFornecedor() {
