@@ -35,7 +35,7 @@ public class ContasPagar implements Serializable {
 	}
 
 	
-	@Column(name = "pag_pedidoCompra")
+	@Column(name = "pag_pedidoCompra", columnDefinition = "integer")
 	public PedidoCompra getPedidoCompPag() {
 		return pedidoCompPag;
 	}
@@ -44,7 +44,7 @@ public class ContasPagar implements Serializable {
 		this.pedidoCompPag = pedidoCompPag;
 	}
 
-	@Column(name = "pag_valorTotal")
+	@Column(name = "pag_valorTotal",  columnDefinition = "DOUBLE default 0")
 	public double getValTotalPag() {
 		return valTotalPag;
 	}

@@ -19,7 +19,7 @@
 							requiredMessage="Favor Selecionar o fornecedor">
 							<f:selectItem itemLabel="Selecione..." itemValue="#{null}"></f:selectItem>
 							<f:selectItems value="#{pedidoCompraBean.fornecedores}"
-								var="fornecedor" itemLabel="#{fornecedor.fantasiaForn}"
+								var="fornecedor" itemLabel="#{fornecedor.fantasiaFornecedor}"
 								itemValue="#{fornecedor}"></f:selectItems>
 							<f:ajax event="change" execute="@this"
 								listener="#{pedidoCompraBean.salvarPedidoCompra}"

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Estoque implements Serializable {
@@ -63,6 +65,7 @@ public class Estoque implements Serializable {
 	}
 	
 	@Column(name = "est_lastUpdate")
+	@Temporal(TemporalType.DATE)
 	public Date getLastUpdate() {
 		return lastUpdate;
 	}

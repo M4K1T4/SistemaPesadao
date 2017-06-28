@@ -17,20 +17,28 @@
 	  	UPDATE estoque SET estoque.est_qtde = estoque.est_qtde + new.itc_quantidade, 
 	  	estoque.est_valorTotal = estoque.est_valorTotal + (new.itc_valorCompra * new.itc_quantidade)
 	  	WHERE estoque.est_produto = NEW.itc_pro_id;
-  	END
+	END
   </trigger:itemcompra>
   
   <trigger:itemvenda_contasreceber>
-	BEGIN
-		UPDATE contasreceber SET contasreceber.valorPedido =+ (NEW.itv_qtde * NEW.itv_valorUnitario)
-		WHERE NEW.pedidoVenda_ven_id = contasreceber.pedidoVendaConta_ven_id;
+		BEGIN
+			UPDATE contasreceber SET contasreceber.rec_valor = contasreceber.rec_valor + (NEW.itv_qtde * NEW.itv_valorUnitario)
+			WHERE contasreceber.rec_pedidoVenda = new.pedidoVenda_ven_id;
+				
+			UPDATE estoque SET estoque.est_qtde = estoque.est_qtde - new.itv_qtde,
+			estoque.est_valorTotal = estoque.est_valorTotal - (new.itv_valorUnitario * new.itv_qtde)
+			WHERE estoque.est_produto = NEW.produto_pro_id;
 	END
-	  </trigger:itemvenda>
+	</trigger:itemvenda>
   
   <trigger:pedidocompra_contaspagar>
 	BEGIN
-		INSERT INTO contaspagar(contaspagar.pag_pedidoCompra, contaspagar.pag_parcela)
-		VALUES (NEW.pec_id, NEW.pec_parcelaPedido);
+	DECLARE contador TINYINT DEFAULT 0;
+			WHILE contador < new.pec_parcelaPedido DO
+				INSERT INTO contaspagar(contaspagar.pag_pedidoCompra, contaspagar.pag_parcela)
+				VALUES (NEW.pec_id, NEW.pec_parcelaPedido);
+				SET contador = contador + 1;
+	END WHILE;
 	END
   </trigger:pedidocompra>
   
@@ -43,8 +51,8 @@
   
   <trigger:produto_insere_estoque>
 	  BEGIN
-	  	INSERT INTO ESTOQUE(estoque.est_descricao, estoque.est_produto)
-	  	VALUES(NEW.pro_nome, NEW.pro_id);
+	  	INSERT INTO ESTOQUE(estoque.est_descricao, estoque.est_produto, estoque.est_lastUpdate)
+	  	VALUES(NEW.pro_nome, NEW.pro_id, NEW.pro_lastUpdate);
 	  END
   </trigger:produto_insere_estoque>
      
